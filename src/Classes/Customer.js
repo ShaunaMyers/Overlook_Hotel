@@ -15,6 +15,7 @@ class Customer {
 
     addToCompletedBookings(booking, room) {
         !this.completedBookings.includes(booking) && this.completedBookings.push(booking);
+        this.removeFromCurrentBookings(booking);
         this.addToTotalSpent(room);
     }
 
@@ -24,6 +25,11 @@ class Customer {
 
     returnAllBookings() {
         return { completedBookings: this.completedBookings, currentBookings: this.currentBookings, upcomingBookings: this.upcomingBookings };
+    }
+
+    removeFromCurrentBookings(booking) {
+        let currentBookingIndex = this.currentBookings.indexOf(booking);
+        this.currentBookings.splice(currentBookingIndex, 1);
     }
 
     addToTotalSpent(room) {
