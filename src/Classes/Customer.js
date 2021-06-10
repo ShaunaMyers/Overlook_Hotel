@@ -20,6 +20,10 @@ class Customer {
         !this.upcomingBookings.includes(booking) && this.upcomingBookings.push(booking);
     }
 
+    returnAllBookings() {
+        return { completedBookings: this.completedBookings, currentBookings: this.currentBookings, upcomingBookings: this.upcomingBookings };
+    }
+
 }
 
 export default Customer;
