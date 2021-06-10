@@ -2,7 +2,10 @@ class Hotel {
     constructor(rooms) {
         this.allRooms = rooms;
         this.roomsAvailable = rooms;
-        // this.totalRevenue = 0;
+        this.completedReservations = [];
+        this.currentReservations = [];
+        this.upcomingReservations = [];
+        this.totalRevenue = 0;
     }
 
 }

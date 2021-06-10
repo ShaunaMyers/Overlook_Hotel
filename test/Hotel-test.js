@@ -27,7 +27,22 @@ describe.only('Hotel Class', () => {
     });
 
     it('Should start with all of its rooms available', () => {
-        console.log(hotel.roomsAvailable);
         expect(hotel.roomsAvailable).to.eql(sampleRoomsData);
-    })
+    });
+
+    it('Should start with a total revenue of zero', () => {
+        expect(hotel.totalRevenue).to.equal(0);
+    });
+
+    it('Should start with no past reservations', () => {
+        expect(hotel.completedReservations).to.eql([]);
+    });
+
+    it('Should start with no current reservations', () => {
+        expect(hotel.currentReservations).to.eql([]);
+    });
+
+    it('Should start with no upcoming reservations', () => {
+        expect(hotel.upcomingReservations).to.eql([]);
+    });
 });
