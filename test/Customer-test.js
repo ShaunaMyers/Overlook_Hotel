@@ -107,6 +107,13 @@ describe('Customer Class', () => {
         expect(customer1.upcomingBookings).to.eql([sampleBookingsData[0]])
     });
 
+    it('Should remove the booking from upcoming bookings when it is added to current bookings', () => {
+        customer1.addToUpcomingBookings(sampleBookingsData[0]);
+        customer1.addToUpcomingBookings(sampleBookingsData[4]);
+        customer1.addToCurrentBookings(sampleBookingsData[0], sampleRoomsData[4])
+        expect(customer1.upcomingBookings).to.eql([sampleBookingsData[4]]);
+    });
+
     it('Should return all bookings from the past, present, and future', () => {
         customer1.addToCompletedBookings(sampleBookingsData[0], sampleRoomsData[4]);
         customer1.addToCurrentBookings(sampleBookingsData[2]);
