@@ -6,14 +6,16 @@ class Customer {
         this.completedBookings = [];
         this.currentBookings = [];
         this.upcomingBookings = [];
+        // this.currentRoom = {}
     }
 
     addToCurrentBookings(booking) {
         !this.currentBookings.includes(booking) && this.currentBookings.push(booking);
     }
 
-    addToCompletedBookings(booking) {
+    addToCompletedBookings(booking, room) {
         !this.completedBookings.includes(booking) && this.completedBookings.push(booking);
+        this.addToTotalSpent(room);
     }
 
     addToUpcomingBookings(booking) {
@@ -22,6 +24,10 @@ class Customer {
 
     returnAllBookings() {
         return { completedBookings: this.completedBookings, currentBookings: this.currentBookings, upcomingBookings: this.upcomingBookings };
+    }
+
+    addToTotalSpent(room) {
+        this.totalSpent += room.costPerNight;
     }
 
 }
