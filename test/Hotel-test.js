@@ -10,7 +10,7 @@ describe.only('Hotel Class', () => {
 
     beforeEach(() => {
 
-        hotel = new Hotel();
+        hotel = new Hotel(sampleRoomsData);
 
     });
 
@@ -22,4 +22,12 @@ describe.only('Hotel Class', () => {
         expect(hotel).to.be.an.instanceOf(Hotel);
     });
 
+    it('Should store a list of all the rooms the hotel has', () => {
+        expect(hotel.allRooms).to.eql(sampleRoomsData);
+    });
+
+    it('Should start with all of its rooms available', () => {
+        console.log(hotel.roomsAvailable);
+        expect(hotel.roomsAvailable).to.eql(sampleRoomsData);
+    })
 });
