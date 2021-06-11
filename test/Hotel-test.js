@@ -70,7 +70,7 @@ describe.only('Hotel Class', () => {
         expect(hotel.completedReservations).to.eql([{ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] }]);
     })
 
-    it.only('Should return only the rooms available when a customer searches for a specific date', () => {
+    it('Should return only the rooms available when a customer searches for a specific date', () => {
         const availableRooms = hotel.checkIfRoomsAreAvailable({ date: "2020/01/24" },);
         expect(availableRooms).to.eql([
             {
@@ -108,7 +108,7 @@ describe.only('Hotel Class', () => {
         ])
     });
 
-    it('Should also return only the rooms available when a customer searches for a specific room type', () => {
+    it.only('Should return rooms available when a specific room type is selected on a specific date', () => {
         const availableRooms = hotel.checkIfRoomsAreAvailable({ date: "2020/01/24", roomType: 'residential suite' });
         expect(availableRooms).to.eql([
             {

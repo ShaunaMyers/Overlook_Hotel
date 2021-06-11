@@ -43,7 +43,9 @@ class Hotel {
             }
         })
 
-        roomType, numBeds, bedSize, costPerNight && this.checkAvailabilityWithAllOptions(roomType, numBeds, bedSize, costPerNight)
+        if (roomType || numBeds || bedSize || costPerNight) {
+            this.checkAvailabilityWithAllOptions(roomType, numBeds, bedSize, costPerNight);
+        }
 
 
         if (this.roomsAvailable.length) {
