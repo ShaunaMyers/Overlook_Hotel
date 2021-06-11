@@ -56,6 +56,7 @@ class Hotel {
     }
 
     checkAvailabilityWithAllOptions(roomType, numBeds, bedSize, costPerNight) {
+        console.log("HIIIIII");
         if (roomType) {
             this.filterByRoomType(roomType);
         } else if (numBeds) {
@@ -73,7 +74,7 @@ class Hotel {
     }
 
     filterByNumberOfBeds(numBeds) {
-        this.roomsAvailable = this.roomsAvailable.filter(room => room.numBeds = numBeds)
+        this.roomsAvailable = this.roomsAvailable.filter(room => room.numBeds === numBeds)
     }
 
     filterByBedSize(bedSize) {
