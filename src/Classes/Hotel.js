@@ -1,7 +1,8 @@
 class Hotel {
-    constructor(rooms, bookings) {
+    constructor(rooms, bookings, guests) {
         this.allRooms = rooms;
         this.allReservations = bookings;
+        this.allGuests = guests;
         this.roomsAvailable = [];
         this.completedReservations = [];
         this.currentReservations = [];
@@ -22,6 +23,22 @@ class Hotel {
 
     addToUpcomingReservations(booking) {
         this.upcomingReservations.push(booking);
+    }
+
+    addToCurrentReservations(booking) {
+        this.currentReservations.push(booking);
+        if (this.upcomingReservations.includes(booking)) {
+            let bookingIndex = this.upcomingReservations.indexOf(booking);
+            this.upcomingReservations.splice(bookingIndex, 1);
+        }
+    }
+
+    addToCompletedReservations(booking) {
+        this.completedReservations.push(booking);
+        if (this.currentReservations.includes(booking)) {
+            let bookingIndex = this.currentReservations.indexOf(booking);
+            this.currentReservations.splice(bookingIndex, 1);
+        }
     }
 }
 

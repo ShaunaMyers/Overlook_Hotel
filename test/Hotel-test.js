@@ -6,12 +6,11 @@ import sampleRoomsData from '../src/data/sampleRoomsData';
 
 describe.only('Hotel Class', () => {
 
-    let hotel;
+    let hotel, customer;
 
     beforeEach(() => {
 
-        hotel = new Hotel(sampleRoomsData, sampleBookingsData);
-
+        hotel = new Hotel(sampleRoomsData, sampleBookingsData, sampleCustomerData);
     });
 
     it('Should be a function', () => {
@@ -51,8 +50,8 @@ describe.only('Hotel Class', () => {
     });
 
     it('Should be able to reserve a room for a customer', () => {
-        hotel.addToUpcomingReservations({ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] })
-        expect(hotel.upcomingReservations).to.eql([{ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] }])
+        hotel.addToUpcomingReservations({ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] });
+        expect(hotel.upcomingReservations).to.eql([{ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] }]);
     });
 
     it('Should return only the rooms available when a customer searches for a specific date', () => {
@@ -92,4 +91,20 @@ describe.only('Hotel Class', () => {
             }
         ])
     });
+
+    it('Should be able to check a customer into the hotel', () => {
+        hotel.addToCurrentReservations({ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] });
+        expect(hotel.currentReservations).to.eql([{ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] }]);
+    });
+
+    it('Should remove a reservation from the upcoming reservations when a customer is checked in', () => {
+        hotel.addToCurrentReservations({ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] });
+        expect(hotel.upcomingReservations).to.eql([]);
+    })
+
+    it('Should be able to check a customer out of the hotel', () => {
+        hotel.addToCompletedReservations({ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] });
+        expect(hotel.completedReservations).to.eql([{ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] }]);
+    })
+
 });
