@@ -46,5 +46,14 @@ describe.only('Booking Class', () => {
         expect(booking.roomServiceCharges).to.eql([35.5]);
     });
 
+    it('Should have a method that can return room service charges', () => {
+
+        // Why is this starting with 35.5???
+        // I thought each it block was like starging over and thqt previous values pushed in would not be there when you start the next it block
+
+        booking.addToRoomServiceCharges(41)
+        let roomServiceCharges = booking.returnRoomServiceCharges()
+        expect(roomServiceCharges).to.eql(76.5);
+    });
 
 });

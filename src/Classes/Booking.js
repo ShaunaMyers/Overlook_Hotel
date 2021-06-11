@@ -12,7 +12,7 @@ class Booking {
     }
 
     returnRoomServiceCharges() {
-        this.roomServiceCharges.reduce((sum, charge) => {
+        return this.roomServiceCharges.reduce((sum, charge) => {
             sum += charge;
             return sum;
         }, 0)
