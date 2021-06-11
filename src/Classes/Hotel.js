@@ -41,9 +41,13 @@ class Hotel {
         })
 
         if (customerSearch.roomType) {
-            this.filterByRoomType(customerSearch.roomType)
+            this.filterByRoomType(customerSearch.roomType);
         } else if (customerSearch.numBeds) {
-            this.filterByNumberOfBeds(customerSearch.numBeds)
+            this.filterByNumberOfBeds(customerSearch.numBeds);
+        } else if (customerSearch.bedSize) {
+            this.filterByBedSize(customerSearch.bedSize);
+        } else if (customerSearch.costPerNight) {
+            this.filterByCostPerNight(customerSearch.costPerNight)
         }
 
         if (this.roomsAvailable.length) {
@@ -67,6 +71,10 @@ class Hotel {
 
     filterByCostPerNight(costPerNight) {
         this.roomsAvailable = this.roomsAvailable.filter(room => room.costPerNight <= costPerNight)
+    }
+
+    offerApologyMessage() {
+        return 'We are very sorry...it looks like we have no rooms available that fit your search selections. We would love to host you, though, so please try your search using different selections.'
     }
 }
 
