@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import Hotel from '../src/Classes/Hotel';
-// import sampleCustomerData from '../src/data/;sampleCustomerData';
+import sampleCustomerData from '../src/data/sampleCustomerData';
 import sampleBookingsData from '../src/data/sampleBookingsData';
 import sampleRoomsData from '../src/data/sampleRoomsData';
 
@@ -10,7 +10,7 @@ describe.only('Hotel Class', () => {
 
     beforeEach(() => {
 
-        hotel = new Hotel(sampleRoomsData);
+        hotel = new Hotel(sampleRoomsData, sampleBookingsData);
 
     });
 
@@ -26,8 +26,12 @@ describe.only('Hotel Class', () => {
         expect(hotel.allRooms).to.eql(sampleRoomsData);
     });
 
+    it('Should store all of the reservations for the hotel: past, present, and future.', () => {
+        expect(hotel.allReservations).to.eql(sampleBookingsData);
+    });
+
     it('Should start with all of its rooms available', () => {
-        expect(hotel.roomsAvailable).to.eql(sampleRoomsData);
+        expect(hotel.roomsAvailable).to.eql([]);
     });
 
     it('Should start with a total revenue of zero', () => {
@@ -44,5 +48,48 @@ describe.only('Hotel Class', () => {
 
     it('Should start with no upcoming reservations', () => {
         expect(hotel.upcomingReservations).to.eql([]);
+    });
+
+    it('Should be able to reserve a room for a customer', () => {
+        hotel.addToUpcomingReservations({ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] })
+        expect(hotel.upcomingReservations).to.eql([{ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] }])
+    });
+
+    it('Should return only the rooms available when a customer searches for a specific date', () => {
+        const availableRooms = hotel.checkIfRoomsAreAvailable("2020/01/24");
+        expect(availableRooms).to.eql([
+            {
+                number: 666,
+                roomType: 'residential suite',
+                bidet: true,
+                bedSize: 'queen',
+                numBeds: 1,
+                costPerNight: 358.4
+            },
+            {
+                number: 12,
+                roomType: 'single room',
+                bidet: false,
+                bedSize: 'king',
+                numBeds: 1,
+                costPerNight: 491.14
+            },
+            {
+                number: 7,
+                roomType: 'single room',
+                bidet: false,
+                bedSize: 'queen',
+                numBeds: 1,
+                costPerNight: 429.44
+            },
+            {
+                number: 15,
+                roomType: 'single room',
+                bidet: true,
+                bedSize: 'queen',
+                numBeds: 2,
+                costPerNight: 340.17
+            }
+        ])
     });
 });
