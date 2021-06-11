@@ -4,7 +4,7 @@ import sampleCustomerData from '../src/data/sampleCustomerData';
 import sampleBookingsData from '../src/data/sampleBookingsData';
 import sampleRoomsData from '../src/data/sampleRoomsData';
 
-describe.only('Hotel Class', () => {
+describe('Hotel Class', () => {
 
     let hotel, customer;
 
@@ -172,7 +172,7 @@ describe.only('Hotel Class', () => {
         ])
     });
 
-    it.only('Should offer a fierce apology message when no rooms are available', () => {
+    it('Should offer a fierce apology message when no rooms are available', () => {
         const availableRooms = hotel.checkIfRoomsAreAvailable({ date: "2020/01/24", roomType: 'residential suite', numBeds: 2, bedSize: 'king', costPerNight: 400 });
         expect(availableRooms).to.eql('We are very sorry...it looks like we have no rooms available that fit your search selections. We would love to host you, though, so please try your search using different selections.')
     });
