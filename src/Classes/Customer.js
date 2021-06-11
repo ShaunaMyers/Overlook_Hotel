@@ -23,7 +23,9 @@ class Customer {
     }
 
     addToUpcomingBookings(booking) {
+        // console.log("BOOKING PASSED IN", booking);
         !this.upcomingBookings.includes(booking) && this.upcomingBookings.push(booking);
+        // console.log("UPCOMING BOOKINGS", this.upcomingBookings);
     }
 
     returnAllBookings() {

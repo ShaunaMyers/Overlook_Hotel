@@ -1,6 +1,6 @@
 const sampleRoomsData = [
     {
-        "number": 1,
+        "number": 666,
         "roomType": "residential suite",
         "bidet": true,
         "bedSize": "queen",
@@ -8,7 +8,7 @@ const sampleRoomsData = [
         "costPerNight": 358.4
     },
     {
-        "number": 2,
+        "number": 24,
         "roomType": "suite",
         "bidet": false,
         "bedSize": "full",
@@ -24,7 +24,7 @@ const sampleRoomsData = [
         "costPerNight": 491.14
     },
     {
-        "number": 4,
+        "number": 7,
         "roomType": "single room",
         "bidet": false,
         "bedSize": "queen",

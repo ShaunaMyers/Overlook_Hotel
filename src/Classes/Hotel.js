@@ -74,20 +74,25 @@ class Hotel {
     filterByRoomType(roomType) {
         let availableRooms = this.roomsAvailable.filter(room => room.roomType === roomType);
         this.roomsAvailable = availableRooms;
+        this.roomsAvailable = availableRooms;
     }
 
     filterByNumberOfBeds(numBeds) {
         let availableRooms = this.roomsAvailable = this.roomsAvailable.filter(room => room.numBeds === numBeds);
+        this.roomsAvailable = availableRooms;
         this.roomsAvailable = availableRooms;
     }
 
     filterByBedSize(bedSize) {
         let availableRooms = this.roomsAvailable = this.roomsAvailable.filter(room => room.bedSize === bedSize);
         this.roomsAvailable = availableRooms;
+        this.roomsAvailable = availableRooms;
     }
 
     filterByCostPerNight(costPerNight) {
         let availableRooms = this.roomsAvailable = this.roomsAvailable.filter(room => room.costPerNight <= costPerNight)
+        this.roomsAvailable = availableRooms;
+        // if (availableRooms.length) {
         this.roomsAvailable = availableRooms;
     }
 
