@@ -51,38 +51,53 @@ class Hotel {
         if (this.roomsAvailable.length) {
             return this.roomsAvailable;
         } else {
-            this.offerApologyMessage();
+            console.log("DID YOU GET HERE?");
+            return this.offerApologyMessage();
         }
     }
 
     checkAvailabilityWithAllOptions(roomType, numBeds, bedSize, costPerNight) {
-        console.log("HIIIIII");
         if (roomType) {
             this.filterByRoomType(roomType);
-        } else if (numBeds) {
+        }
+        if (numBeds) {
             this.filterByNumberOfBeds(numBeds);
-        } else if (bedSize) {
+        }
+        if (bedSize) {
             this.filterByBedSize(bedSize);
-        } else if (costPerNight) {
+        }
+        if (costPerNight) {
             this.filterByCostPerNight(costPerNight)
         }
     }
 
 
     filterByRoomType(roomType) {
-        this.roomsAvailable = this.roomsAvailable.filter(room => room.roomType === roomType);
+        let availableRooms = this.roomsAvailable.filter(room => room.roomType === roomType);
+        // if (availableRooms.length) {
+        this.roomsAvailable = availableRooms;
+        // }
     }
 
     filterByNumberOfBeds(numBeds) {
-        this.roomsAvailable = this.roomsAvailable.filter(room => room.numBeds === numBeds)
+        let availableRooms = this.roomsAvailable = this.roomsAvailable.filter(room => room.numBeds === numBeds);
+        // if (availableRooms.length) {
+        this.roomsAvailable = availableRooms;
+        // }
     }
 
     filterByBedSize(bedSize) {
-        this.roomsAvailable = this.roomsAvailable.filter(room => room.bedSize === bedSize);
+        let availableRooms = this.roomsAvailable = this.roomsAvailable.filter(room => room.bedSize === bedSize);
+        // if (availableRooms.length) {
+        this.roomsAvailable = availableRooms;
+        // }
     }
 
     filterByCostPerNight(costPerNight) {
-        this.roomsAvailable = this.roomsAvailable.filter(room => room.costPerNight <= costPerNight)
+        let availableRooms = this.roomsAvailable = this.roomsAvailable.filter(room => room.costPerNight <= costPerNight)
+        // if (availableRooms.length) {
+        this.roomsAvailable = availableRooms;
+        // }
     }
 
     offerApologyMessage() {
