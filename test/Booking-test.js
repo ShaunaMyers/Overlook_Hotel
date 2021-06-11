@@ -22,19 +22,28 @@ describe.only('Booking Class', () => {
     });
 
     it('Should store a booking id', () => {
-        expect(booking.id).to.eql(sampleBookingsData[0].id);
+        expect(booking.id).to.equal(sampleBookingsData[0].id);
     });
 
     it('Should store a user id', () => {
-        expect(booking.userID).to.eql(sampleBookingsData[0].userID);
+        expect(booking.userID).to.equal(sampleBookingsData[0].userID);
     });
 
     it('Should store a booking date', () => {
-        expect(booking.date).to.eql(sampleBookingsData[0].date);
+        expect(booking.date).to.equal(sampleBookingsData[0].date);
     });
 
     it('Should store a room number', () => {
-        expect(booking.roomNumber).to.eql(sampleBookingsData[0].roomNumber);
+        expect(booking.roomNumber).to.equal(sampleBookingsData[0].roomNumber);
+    });
+
+    it('Should store room service charges', () => {
+        expect(booking.roomServiceCharges).to.eql(sampleBookingsData[0].roomServiceCharges);
+    });
+
+    it('Should have a method that can add to room service charges', () => {
+        booking.addToRoomServiceCharges(35.5)
+        expect(booking.roomServiceCharges).to.eql([35.5]);
     });
 
 
