@@ -122,7 +122,7 @@ describe.only('Hotel Class', () => {
         ])
     });
 
-    it.only('Should return rooms available when a specific number of beds is selected on a specific date', () => {
+    it('Should return rooms available when a specific number of beds is selected on a specific date', () => {
         const availableRooms = hotel.checkIfRoomsAreAvailable({ date: "2020/01/24", numBeds: 2 });
         expect(availableRooms).to.eql([
             {
@@ -132,6 +132,20 @@ describe.only('Hotel Class', () => {
                 bedSize: 'queen',
                 numBeds: 2,
                 costPerNight: 340.17
+            },
+        ])
+    });
+
+    it.only('Should return rooms available when a specific bed size is selected on a specific date', () => {
+        const availableRooms = hotel.checkIfRoomsAreAvailable({ date: "2020/01/24", bedSize: 'king' });
+        expect(availableRooms).to.eql([
+            {
+                number: 12,
+                roomType: 'single room',
+                bidet: false,
+                bedSize: 'king',
+                numBeds: 1,
+                costPerNight: 491.14
             },
         ])
     });
