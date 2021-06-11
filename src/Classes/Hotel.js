@@ -32,7 +32,10 @@ class Hotel {
     }
 
     checkIfRoomsAreAvailable(customerSearch) {
-        let availableRoomNumbers = this.allReservations.filter(reservation => reservation.date !== customerSearch.date).map(room => room.roomNumber);
+
+        let { date, roomType, numBeds, bedSize, costPerNight } = customerSearch;
+
+        let availableRoomNumbers = this.allReservations.filter(reservation => reservation.date !== date).map(room => room.roomNumber);
 
         this.allRooms.forEach(room => {
             if (availableRoomNumbers.includes(room.number)) {
@@ -40,15 +43,8 @@ class Hotel {
             }
         })
 
-        if (customerSearch.roomType) {
-            this.filterByRoomType(customerSearch.roomType);
-        } else if (customerSearch.numBeds) {
-            this.filterByNumberOfBeds(customerSearch.numBeds);
-        } else if (customerSearch.bedSize) {
-            this.filterByBedSize(customerSearch.bedSize);
-        } else if (customerSearch.costPerNight) {
-            this.filterByCostPerNight(customerSearch.costPerNight)
-        }
+        roomType, numBeds, bedSize, costPerNight && this.checkAvailabilityWithAllOptions(roomType, numBeds, bedSize, costPerNight)
+
 
         if (this.roomsAvailable.length) {
             return this.roomsAvailable;
@@ -56,6 +52,19 @@ class Hotel {
             this.offerApologyMessage();
         }
     }
+
+    checkAvailabilityWithAllOptions(roomType, numBeds, bedSize, costPerNight) {
+        if (roomType) {
+            this.filterByRoomType(roomType);
+        } else if (numBeds) {
+            this.filterByNumberOfBeds(numBeds);
+        } else if (bedSize) {
+            this.filterByBedSize(bedSize);
+        } else if (costPerNight) {
+            this.filterByCostPerNight(costPerNight)
+        }
+    }
+
 
     filterByRoomType(roomType) {
         this.roomsAvailable = this.roomsAvailable.filter(room => room.roomType === roomType);
