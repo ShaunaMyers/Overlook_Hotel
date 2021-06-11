@@ -27,24 +27,19 @@ const checkForError = (response) => {
 const fetchRequests = {
 
     getCustomerData: () => {
-        return retrieveData('http://localhost:3001/api/v1/users');
+        return retrieveData('http://localhost:3001/api/v1/customers');
     },
 
     getBookingsData: () => {
-        return retrieveData('http://localhost:3001/api/v1/ingredients');
+        return retrieveData('http://localhost:3001/api/v1/bookings');
     },
 
     getRoomsData: () => {
-        return retrieveData('http://localhost:3001/api/v1/recipes');
+        return retrieveData('http://localhost:3001/api/v1/rooms');
     },
-    // updateData functions will go here later...will invoke the updateData method (above)
-    // and will pass in two args: the path and data
-    updateBookingsData: (data) => {
-        updateData('http://localhost:3001/api/v1/users', data);
-    }
 
-    updateCustomerData: (data) => {
-        updateData('http://localhost:3001/api/v1/users', data);
+    updateBookingsData: (data) => {
+        updateData('http://localhost:3001/api/v1/bookings', data);
     }
 }
 
