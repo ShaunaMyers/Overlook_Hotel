@@ -10,16 +10,6 @@ class Hotel {
         this.totalRevenue = 0;
     }
 
-    checkIfRoomsAreAvailable(date) {
-        let availableRoomNumbers = this.allReservations.filter(reservation => reservation.date !== date).map(room => room.roomNumber);
-
-        this.allRooms.forEach(room => {
-            if (availableRoomNumbers.includes(room.number)) {
-                this.roomsAvailable.push(room);
-            }
-        })
-        return this.roomsAvailable;
-    }
 
     addToUpcomingReservations(booking) {
         this.upcomingReservations.push(booking);
@@ -39,6 +29,44 @@ class Hotel {
             let bookingIndex = this.currentReservations.indexOf(booking);
             this.currentReservations.splice(bookingIndex, 1);
         }
+    }
+
+    checkIfRoomsAreAvailable(customerSearch) {
+        let availableRoomNumbers = this.allReservations.filter(reservation => reservation.date !== customerSearch.date).map(room => room.roomNumber);
+
+        this.allRooms.forEach(room => {
+            if (availableRoomNumbers.includes(room.number)) {
+                this.roomsAvailable.push(room);
+            }
+        })
+
+        if (customerSearch.roomType) {
+            this.filterByRoomType(customerSearch.roomType)
+        } else if (customerSearch.numBeds) {
+            this.filterByNumberOfBeds(customerSearch.numBeds)
+        }
+
+        if (this.roomsAvailable.length) {
+            return this.roomsAvailable;
+        } else {
+            this.offerApologyMessage();
+        }
+    }
+
+    filterByRoomType(roomType) {
+        this.roomsAvailable = this.roomsAvailable.filter(room => room.roomType === roomType);
+    }
+
+    filterByNumberOfBeds(numBeds) {
+        this.roomsAvailable = this.roomsAvailable.filter(room => room.numBeds = numBeds)
+    }
+
+    filterByBedSize(bedSize) {
+        this.roomsAvailable = this.roomsAvailable.filter(room => room.bedSize === bedSize);
+    }
+
+    filterByCostPerNight(costPerNight) {
+        this.roomsAvailable = this.roomsAvailable.filter(room => room.costPerNight <= costPerNight)
     }
 }
 

@@ -54,8 +54,24 @@ describe.only('Hotel Class', () => {
         expect(hotel.upcomingReservations).to.eql([{ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] }]);
     });
 
-    it('Should return only the rooms available when a customer searches for a specific date', () => {
-        const availableRooms = hotel.checkIfRoomsAreAvailable("2020/01/24");
+
+    it('Should be able to check a customer into the hotel', () => {
+        hotel.addToCurrentReservations({ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] });
+        expect(hotel.currentReservations).to.eql([{ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] }]);
+    });
+
+    it('Should remove a reservation from the upcoming reservations when a customer is checked in', () => {
+        hotel.addToCurrentReservations({ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] });
+        expect(hotel.upcomingReservations).to.eql([]);
+    })
+
+    it('Should be able to check a customer out of the hotel', () => {
+        hotel.addToCompletedReservations({ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] });
+        expect(hotel.completedReservations).to.eql([{ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] }]);
+    })
+
+    it.only('Should return only the rooms available when a customer searches for a specific date', () => {
+        const availableRooms = hotel.checkIfRoomsAreAvailable({ date: "2020/01/24" },);
         expect(availableRooms).to.eql([
             {
                 number: 666,
@@ -92,19 +108,20 @@ describe.only('Hotel Class', () => {
         ])
     });
 
-    it('Should be able to check a customer into the hotel', () => {
-        hotel.addToCurrentReservations({ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] });
-        expect(hotel.currentReservations).to.eql([{ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] }]);
+    it('Should also return only the rooms available when a customer searches for a specific room type', () => {
+        const availableRooms = hotel.checkIfRoomsAreAvailable({ date: "2020/01/24", roomType: 'residential suite' });
+        expect(availableRooms).to.eql([
+            {
+                number: 666,
+                roomType: 'residential suite',
+                bidet: true,
+                bedSize: 'queen',
+                numBeds: 1,
+                costPerNight: 358.4
+            },
+        ])
     });
 
-    it('Should remove a reservation from the upcoming reservations when a customer is checked in', () => {
-        hotel.addToCurrentReservations({ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] });
-        expect(hotel.upcomingReservations).to.eql([]);
-    })
 
-    it('Should be able to check a customer out of the hotel', () => {
-        hotel.addToCompletedReservations({ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] });
-        expect(hotel.completedReservations).to.eql([{ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] }]);
-    })
 
 });
