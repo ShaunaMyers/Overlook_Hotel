@@ -51,7 +51,6 @@ class Hotel {
         if (this.roomsAvailable.length) {
             return this.roomsAvailable;
         } else {
-            console.log("DID YOU GET HERE?");
             return this.offerApologyMessage();
         }
     }
@@ -74,30 +73,27 @@ class Hotel {
 
     filterByRoomType(roomType) {
         let availableRooms = this.roomsAvailable.filter(room => room.roomType === roomType);
-        // if (availableRooms.length) {
         this.roomsAvailable = availableRooms;
-        // }
+        this.roomsAvailable = availableRooms;
     }
 
     filterByNumberOfBeds(numBeds) {
         let availableRooms = this.roomsAvailable = this.roomsAvailable.filter(room => room.numBeds === numBeds);
-        // if (availableRooms.length) {
         this.roomsAvailable = availableRooms;
-        // }
+        this.roomsAvailable = availableRooms;
     }
 
     filterByBedSize(bedSize) {
         let availableRooms = this.roomsAvailable = this.roomsAvailable.filter(room => room.bedSize === bedSize);
-        // if (availableRooms.length) {
         this.roomsAvailable = availableRooms;
-        // }
+        this.roomsAvailable = availableRooms;
     }
 
     filterByCostPerNight(costPerNight) {
         let availableRooms = this.roomsAvailable = this.roomsAvailable.filter(room => room.costPerNight <= costPerNight)
+        this.roomsAvailable = availableRooms;
         // if (availableRooms.length) {
         this.roomsAvailable = availableRooms;
-        // }
     }
 
     offerApologyMessage() {

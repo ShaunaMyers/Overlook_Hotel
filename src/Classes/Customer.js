@@ -1,5 +1,6 @@
 class Customer {
     constructor(customerDetails) {
+        console.log("Customer Details", customerDetails);
         this.id = customerDetails.id;
         this.name = customerDetails.name;
         this.totalSpent = 0;
