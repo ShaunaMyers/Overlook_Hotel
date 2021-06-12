@@ -9,8 +9,12 @@ import Customer from './Classes/Customer';
 import Hotel from './Classes/Hotel';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
-import './images/mouldy-mango-resort.jpg'
+import './images/turing-logo.png';
+import './images/mouldy-mango-resort.jpg';
+import './images/queen-room2.jpg';
+import './images/right-arrow.svg'
+import './images/left-arrow.svg'
+
 let customer, hotel;
 
 
