@@ -24,11 +24,13 @@
       <img src="./images/queen-room2.jpg"
         alt="gorgeous airy well lit treehouse room with 2 queen beds and a view of the ocean">
       <h2 class="treehouse-name">Wind Kissed Nest</h2>
-      <button class="right-arrow-btn" id="rightArrowBtn">
-        <img src="./images/right-arrow.svg" alt="right arrow image implying that you will navigate to the next screen">
+      <button>
+        <img src="./images/left-arrow.svg"
+          alt="left arrow image implying that you will navigate back to the screen you were previously on">
       </button>
+      <!-- right arrow image implying that you will navigate to the next screen -->
     </article>
-    <article class="room-card-details" id="roomCardDetils">
+    <article class="room-card-details hidden" id="roomCardDetils">
       <section>
         <img src="./images/queen-room2.jpg"
           alt="gorgeous airy well lit treehouse room with 2 queen beds and a view of the ocean">
@@ -45,6 +47,10 @@
         <button class="select-treehouse-btn" id="selectTreehouseBtn">Book This Treehouse</button>
       </section>
     </article>
+    <section class="room-select-date" id="roomSelectDate">
+      <label for="enterRoomDate">Please enter your desire check-in date</label>
+      <input class="room-select-date" id="roomSelectDate" type="text" placeholder="MM/DD/YY">
+    </section>
   </main>
 
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->

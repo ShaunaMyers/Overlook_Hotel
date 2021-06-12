@@ -12,8 +12,8 @@ import Hotel from './Classes/Hotel';
 import './images/turing-logo.png';
 import './images/mouldy-mango-resort.jpg';
 import './images/queen-room2.jpg';
-import './images/right-arrow.svg'
-import './images/left-arrow.svg'
+import './images/right-arrow1.svg';
+import './images/left-arrow.svg';
 
 let customer, hotel;
 
