@@ -1,16 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Mouldy Mango Treetop Resort</title>
 </head>
-<body>
-  <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-  
-  <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
-  <script src="bundle.js"></script>
 
+<body>
+  <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
+  <main>
+    <h1 class="Greeting">Hey Elliot, please select your dream place among the trees!</h1>
+    <article class="resort-details">
+      <img src="./images/mouldy-mango-resort.jpg" alt="beautiful tree house set in a rainforest and swampy setting">
+      <section class="resort-description">
+        <p>444 Rainforest Way, Manzanillo, Limón, Costa Rica</p>
+      </section>
+      <label for="searchByDate">Search Availability By Date</label>
+      <input class="search-by-date" id="searchByDate" type="text" placeholder="MM/DD/YY">
+    </article>
+    <article class="room-cards">
+      <img src="./images/queen-room2.jpg"
+        alt="gorgeous airy well lit treehouse room with 2 queen beds and a view of the ocean">
+      <h2 class="treehouse-name">Wind Kissed Nest</h2>
+      <button class="right-arrow-btn" id="rightArrowBtn">
+        <img src="./images/left-arrow.svg" alt=" right arrow image implying that you will navigate to the next screen">
+      </button>
+    </article>
+    <article class="room-card-details hidden" id="roomCardDetils">
+      <section>
+        <img src="./images/queen-room2.jpg"
+          alt="gorgeous airy well lit treehouse room with 2 queen beds and a view of the ocean">
+        <button class="left-arrow-btn" id="leftArrowBtn">
+          <img src="./images/left-arrow.svg"
+            alt="left arrow image implying that you will navigate back to the screen you were previously on">
+        </button>
+      </section>
+      <h2 class="treehouse-name">Wind Kissed Nest</h2>
+      <p class="room-details bed-size" id="bedSize">Queen </p>
+      <p class="room-details number-beds" id="numberBeds">2</p>
+      <section class="resort-description">
+        <p class="cost-per-night" id="costPerNight">$362</p>
+        <form>
+          <label for="roomSelectDate">Please enter your desired check-in date</label><br>
+          <input type="text" id="roomSelectDate" name="roomSelectDate" placeholder="MM/DD/YY"><br>
+          <input class="room-select-date" id="roomSelectDate" type="submit" value="Book This Treehouse">
+        </form>
+      </section>
+    </article>
+    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+    <script src="bundle.js"></script>
 </body>
+
 </html>
