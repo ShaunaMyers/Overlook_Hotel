@@ -2,15 +2,34 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Mouldy Mango Treetop Resort</title>
 </head>
 
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+  <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
+  <main>
+    <h1 class="Greeting">Hey Elliot, please select your dream place among the trees!</h1>
+    <article class="resort-details">
+      <img src="./images/mouldy-mango-resort.jpg" alt="beautiful tree house set in a rainforest and swampy setting">
+      <section class="resort-description">
+        <p>444 Rainforest Way, Manzanillo, Limón, Costa Rica</p>
+      </section>
+      <label for="searchByDate">Search Availability By Date</label>
+      <input class="search-by-date" id="searchByDate" type="text" placeholder="MM/DD/YY">
+    </article>
+    <article class="room-details">
+      <img src="./images/queen-room2.jpg"
+        alt="gorgeous airy well lit treehouse room with 2 queen beds and a view of the ocean">
+      <section class="resort-description">
+        <h2 class="treehouse-name">Wind Kissed Nest</h2>
+        <p class="cost-per-night" id="costPerNight">$362</p>
+        <button class="select-treehouse" id="selectTreehouse">Book This Treehouse</button>
+      </section>
+    </article>
+  </main>
 
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   <script src="bundle.js"></script>
