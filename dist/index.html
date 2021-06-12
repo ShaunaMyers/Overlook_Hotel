@@ -24,17 +24,15 @@
       <img src="./images/queen-room2.jpg"
         alt="gorgeous airy well lit treehouse room with 2 queen beds and a view of the ocean">
       <h2 class="treehouse-name">Wind Kissed Nest</h2>
-      <button>
-        <img src="./images/left-arrow.svg"
-          alt="left arrow image implying that you will navigate back to the screen you were previously on">
+      <button class="right-arrow-btn" id="rightArrowBtn">
+        <img src="./images/left-arrow.svg" alt=" right arrow image implying that you will navigate to the next screen">
       </button>
-      <!-- right arrow image implying that you will navigate to the next screen -->
     </article>
     <article class="room-card-details hidden" id="roomCardDetils">
       <section>
         <img src="./images/queen-room2.jpg"
           alt="gorgeous airy well lit treehouse room with 2 queen beds and a view of the ocean">
-        <button>
+        <button class="left-arrow-btn" id="leftArrowBtn">
           <img src="./images/left-arrow.svg"
             alt="left arrow image implying that you will navigate back to the screen you were previously on">
         </button>
@@ -44,18 +42,15 @@
       <p class="room-details number-beds" id="numberBeds">2</p>
       <section class="resort-description">
         <p class="cost-per-night" id="costPerNight">$362</p>
-        <button class="select-treehouse-btn" id="selectTreehouseBtn">Book This Treehouse</button>
+        <form>
+          <label for="roomSelectDate">Please enter your desired check-in date</label><br>
+          <input type="text" id="roomSelectDate" name="roomSelectDate" placeholder="MM/DD/YY"><br>
+          <input class="room-select-date" id="roomSelectDate" type="submit" value="Book This Treehouse">
+        </form>
       </section>
     </article>
-    <section class="room-select-date" id="roomSelectDate">
-      <label for="enterRoomDate">Please enter your desire check-in date</label>
-      <input class="room-select-date" id="roomSelectDate" type="text" placeholder="MM/DD/YY">
-    </section>
-  </main>
-
-  <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
-  <script src="bundle.js"></script>
-
+    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+    <script src="bundle.js"></script>
 </body>
 
 </html>
