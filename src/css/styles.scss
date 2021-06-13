@@ -58,18 +58,35 @@ img {
 //   gap: 2em;
 // }
 .room-cards {
+    @include display(flex, column, center, space-around);
     background-color: $primary-card-background-color;
     border-radius: $primary-border-radius;
-    display: grid;
-    font-size: 30px;
-    grid-template-columns: 1fr;
-    gap: 3%;
-    padding-bottom: 5%;
     color: $primary-text-color;
+    // display: grid;
+    // grid-template-columns: 1fr;
+    font-size: 30px;
+    gap: 3%;
+    padding-bottom: 2%;
+    position: relative;
     text-align: center;
     @media screen and (min-width: 812px) {
+        img {
+            width: 90%;
+        }
         .arrow-btn {
-            left: 92%;
+            // bottom: 10%;
+            left: 87%;
+            top: 1%;
+        }
+    }
+    @media screen and (max-width: 813px) {
+        img {
+            width: 100%;
+        }
+        .arrow-btn {
+            // bottom: 10%;
+            left: 85%;
+            top: 1%;
         }
     }
 }
@@ -79,7 +96,9 @@ img {
 .arrow-btn {
     border-radius: 0 20px 0 0;
     position: absolute;
-    left: 83%;
     opacity: .7;
     width: 5em;
+    &:hover {
+        background-color: darkgray;
+    }
 }
