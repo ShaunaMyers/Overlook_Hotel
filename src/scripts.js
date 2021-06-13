@@ -15,6 +15,10 @@ import './images/mouldy-mango-resort.jpg';
 import './images/queen-room2.jpg';
 import './images/right-arrow.svg';
 import './images/left-arrow.svg';
+// import './images/residential-suite';
+// import './images/suite1';
+// import './images/single-room1';
+// import './images/junior-suite1';
 
 // variables
 let searchByDateField = document.querySelector('#searchByDate');
@@ -36,12 +40,14 @@ function onStartUp() {
     apiCalls.getData()
         .then((promise) => {
             customer = new Customer(promise[0].customers[(Math.floor(Math.random() * promise[0].customers.length) + 1)]);
+            console.log("CUSTOMER", customer);
             hotel = new Hotel(promise[2].rooms, promise[1].bookings, promise[0].customers);
             // generateAllInfo();
         })
 };
 
 function evaluateDateChosen(value) {
-    let dateValues = [value.slice(0, 4), value.slice(5, 7), value.slice(8)];
-    let searchedDate = dateValues.join('/')
+    let searchedDate = [value.slice(0, 4), value.slice(5, 7), value.slice(8)].join('/');
+    let customerSearch = { date: searchedDate }
+    domUpdates.displayAvailableRooms(customerSearch, hotel);
 }
