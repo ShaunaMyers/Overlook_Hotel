@@ -20,6 +20,7 @@ import './images/suite1.jpg';
 import './images/single-room1.jpg';
 import './images/junior-suite1.jpg';
 import './images/bed.svg';
+import './images/user-account.svg';
 
 // variables
 let allRoomCards = document.querySelector('#allRoomCards');

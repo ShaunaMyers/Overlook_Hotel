@@ -1,8 +1,20 @@
+/*~~~~~~~~~~~~ Header ~~~~~~~~~~~*/
+
 .header-greeting {
+  @include display(flex, row, center, space-around);
     color: $primary-accent-color;
     font-size: 20px;
     padding: 1% 20%;
     text-align: center;
+    width: 80%;
+}
+
+.user-img {
+  width: 50%;
+  &:hover {
+      background-color: $primary-accent-color;
+      cursor: pointer;
+  }
 }
 
 /*~~~~~~~~~~~~ Resort Card ~~~~~~~~~~~*/
