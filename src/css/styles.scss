@@ -121,6 +121,17 @@ img {
   width: 20%;
 }
 
+.room-selections {
+  @include display(flex, column, center, space-around);
+}
+
 .cost-per-night {
   background-color: #595858;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 3%;
+  width: 45%;
+  .room-price {
+    font-size: 30px;
+  }
 }
