@@ -71,7 +71,7 @@ describe('Hotel Class', () => {
     })
 
     it('Should return only the rooms available when a customer searches for a specific date', () => {
-        const availableRooms = hotel.checkIfRoomsAreAvailable({ date: "2020/01/24" },);
+        const availableRooms = hotel.checkIfRoomsAreAvailable({ date: "2020/01/24" });
         expect(availableRooms).to.eql([
             {
                 number: 666,
