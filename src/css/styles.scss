@@ -55,7 +55,7 @@ img {
     grid-template-columns: 1fr;
 }
 
-.room-card {
+.room-card, .room-card-details {
     @include display(flex, column, center, space-around);
     background-color: $primary-card-background-color;
     border-radius: $primary-border-radius;
@@ -110,4 +110,13 @@ img {
         background-color: #db810a;
         cursor: pointer;
     }
+}
+
+.bed-details {
+  @include display(flex, row, center, center);
+  justify-content: space-around;
+}
+
+#bedImg {
+  width: 25%;
 }

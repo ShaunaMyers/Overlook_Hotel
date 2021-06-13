@@ -19,10 +19,12 @@ import './images/residential-suite.jpg';
 import './images/suite1.jpg';
 import './images/single-room1.jpg';
 import './images/junior-suite1.jpg';
+import './images/bed.svg';
 
 // variables
 let allRoomCards = document.querySelector('#allRoomCards');
 let searchByDateField = document.querySelector('#searchByDate');
+let roomCardDetails = document.querySelector('#roomCardDetails');
 // let treeHouseDetailsBtn = document.querySelector('#treehouseDetails');
 
 let customer, hotel;
@@ -47,7 +49,7 @@ function onStartUp() {
         .then((promise) => {
             customer = new Customer(promise[0].customers[(Math.floor(Math.random() * promise[0].customers.length) + 1)]);
             hotel = new Hotel(promise[2].rooms, promise[1].bookings, promise[0].customers);
-            findRoomDetails();
+            // findRoomDetails();
             domUpdates.greetCustomer(customer.name);
         })
 };
@@ -101,6 +103,8 @@ function findRoomName(roomNumber) {
 
 function getRoomDetails(event) {
   if (event.target.closest('button'). id === 'treehouseDetails') {
+    allRoomCards.classList.add('hidden');
+    roomCardDetails.classList.remove('hidden');
     domUpdates.displayTreehouseDetails();
   }
 }
