@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import apiCalls from './apiCalls';
 import Customer from './Classes/Customer';
 import Hotel from './Classes/Hotel';
+import domUpdates from './domUpdates';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
@@ -15,8 +16,19 @@ import './images/queen-room2.jpg';
 import './images/right-arrow.svg';
 import './images/left-arrow.svg';
 
+// variables
+let searchByDateField = document.querySelector('#searchByDate');
+let treeHouseDetailsBtn = document.querySelector('#treehouseDetails');
 let customer, hotel;
 
+// event listeners
+// These room cards will be generated in the dom though so the buttons on these cards will utilize event bubbling
+// treeHouseDetailsBtn.addEventListener('click', domUpdates.displayTreehouseDetails);
+searchByDateField.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        evaluateDateChosen(searchByDate.value);
+    }
+})
 
 window.onload = onStartUp()
 
@@ -28,3 +40,8 @@ function onStartUp() {
             // generateAllInfo();
         })
 };
+
+function evaluateDateChosen(value) {
+    let dateValues = [value.slice(0, 4), value.slice(5, 7), value.slice(8)];
+    let searchedDate = dateValues.join('/')
+}
