@@ -39,8 +39,12 @@ function onStartUp() {
 
 function evaluateDateChosen(value) {
     console.log(value);
-    let searchDate = new Date(value);
-    console.log(searchDate);
-    console.log(Date.day());
+    let dates = [value.slice(0, 4), value.slice(5, 7), value.slice(8)];
+    let searchedDate = dates.join('/')
+    // let month = value.slice(5, 7);
+    // let day = value.slice(8)
+    console.log("My New Dates", searchedDate);
+    // console.log(dateFormatted);
+    // let searchDate = new Date(value);
     // api date format "2020/01/24",
 }
