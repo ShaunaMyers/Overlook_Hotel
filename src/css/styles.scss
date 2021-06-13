@@ -50,13 +50,16 @@ img {
 
 /*~~~~~~~~~~~~ Room Cards ~~~~~~~~~~~*/
 
-.room-cards {
+.all-room-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.room-card {
     @include display(flex, column, center, space-around);
     background-color: $primary-card-background-color;
     border-radius: $primary-border-radius;
     color: $primary-text-color;
-    // display: grid;
-    // grid-template-columns: 1fr;
     font-size: 30px;
     gap: 3%;
     padding-bottom: 2%;
