@@ -1,8 +1,36 @@
+/*~~~~~~~~~~~~ Header ~~~~~~~~~~~*/
+
 .header-greeting {
-    color: $primary-accent-color;
+  @include display(flex, row, center, space-between);
+    color: $primary-text-color;
     font-size: 20px;
     padding: 1% 20%;
     text-align: center;
+    width: 60%;
+}
+
+.user-img-btn {
+  background-color: $primary-background;
+  border: none;
+  border-radius: 50%;
+  display: inline;
+  height: 90%;
+  padding: 7%;
+  margin-left: 20%;
+  margin-right: 10%;
+  width: 200px;
+  &:hover {
+      color: $primary-accent-color;
+      cursor: pointer;
+  }
+}
+
+.user-img {
+  width: 30%;
+}
+
+.my-account {
+  font-size: 20px;
 }
 
 /*~~~~~~~~~~~~ Resort Card ~~~~~~~~~~~*/
@@ -34,7 +62,7 @@ img {
         font-size: 35px;
         color: $primary-accent-color;
     }
-    p, label,input {
+    p, label {
         font-size: 20px;
     }
 }
@@ -51,11 +79,12 @@ img {
 /*~~~~~~~~~~~~ Room Cards ~~~~~~~~~~~*/
 
 .all-room-cards {
-    display: grid;
-    grid-template-columns: 1fr;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  grid-column-gap: 10px;
 }
 
-.room-card {
+.room-card, .room-card-details {
     @include display(flex, column, center, space-around);
     background-color: $primary-card-background-color;
     border-radius: $primary-border-radius;
@@ -80,7 +109,7 @@ img {
         img {
             width: 100%;
         }
-        .arrow-btn {
+        .right-arrow-btn {
             // bottom: 10%;
             left: 85%;
             top: 1%;
@@ -88,7 +117,7 @@ img {
     }
 }
 
-.arrow-btn {
+.right-arrow-btn {
     border-radius: 0 20px 0 0;
     position: absolute;
     opacity: .7;
@@ -99,7 +128,8 @@ img {
     }
 }
 
-.treehouse-details {
+// This all could be a mixin
+.treehouse-details, .book-treehouse-btn {
     background-color: $primary-accent-color;
     border-radius: 15px;
     font-size: 20px;
@@ -110,4 +140,60 @@ img {
         background-color: #db810a;
         cursor: pointer;
     }
+}
+
+.bed-details {
+  @include display(flex, row, center, center);
+  justify-content: space-around;
+}
+
+#bedImg {
+  width: 20%;
+}
+
+.room-selections {
+  @include display(flex, column, center, space-around);
+  position: relative;
+  form {
+    margin-bottom: 6%;
+  }
+}
+
+.room-type {
+  margin-top: 0;
+}
+
+.cost-per-night {
+  background-color: #595858;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 3%;
+  margin-bottom: 15%;
+  width: 45%;
+  .room-price {
+    font-size: 30px;
+  }
+}
+
+input {
+  font-size: 20px;
+  margin-top: 5%;
+}
+
+.left-arrow-btn {
+  border-radius: 20px 0 0 0;
+  position: absolute;
+  opacity: .6;
+  right: 85%;
+  top: 1%;
+  width: 5em;
+  &:hover {
+    background-color: darkgray;
+    cursor: pointer;
+  }
+}
+
+.book-treehouse-btn {
+  margin-top: 15%;
+  padding: 3.5%;
 }

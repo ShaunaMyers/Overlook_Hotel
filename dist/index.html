@@ -9,11 +9,18 @@
 </head>
 
 <body>
-  <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
   <main>
     <header class="header-greeting">
-      <h2 class="greeting-name" id="greetingName">Hey You Beautiful Person,</h2>
-      <h2>We think you're ready to select your dream stay among the trees!</h2>
+      <div class="">
+        <h2 id="greetingName">Hey You Beautiful Person,</h2>
+        <h2>We think you're ready to select your dream stay among the trees!</h2>
+      </div>
+      <nav class="user-img">
+        <button class="user-img-btn" type="button" name="button">
+          <img class="user-img" src="./images/user-account.svg" alt="image of the outline of human's head and shoulders">
+          <p class="my-account">My Account</p>
+        </button>
+      </nav>
     </header>
 
 
@@ -37,24 +44,28 @@
 
 
 
-    <article class="room-card-details hidden" id="roomCardDetils">
+    <article class="room-card-details" id="roomCardDetails">
       <section>
         <img src="./images/queen-room2.jpg"
           alt="gorgeous airy well lit treehouse room with 2 queen beds and a view of the ocean">
-        <button class="arrow-btn" id="leftArrowBtn">
+        <button class="left-arrow-btn" id="leftArrowBtn">
           <img src="./images/left-arrow.svg"
             alt="left arrow image implying that you will navigate back to the screen you were previously on">
         </button>
       </section>
       <h2 class="treehouse-name">Wind Kissed Nest</h2>
-      <p class="room-details bed-size" id="bedSize">Queen</p>
-      <p class="room-details number-beds" id="numberBeds">2</p>
-      <section class="resort-description">
-        <p class="cost-per-night" id="costPerNight">$362</p>
+        <div class="bed-details">
+          <img id="bedImg" src="./images/bed.svg" alt="image of a bed">
+          <p class="room-details bed-size" id="bedSize">Queen</p>
+          <p class="room-details number-beds" id="numberBeds">2</p>
+        </div>
+        <p class="room-type" id="roomType">Residential Suite</p>
+      <section class="room-selections">
+        <p class="cost-per-night" id="costPerNight"><span class="room-price" id="roomPrice">$362</span> per night</p>
         <form>
-          <label for="roomSelectDate">Please enter your desired check-in date</label><br>
+          <label for="bookTreehouseBtn">Please enter your desired check-in date</label><br>
           <input type="date" id="chosenDate" placeholder="MM/DD/YY"><br>
-          <input class="room-select-date" id="roomSelectDate" type="submit" value="Book This Treehouse">
+          <input class="book-treehouse-btn" id="bookTreehouseBtn" type="submit" value="Book This Treehouse">
         </form>
       </section>
     </article>
