@@ -1,0 +1,104 @@
+.header-greeting {
+    color: $primary-text-color;
+    padding: 1% 3%;
+    text-align: center;
+}
+
+/*~~~~~~~~~~~~ Resort Card ~~~~~~~~~~~*/
+
+.resort-card {
+    @include display(flex, column, center, space-around);
+    background-color: $primary-card-background-color;
+    border-radius: $primary-border-radius;
+    color: $primary-text-color;
+    // align-items: center;
+    // display: flex;
+    // flex-direction: column;
+    margin-bottom: 7%;
+    padding-top: 0;
+    padding-bottom: 5%;
+    @media screen and (min-width: 812px) {
+        img {
+            width: 75%;
+        }
+    }
+}
+
+img {
+    border-radius: $primary-border-radius;
+    width: 100%;
+}
+
+.resort-description {
+    color: $primary-text-color;
+    text-align: center;
+    h1 {
+        font-size: 35px;
+    }
+    p, label,input {
+        font-size: 20px;
+    }
+}
+
+.search-all-availability {
+    @include display(flex, column, center, space-around);
+    // align-items: center;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-around;
+    height: 80px;
+}
+
+/*~~~~~~~~~~~~ Room Cards ~~~~~~~~~~~*/
+
+// .search-results {
+//   display: grid;
+//   padding: 1.3em;
+//   grid-template-columns: 1fr;
+//   gap: 2em;
+// }
+.room-cards {
+    @include display(flex, column, center, space-around);
+    background-color: $primary-card-background-color;
+    border-radius: $primary-border-radius;
+    color: $primary-text-color;
+    // display: grid;
+    // grid-template-columns: 1fr;
+    font-size: 30px;
+    gap: 3%;
+    padding-bottom: 2%;
+    position: relative;
+    text-align: center;
+    @media screen and (min-width: 812px) {
+        img {
+            width: 90%;
+        }
+        .arrow-btn {
+            // bottom: 10%;
+            left: 87%;
+            top: 1%;
+        }
+    }
+    @media screen and (max-width: 813px) {
+        img {
+            width: 100%;
+        }
+        .arrow-btn {
+            // bottom: 10%;
+            left: 85%;
+            top: 1%;
+        }
+    }
+}
+
+
+
+.arrow-btn {
+    border-radius: 0 20px 0 0;
+    position: absolute;
+    opacity: .7;
+    width: 5em;
+    &:hover {
+        background-color: darkgray;
+    }
+}

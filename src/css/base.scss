@@ -1,7 +1,11 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: white;
+$primary-background: #272d36;
 ;
 
 body {
   background: $primary-background;
+}
+
+.hidden {
+  display: none;
 }
