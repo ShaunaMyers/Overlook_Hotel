@@ -22,7 +22,8 @@ let treeHouseDetailsBtn = document.querySelector('#treehouseDetails');
 let customer, hotel;
 
 // event listeners
-treeHouseDetailsBtn.addEventListener('click', domUpdates.displayTreehouseDetails);
+// These room cards will be generated in the dom though so the buttons on these cards will utilize event bubbling
+// treeHouseDetailsBtn.addEventListener('click', domUpdates.displayTreehouseDetails);
 searchByDateField.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         evaluateDateChosen(searchByDate.value);
