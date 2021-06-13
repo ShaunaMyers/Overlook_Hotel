@@ -4,6 +4,8 @@
     text-align: center;
 }
 
+/*~~~~~~~~~~~~ Resort Card ~~~~~~~~~~~*/
+
 .resort-card {
     border: 2px solid red;
 
@@ -19,6 +21,20 @@ img {
     border-radius: 30px 30px 50px 50px;
     width: 100%;
 }
+
+.search-all-availability {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 70px;
+}
+
+
+
+
+
+
 
 .arrow-btn {
     width: 5em;
