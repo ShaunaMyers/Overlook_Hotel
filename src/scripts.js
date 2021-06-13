@@ -41,7 +41,7 @@ function onStartUp() {
         .then((promise) => {
             customer = new Customer(promise[0].customers[(Math.floor(Math.random() * promise[0].customers.length) + 1)]);
             hotel = new Hotel(promise[2].rooms, promise[1].bookings, promise[0].customers);
-            // generateAllInfo();
+            findRoomDetails();
         })
 };
 
@@ -52,23 +52,29 @@ function evaluateDateChosen(value) {
 }
 
 function findRoomDetails(date) {
-  let roomsAvailable = hotel.checkIfRoomsAreAvailable(date);
+  let roomsAvailable;
+  if (date) {
+    roomsAvailable = hotel.checkIfRoomsAreAvailable(date);
+  } else {
+    roomsAvailable = hotel.allRooms;
+  }
   roomsAvailable.forEach(room => {
     let roomImage = findRoomImage(room.roomType);
     let roomName = findRoomName(room.number);
-    domUpdates.displayAvailableRooms(roomImage, roomName);
+    let roomNumber = room.number;
+    domUpdates.displayAvailableRooms(roomImage, roomName, roomNumber);
   })
 }
 
 function findRoomImage(roomType) {
    if (roomType === 'single room') {
-     return './images/single-room1'
+     return './images/single-room1.jpg'
    } else if (roomType === 'residential suite') {
-     return './images/residential-suite'
+     return './images/residential-suite.jpg'
    } else if (roomType === 'suite') {
-     return './images/suite1'
+     return './images/suite1.jpg'
    } else {
-     return './images/junior-suite1'
+     return './images/junior-suite1.jpg'
    }
 }
 

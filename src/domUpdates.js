@@ -1,10 +1,22 @@
 
+let allRoomCards = document.querySelector('#allRoomCards')
+
 let domUpdates = {
 
-    // displayAvailableRooms(customerSearch, hotel) {
-    //
-    //   }
-    // },
+    displayAvailableRooms(roomImage, roomName, roomNumber) {
+      allRoomCards.insertAdjacentHTML('beforeend', `
+      <section class="room-card" id="${roomNumber}">
+        <img src="${roomImage}"
+          alt="gorgeous airy well lit treehouse room with a rainforest view">
+        <h2 class="treehouse-name" id="treehouseName">${roomName}</h2>
+        <button class="arrow-btn" id="rightArrowBtn">
+          <img src="./images/right-arrow.svg"
+            alt=" right arrow image implying that you will navigate to the next screen">
+        </button>
+        <button class="treehouse-details" id="treehouseDetails">Treehouse Details</button>
+      </section>
+      `)
+    },
 
     // createCards(cookbook) {
     //     let recipeCollection;
