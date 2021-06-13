@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import apiCalls from './apiCalls';
 import Customer from './Classes/Customer';
 import Hotel from './Classes/Hotel';
+import domUpdates from './domUpdates';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
@@ -17,9 +18,11 @@ import './images/left-arrow.svg';
 
 // variables
 let searchByDateField = document.querySelector('#searchByDate');
+let treeHouseDetailsBtn = document.querySelector('#treehouseDetails');
 let customer, hotel;
 
 // event listeners
+treeHouseDetailsBtn.addEventListener('click', domUpdates.displayTreehouseDetails);
 searchByDateField.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         evaluateDateChosen(searchByDate.value);
@@ -38,13 +41,6 @@ function onStartUp() {
 };
 
 function evaluateDateChosen(value) {
-    console.log(value);
-    let dates = [value.slice(0, 4), value.slice(5, 7), value.slice(8)];
-    let searchedDate = dates.join('/')
-    // let month = value.slice(5, 7);
-    // let day = value.slice(8)
-    console.log("My New Dates", searchedDate);
-    // console.log(dateFormatted);
-    // let searchDate = new Date(value);
-    // api date format "2020/01/24",
+    let dateValues = [value.slice(0, 4), value.slice(5, 7), value.slice(8)];
+    let searchedDate = dateValues.join('/')
 }
