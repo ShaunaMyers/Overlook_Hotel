@@ -21,13 +21,19 @@ import './images/single-room1.jpg';
 import './images/junior-suite1.jpg';
 
 // variables
+let allRoomCards = document.querySelector('#allRoomCards');
 let searchByDateField = document.querySelector('#searchByDate');
-let treeHouseDetailsBtn = document.querySelector('#treehouseDetails');
+// let treeHouseDetailsBtn = document.querySelector('#treehouseDetails');
+
 let customer, hotel;
 
 // event listeners
 // These room cards will be generated in the dom though so the buttons on these cards will utilize event bubbling
 // treeHouseDetailsBtn.addEventListener('click', domUpdates.displayTreehouseDetails);
+allRoomCards.addEventListener('click', function(event) {
+  getRoomDetails(event);
+})
+
 searchByDateField.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         evaluateDateChosen(searchByDate.value);
@@ -90,5 +96,11 @@ function findRoomName(roomNumber) {
     return "Tropical Tree Lair"
   } else {
     return "Magical Tree Fort"
+  }
+}
+
+function getRoomDetails(event) {
+  if (event.target.closest('button'). id === 'treehouseDetails') {
+    domUpdates.displayTreehouseDetails();
   }
 }
