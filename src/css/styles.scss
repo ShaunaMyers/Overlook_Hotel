@@ -1,20 +1,36 @@
 /*~~~~~~~~~~~~ Header ~~~~~~~~~~~*/
 
 .header-greeting {
-  @include display(flex, row, center, space-around);
-    color: $primary-accent-color;
+  @include display(flex, row, center, space-between);
+    color: $primary-text-color;
     font-size: 20px;
     padding: 1% 20%;
     text-align: center;
-    width: 80%;
+    width: 60%;
+}
+
+.user-img-btn {
+  background-color: $primary-background;
+  border: none;
+  border-radius: 50%;
+  display: inline;
+  height: 90%;
+  padding: 7%;
+  margin-left: 20%;
+  margin-right: 10%;
+  width: 200px;
+  &:hover {
+      color: $primary-accent-color;
+      cursor: pointer;
+  }
 }
 
 .user-img {
-  width: 50%;
-  &:hover {
-      background-color: $primary-accent-color;
-      cursor: pointer;
-  }
+  width: 30%;
+}
+
+.my-account {
+  font-size: 20px;
 }
 
 /*~~~~~~~~~~~~ Resort Card ~~~~~~~~~~~*/
