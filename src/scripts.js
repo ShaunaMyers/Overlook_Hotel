@@ -42,6 +42,7 @@ function onStartUp() {
             customer = new Customer(promise[0].customers[(Math.floor(Math.random() * promise[0].customers.length) + 1)]);
             hotel = new Hotel(promise[2].rooms, promise[1].bookings, promise[0].customers);
             findRoomDetails();
+            domUpdates.greetCustomer(customer.name);
         })
 };
 

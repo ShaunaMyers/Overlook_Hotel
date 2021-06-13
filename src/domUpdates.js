@@ -1,5 +1,6 @@
 
-let allRoomCards = document.querySelector('#allRoomCards')
+let allRoomCards = document.querySelector('#allRoomCards');
+let greetingName = document.querySelector('#greetingName');
 
 let domUpdates = {
 
@@ -16,6 +17,10 @@ let domUpdates = {
         <button class="treehouse-details" id="treehouseDetails">Treehouse Details</button>
       </section>
       `)
+    },
+
+    greetCustomer(customerName) {
+      greetingName.innerText = `Hey ${customerName},`;
     },
 
     // createCards(cookbook) {
