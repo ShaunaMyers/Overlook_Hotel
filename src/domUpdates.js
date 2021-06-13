@@ -1,30 +1,10 @@
-import './images/residential-suite.jpg';
-import './images/suite1.jpg';
-import './images/single-room1.jpg';
-import './images/junior-suite1.jpg';
 
 let domUpdates = {
 
-    displayAvailableRooms(customerSearch, hotel) {
-      let roomsAvailable = hotel.checkIfRoomsAreAvailable(customerSearch);
-      roomsAvailable.forEach(room => {
-        let roomImage = this.assignRoomImage(room.roomType);
-        console.log('room image', roomImage);
-      })
-    },
-
-    assignRoomImage(roomType) {
-       if (roomType === 'single room') {
-         return './images/single-room1'
-       } else if (roomType === 'residential suite') {
-         return './images/residential-suite'
-       } else if (roomType === 'suite') {
-         return './images/suite1'
-       } else {
-         return './images/junior-suite1'
-       }
-    },
-
+    // displayAvailableRooms(customerSearch, hotel) {
+    //
+    //   }
+    // },
 
     // createCards(cookbook) {
     //     let recipeCollection;
