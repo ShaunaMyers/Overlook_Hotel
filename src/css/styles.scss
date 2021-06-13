@@ -34,7 +34,7 @@ img {
         font-size: 35px;
         color: $primary-accent-color;
     }
-    p, label,input {
+    p, label {
         font-size: 20px;
     }
 }
@@ -80,7 +80,7 @@ img {
         img {
             width: 100%;
         }
-        .arrow-btn {
+        .right-arrow-btn {
             // bottom: 10%;
             left: 85%;
             top: 1%;
@@ -88,7 +88,7 @@ img {
     }
 }
 
-.arrow-btn {
+.right-arrow-btn {
     border-radius: 0 20px 0 0;
     position: absolute;
     opacity: .7;
@@ -99,7 +99,8 @@ img {
     }
 }
 
-.treehouse-details {
+// This all could be a mixin
+.treehouse-details, .room-select-date-btn {
     background-color: $primary-accent-color;
     border-radius: 15px;
     font-size: 20px;
@@ -123,6 +124,13 @@ img {
 
 .room-selections {
   @include display(flex, column, center, space-around);
+  position: relative;
+  form {
+    margin-bottom: 6%;
+  }
+  .room-select-date-btn {
+    padding: 3.5%;
+  }
 }
 
 .cost-per-night {
@@ -130,8 +138,27 @@ img {
   border-radius: 10px;
   font-size: 20px;
   padding: 3%;
+  margin-bottom: 15%;
   width: 45%;
   .room-price {
     font-size: 30px;
+  }
+}
+
+input {
+  font-size: 20px;
+  margin-top: 5%;
+}
+
+.left-arrow-btn {
+  border-radius: 20px 0 0 0;
+  position: absolute;
+  opacity: .6;
+  right: 85%;
+  top: 1%;
+  width: 5em;
+  &:hover {
+    background-color: darkgray;
+    cursor: pointer;
   }
 }

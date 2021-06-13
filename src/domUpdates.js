@@ -10,7 +10,7 @@ let domUpdates = {
         <img src="${roomImage}"
           alt="gorgeous airy well lit treehouse room with a rainforest view">
         <h2 class="treehouse-name" id="treehouseName">${roomName}</h2>
-        <button class="arrow-btn" id="treehouseDetails">
+        <button class="right-arrow-btn" id="treehouseDetails">
           <img src="./images/right-arrow.svg"
             alt=" right arrow image implying that you will navigate to the next screen">
         </button>
