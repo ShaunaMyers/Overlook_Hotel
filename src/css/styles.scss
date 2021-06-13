@@ -51,8 +51,9 @@ img {
 /*~~~~~~~~~~~~ Room Cards ~~~~~~~~~~~*/
 
 .all-room-cards {
-    display: grid;
-    grid-template-columns: 1fr;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  grid-column-gap: 10px;
 }
 
 .room-card, .room-card-details {
@@ -100,7 +101,7 @@ img {
 }
 
 // This all could be a mixin
-.treehouse-details, .room-select-date-btn {
+.treehouse-details, .book-treehouse-btn {
     background-color: $primary-accent-color;
     border-radius: 15px;
     font-size: 20px;
@@ -128,9 +129,10 @@ img {
   form {
     margin-bottom: 6%;
   }
-  .room-select-date-btn {
-    padding: 3.5%;
-  }
+}
+
+.room-type {
+  margin-top: 0;
 }
 
 .cost-per-night {
@@ -161,4 +163,9 @@ input {
     background-color: darkgray;
     cursor: pointer;
   }
+}
+
+.book-treehouse-btn {
+  margin-top: 15%;
+  padding: 3.5%;
 }
