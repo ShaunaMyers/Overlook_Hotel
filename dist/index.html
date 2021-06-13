@@ -11,8 +11,13 @@
 <body>
   <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
   <main>
-    <h1 class="Greeting">Hey Elliot, please select your dream place among the trees!</h1>
-    <article class="resort-details">
+    <header class="header-greeting">
+      <h1 class="greeting">Hey Elliot, we think you're ready to select your dream stay among the trees!</h1>
+    </header>
+
+
+
+    <article class="resort-card">
       <img src="./images/mouldy-mango-resort.jpg" alt="beautiful tree house set in a rainforest and swampy setting">
       <section class="resort-description">
         <p>444 Rainforest Way, Manzanillo, Limón, Costa Rica</p>
@@ -20,6 +25,9 @@
       <label for="searchByDate">Search Availability By Date</label>
       <input class="search-by-date" id="searchByDate" type="text" placeholder="MM/DD/YY">
     </article>
+
+
+
     <article class="room-cards">
       <img src="./images/queen-room2.jpg"
         alt="gorgeous airy well lit treehouse room with 2 queen beds and a view of the ocean">
@@ -28,6 +36,9 @@
         <img src="./images/left-arrow.svg" alt=" right arrow image implying that you will navigate to the next screen">
       </button>
     </article>
+
+
+
     <article class="room-card-details hidden" id="roomCardDetils">
       <section>
         <img src="./images/queen-room2.jpg"
@@ -49,6 +60,9 @@
         </form>
       </section>
     </article>
+
+
+
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
 </body>
