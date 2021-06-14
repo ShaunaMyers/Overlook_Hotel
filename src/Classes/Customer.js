@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 class Customer {
     constructor(customerDetails) {
         console.log("Customer Details", customerDetails);
@@ -28,7 +30,27 @@ class Customer {
         // console.log("UPCOMING BOOKINGS", this.upcomingBookings);
     }
 
-    returnAllBookings() {
+    returnAllBookings(bookings) {
+      let customerBookings = bookings.filter(booking => booking.userID === this.id);
+      // let now = dayjs();
+      // let today = now.format('YYYY/MM/DD')
+
+      customerBookings.forEach(booking => {
+        let bookingDate = dayjs(booking.date);
+        let today = dayjs();
+        if(bookingDate.isBefore(today, 'day')) {
+        } else if (bookingDate.isAfter(today, 'day')){
+          console.log("After Today");
+        } else if (bookingDate.isSame(today, 'day')) {
+          console.log('Same Day');
+        }
+      })
+
+
+
+      // console.log('filter bookings', customerBookings);
+      //   console.log('bookings', bookings);
+      //   console.log('today', today);
         return { completedBookings: this.completedBookings, currentBookings: this.currentBookings, upcomingBookings: this.upcomingBookings };
     }
 

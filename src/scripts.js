@@ -26,13 +26,16 @@ import './images/user-account.svg';
 let allRoomCards = document.querySelector('#allRoomCards');
 let searchByDateField = document.querySelector('#searchByDate');
 let roomCardDetails = document.querySelector('#roomCardDetails');
+let userAccountBtn = document.querySelector('#userImgBtn');
 // let treeHouseDetailsBtn = document.querySelector('#treehouseDetails');
 
 let customer, hotel;
-
 // event listeners
-// These room cards will be generated in the dom though so the buttons on these cards will utilize event bubbling
-// treeHouseDetailsBtn.addEventListener('click', domUpdates.displayTreehouseDetails);
+
+userAccountBtn.addEventListener('click', function() {
+  domUpdates.displayUserAccount(customer, hotel.allReservations);
+});
+
 allRoomCards.addEventListener('click', function(event) {
   getRoomDetails(event);
 })

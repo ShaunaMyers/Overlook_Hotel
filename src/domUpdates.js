@@ -26,6 +26,15 @@ let domUpdates = {
     displayTreehouseDetails() {
       console.log("HI");
     },
+
+    displayUserAccount(customer, bookings) {
+      // customer.addToCurrentBookings();
+      // customer.addToCompletedBookings();
+      // customer.addToUpcomingBookings();
+      let allBookings = customer.returnAllBookings(bookings);
+      // console.log('all bookings', allBookings);
+
+    },
     // createCards(cookbook) {
     //     let recipeCollection;
     //     if (cookbook.recipes) {
