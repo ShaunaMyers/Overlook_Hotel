@@ -32,6 +32,7 @@ let resortCard = document.getElementById('resortCard')
 // let treeHouseDetailsBtn = document.querySelector('#treehouseDetails');
 
 let customer, hotel;
+let customerSearch = {};
 // event listeners
 
 header.addEventListener('click', function() {
@@ -49,9 +50,7 @@ searchByDateField.addEventListener('change', function () {
 });
 
 resortCard.addEventListener('change', function(event) {
-    console.log('event');
     evaluateBoxChecked(event);
-
 })
 
 window.onload = onStartUp()
@@ -77,22 +76,26 @@ function evaluateHeaderButton(event) {
 
 function evaluateDateChosen(value) {
     let searchedDate = [value.slice(0, 4), value.slice(5, 7), value.slice(8)].join('/');
-    let customerSearch = { date: searchedDate }
-    findRoomDetails(customerSearch);
+    customerSearch = { date: searchedDate }
+    findRoomDetails();
 }
 
-function findRoomDetails(date) {
+function findRoomDetails() {
   let roomsAvailable;
-  if (date) {
-    roomsAvailable = hotel.checkIfRoomsAreAvailable(date);
+  if (console.log('1', customerSearch.date)) {
+    roomsAvailable = hotel.checkIfRoomsAreAvailable(customerSearch.date);
+  } else if (customerSearch.roomType){
+    roomsAvailable = hotel.checkIfRoomsAreAvailable(customerSearch.roomType);
   } else {
     roomsAvailable = hotel.allRooms;
   }
+  
   roomsAvailable.forEach(room => {
     let roomImage = findRoomImage(room.roomType);
     let roomName = findRoomName(room.number);
     let roomNumber = room.number;
     domUpdates.displayAvailableRooms(roomImage, roomName, roomNumber);
+    console.log('after', hotel.roomsAvailable);
   })
 }
 
@@ -134,14 +137,17 @@ function getRoomDetails(event) {
 }
 
 function evaluateBoxChecked(event) {
-  console.log('after', hotel.roomsAvailable)
   if (event.target.closest('input').id === 'residentialSuite') {
-    console.log('RES');
+    customerSearch.roomType = 'residential suite';
+    findRoomDetails();
   } else if (event.target.closest('input').id === 'juniorSuite') {
-    console.log('Jun');
+    customerSearch.roomType = 'junior suite';
+    findRoomDetails();
   } else if (event.target.closest('input').id === 'suite') {
-    console.log('SUI');
+    customerSearch.roomType = 'suite';
+    findRoomDetails();
   } else if (event.target.closest('input').id === 'singleRoom') {
-    console.log('SIN');
+    customerSearch.roomType = 'single room';
+    findRoomDetails();
   }
 }

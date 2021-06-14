@@ -162,6 +162,10 @@ let domUpdates = {
       console.log("HI");
     },
 
+    displayDateMessage() {
+      console.log('HEYOOOO');
+    }
+
     // changeHiddenViews() {
     //   for (var i = 0; i < arguments.length; i++) {
     //     arguments[i].classList.toggle('hidden');
