@@ -26,15 +26,17 @@ import './images/user-account.svg';
 let allRoomCards = document.querySelector('#allRoomCards');
 let searchByDateField = document.querySelector('#searchByDate');
 let roomCardDetails = document.querySelector('#roomCardDetails');
-let userAccountBtn = document.querySelector('#userImgBtn');
+let header = document.getElementById('headerGreeting');
+// let userAccountBtn = document.querySelector('#userImgBtn');
 // let treeHouseDetailsBtn = document.querySelector('#treehouseDetails');
 
 let customer, hotel;
 // event listeners
 
-userAccountBtn.addEventListener('click', function() {
-  domUpdates.displayUserAccount(customer, hotel.allReservations);
+header.addEventListener('click', function() {
+  evaluationHeaderButton(event);
 });
+
 
 allRoomCards.addEventListener('click', function(event) {
   getRoomDetails(event);
@@ -57,6 +59,14 @@ function onStartUp() {
             domUpdates.greetCustomer(customer.name);
         })
 };
+
+function evaluationHeaderButton(event) {
+  if (event.target.closest('button').id === 'userImgBtn') {
+    domUpdates.displayUserAccount(customer, hotel)
+  } else if (event.target.closest('button').id === 'returnHome'){
+    domUpdates.returnToHomeView(customer.name);
+  }
+}
 
 function evaluateDateChosen(value) {
     let searchedDate = [value.slice(0, 4), value.slice(5, 7), value.slice(8)].join('/');

@@ -1,10 +1,8 @@
 
-let allRoomCards = document.querySelector('#allRoomCards');
-let greetingName = document.querySelector('#greetingName');
+let greetingContainer = document.querySelector('#greetingContainer');
 // let greetingContainer = document.querySelector('#greetingContainer');
 // let userAccountContainer = document.querySelector('#userAccountContainer');
-let headerGreeting = document.querySelector('#headerGreeting');
-let resortCard = document.querySelector('.resort-card');
+// let headerGreeting = document.querySelector('#headerGreeting');
 
 let domUpdates = {
 
@@ -24,18 +22,28 @@ let domUpdates = {
     },
 
     greetCustomer(customerName) {
-      greetingName.innerText = `Hey ${customerName},`;
+      headerGreeting.innerHTML = `
+      <div id="greetingContainer">
+        <h2 id="greetingName">Hey ${customerName},</h2>
+        <h2>We think you're ready to select your dream stay among the trees!</h2>
+      </div>
+      <nav>
+        <button class="user-img-btn" id="userImgBtn" type="button" name="button">
+          <img class="user-img" src="./images/user-account.svg" alt="image of the outline of human's head and shoulders">
+          <p class="my-account">My Account</p>
+        </button>
+      </nav>
+      `
     },
 
     displayTreehouseDetails() {
       console.log("HI");
     },
 
-    displayUserAccount(customer, bookings) {
-      // let resortCard = document.getElementById('resortCard');
-      resortCard.style.display = 'none';
-      allRoomCards.style.display = 'none';
-      headerGreeting.innerHTML = `
+    displayUserAccount(customer, hotel) {
+      document.getElementById('resortCard').classList.toggle('hidden');
+      document.getElementById('allRoomCards').classList.toggle('hidden');
+      let userAccountHeader = `
       <section class="header-greeting">
         <div id="greetingContainer">
           <h2 id="greetingName">Your Account</h2>
@@ -47,55 +55,112 @@ let domUpdates = {
         </nav>
       </section>
       `
-      let allBookings = customer.returnAllBookings(bookings);
+      document.querySelector(".header-greeting").innerHTML = userAccountHeader;
+
+      let allBookings = customer.returnAllBookings(hotel);
+        console.log('all bookings', allBookings);
+      this.displayCustomerBookingInfo(allBookings, hotel, customer);
+    },
+
+    displayCustomerBookingInfo(allBookings, hotel, customer) {
+      this.displayTotalSpent(customer);
+
+      this.displayUpcomingBookings(allBookings.upcomingBookings, hotel);
+
+      if (allBookings.currentBookings.length) {
+        this.displayCurrentBookings(allBookings.currentBookings, hotel);
+      }
+
+      if (allBookings.completedBookings.length) {
+        this.displayCompletedBookings(allBookings.completedBookings, hotel);
+      }
+    },
+
+    displayTotalSpent(customer) {
+      let customerAccountInfo = document.getElementById('customerAccount');
+      customerAccountInfo.classList.toggle('hidden');
+      customerAccountInfo.innerHTML += `
+      <p>Total Spent: $${customer.returnTotalSpent().toFixed(2)}</p>
+      `;
 
     },
-    // createCards(cookbook) {
-    //     let recipeCollection;
-    //     if (cookbook.recipes) {
-    //         recipeCollection = cookbook.recipes
-    //     } else {
-    //         recipeCollection = cookbook;
-    //         main.innerHTML = " ";
-    //     }
-    //     recipeCollection.forEach(recipe => {
-    //         let recipes = [];
-    //         let recipeInfo = new Recipe(recipe);
-    //         let shortRecipeName = recipeInfo.name;
-    //         recipes.push(recipeInfo);
-    //         if (recipeInfo.name.length > 40) {
-    //             shortRecipeName = recipeInfo.name.substring(0, 40) + "...";
-    //         }
-    //         this.addCardsToDom(recipeInfo, shortRecipeName)
-    //     });
-    // },
-    //
-    // addCardsToDom(recipeInfo, shortRecipeName) {
-    //     let cardHtml = `
-    //       <div class="recipe-card" id=${recipeInfo.id}>
-    //         <h3 maxlength="40">${shortRecipeName}</h3>
-    //         <div class="card-photo-container">
-    //           <img src=${recipeInfo.image} class="card-photo-preview" alt="${recipeInfo.name} recipe" title="${recipeInfo.name} recipe">
-    //           <div class="text">
-    //             <div>Click for Instructions</div>
-    //           </div>
-    //         </div>
-    //         <h4>${recipeInfo.tags[0]}</h4>
-    //         <img src="../images/apple-logo-outline.png" alt="unfilled apple icon" class="card-apple-icon">
-    //       </div>`
-    //     main.insertAdjacentHTML("beforeend", cardHtml);
-    // },
 
+    displayUpcomingBookings(upcomingBookings, hotel) {
+      let customerAccountInfo = document.getElementById('customerAccount');
+
+      customerAccountInfo.innerHTML += `<h4>Your Upcoming Bookings</h4>`;
+      if (!upcomingBookings.length) {
+         customerAccountInfo.innerHTML += `<h5>You have no upcoming bookings. Time to make a reservation!</h5>`;
+      } else {
+        upcomingBookings.forEach(booking => {
+          customerAccountInfo.innerHTML += `
+          <ul>
+          <li>${booking.date}</li>
+          <li>${booking.roomNumber}</li>
+          <li>${hotel.returnPriceOfRoom(booking.roomNumber)}</li>
+          </ul>
+          `
+        });
+      }
+    },
+
+    displayCurrentBookings(currentBookings, hotel) {
+      let customerAccountInfo = document.getElementById('customerAccount');
+
+      customerAccountInfo.innerHTML += `<h4>Your Current Bookings</h4>`;
+      currentBookings.forEach(booking => {
+        customerAccountInfo.innerHTML += `
+        <ul>
+        <li>${booking.date}</li>
+        <li>${booking.roomNumber}</li>
+        <li>${hotel.returnPriceOfRoom(booking.roomNumber)}</li>
+        </ul>
+        `
+      });
+    },
+
+    displayCompletedBookings(completedBookings, hotel) {
+      let customerAccountInfo = document.getElementById('customerAccount');
+
+      customerAccountInfo.innerHTML += `<h4>Your Completed Bookings</h4>`;
+      completedBookings.forEach(booking => {
+        customerAccountInfo.innerHTML += `
+        <ul>
+        <li>Date: ${booking.date}</li>
+        <li>Room Number: ${booking.roomNumber}</li>
+        <li>Cost Per Night: ${hotel.returnPriceOfRoom(booking.roomNumber)}</li>
+        </ul>
+        `
+      });
+    },
+
+
+      // completedBookings: Array(18)
+            // 0:
+            // date: "2020/01/23"
+            // id: "5fwrgu4i7k55hl6tp"
+            // roomNumber: 22
+            // roomServiceCharges: []
+            // userID: 48
+
+
+    returnToHomeView(customerName) {
+      this.greetCustomer(customerName);
+      document.getElementById('resortCard').classList.toggle('hidden');
+      document.getElementById('allRoomCards').classList.toggle('hidden');
+      document.getElementById('customerAccount').classList.toggle('hidden');
+
+    },
 
     displayTreehouseDetails() {
       console.log("HI");
     },
 
-    changeHiddenViews() {
-      for (var i = 0; i < arguments.length; i++) {
-        arguments[i].classList.toggle('hidden');
-      }
-    }
+    // changeHiddenViews() {
+    //   for (var i = 0; i < arguments.length; i++) {
+    //     arguments[i].classList.toggle('hidden');
+    //   }
+    // }
 
 }
 
