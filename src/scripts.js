@@ -27,6 +27,7 @@ let allRoomCards = document.querySelector('#allRoomCards');
 let searchByDateField = document.querySelector('#searchByDate');
 let roomCardDetails = document.querySelector('#roomCardDetails');
 let header = document.getElementById('headerGreeting');
+let resortCard = document.getElementById('resortCard')
 // let userAccountBtn = document.querySelector('#userImgBtn');
 // let treeHouseDetailsBtn = document.querySelector('#treehouseDetails');
 
@@ -46,6 +47,10 @@ searchByDateField.addEventListener('change', function () {
         evaluateDateChosen(searchByDate.value);
         domUpdates.displayFilterSelections();
 });
+
+resortCard.addEventListener('change', function(event) {
+  evaluateBoxChecked(event);
+})
 
 window.onload = onStartUp()
 
@@ -120,5 +125,17 @@ function getRoomDetails(event) {
     allRoomCards.classList.add('hidden');
     roomCardDetails.classList.remove('hidden');
     domUpdates.displayTreehouseDetails();
+  }
+}
+
+function evaluateBoxChecked(event) {
+  if (event.target.closest('input').id === 'residentialSuite') {
+    console.log('RES');
+  } else if (event.target.closest('input').id === 'juniorSuite') {
+    console.log('Jun');
+  } else if (event.target.closest('input').id === 'suite') {
+    console.log('SUI');
+  } else if (event.target.closest('input').id === 'singleRoom') {
+    console.log('SIN');
   }
 }
