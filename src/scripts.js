@@ -34,20 +34,18 @@ let customer, hotel;
 // event listeners
 
 header.addEventListener('click', function() {
-  evaluationHeaderButton(event);
+  evaluateHeaderButton(event);
 });
 
 
 allRoomCards.addEventListener('click', function(event) {
   getRoomDetails(event);
-})
+});
 
-searchByDateField.addEventListener('keypress', function (event) {
-    if (event.key === 'Enter') {
+searchByDateField.addEventListener('change', function () {
         evaluateDateChosen(searchByDate.value);
-        // domUpdates.displayFilterSelections();
-    }
-})
+        domUpdates.displayFilterSelections();
+});
 
 window.onload = onStartUp()
 
@@ -61,7 +59,7 @@ function onStartUp() {
         })
 };
 
-function evaluationHeaderButton(event) {
+function evaluateHeaderButton(event) {
   if (event.target.closest('button').id === 'userImgBtn') {
     domUpdates.displayUserAccount(customer, hotel)
   } else if (event.target.closest('button').id === 'returnHome'){

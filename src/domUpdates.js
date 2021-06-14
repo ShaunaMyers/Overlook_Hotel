@@ -141,18 +141,27 @@ let domUpdates = {
       document.getElementById('customerAccount').classList.toggle('hidden');
 
     },
-    // 
-    // displayFilterSelections() {
-    //   let formElement = document.getElementById('searchAllAvailability');
-    //   formElement.innerHTML += `
-    //   <label for="searchByRoomType">Room Type</label>
-    //   <input id="searchByRoomType" type="checkbox">
-    //   <label for="searchByNumBeds">Number of Beds</label>
-    //   <input id="searchByNumBeds" type="checkbox">
-    //   <label for="searchByRoomType">Search Available Accomodations By Date</label>
-    //   <input id="searchByRoomType" type="checkbox">
-    //   `
-    // },
+
+    displayFilterSelections() {
+      let resortCard = document.getElementById('resortCard');
+      resortCard.innerHTML += `
+      <p class="room-type-heading">Room Type</p>
+      <section class="filter-rooms-choices" id="filterRoomsChoices">
+          <div class="checkboxes">
+            <input type="checkbox" id="residentialSuite" name="roomType">
+            <label for="residentialSuite">Residential Suite</label>
+            <input type="checkbox" id="juniorSuite" name="roomType">
+            <label for="juniorSuite">Junior Suite</label>
+          </div>
+          <div class="checkboxes">
+            <input type="checkbox" id="suite" name="roomType">
+            <label for="suite">Suite</label>
+            <input type="checkbox" id="singleRoom" name="roomType">
+            <label for="singleRoom">Single Room</label>
+          </div>
+      </section>
+      `
+    },
 
     displayTreehouseDetails() {
       console.log("HI");
