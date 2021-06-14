@@ -162,7 +162,7 @@ let domUpdates = {
       console.log("HI");
     },
 
-    displayDateMessage() {
+    displayErrorMessage() {
       console.log('HEYOOOO');
     }
 

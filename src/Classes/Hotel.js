@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 class Hotel {
     constructor(rooms, bookings, guests) {
         this.allRooms = rooms;
@@ -34,17 +36,21 @@ class Hotel {
     checkIfRoomsAreAvailable(customerSearch) {
 
         let { date, roomType } = customerSearch;
+        let today = dayjs();
+        let bookingDate = dayjs(date);
 
-        console.log('date in customer', date);
-        console.log('roomType in customer', roomType);
         if (date) {
-          let availableRoomNumbers = this.allReservations.filter(reservation => reservation.date !== date).map(room => room.roomNumber);
+          if (bookingDate.isBefore(today)) {
+            this.offerApologyMessage();
+          } else {
+            let availableRoomNumbers = this.allReservations.filter(reservation => reservation.date !== date).map(room => room.roomNumber);
 
-          this.allRooms.forEach(room => {
-            if (availableRoomNumbers.includes(room.number)) {
-              this.roomsAvailable.push(room);
-            }
-          })
+            this.allRooms.forEach(room => {
+              if (availableRoomNumbers.includes(room.number)) {
+                this.roomsAvailable.push(room);
+              }
+            })
+          }
         }
 
         if (roomType) {

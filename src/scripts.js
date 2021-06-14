@@ -28,8 +28,6 @@ let searchByDateField = document.querySelector('#searchByDate');
 let roomCardDetails = document.querySelector('#roomCardDetails');
 let header = document.getElementById('headerGreeting');
 let resortCard = document.getElementById('resortCard')
-// let userAccountBtn = document.querySelector('#userImgBtn');
-// let treeHouseDetailsBtn = document.querySelector('#treehouseDetails');
 
 let customer, hotel;
 let customerSearch = {};
@@ -83,24 +81,22 @@ function evaluateDateChosen(value) {
 function findRoomDetails() {
   let roomsAvailable;
   if (customerSearch.date) {
-    console.log("SOMTHIN");
-    console.log('customer search date', customerSearch.date);
     roomsAvailable = hotel.checkIfRoomsAreAvailable(customerSearch);
-    console.log('rooms available', roomsAvailable);
   } else if (customerSearch.roomType){
     roomsAvailable = hotel.checkIfRoomsAreAvailable(customerSearch);
-    console.log('rooms available', roomsAvailable);
   } else {
     roomsAvailable = hotel.allRooms;
-    console.log('rooms available', roomsAvailable);
   }
 
+  assignRoomDetails(roomsAvailable);
+}
+
+function assignRoomDetails(roomsAvailable) {
   roomsAvailable.forEach(room => {
     let roomImage = findRoomImage(room.roomType);
     let roomName = findRoomName(room.number);
     let roomNumber = room.number;
     domUpdates.displayAvailableRooms(roomImage, roomName, roomNumber);
-    // console.log('after', hotel.roomsAvailable);
   })
 }
 
