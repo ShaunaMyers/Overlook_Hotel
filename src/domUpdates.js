@@ -57,7 +57,7 @@ let domUpdates = {
       `
       document.querySelector(".header-greeting").innerHTML = userAccountHeader;
 
-      let allBookings = customer.returnAllBookings(hotel.allReservations);
+      let allBookings = customer.returnAllBookings(hotel);
         console.log('all bookings', allBookings);
       this.displayCustomerBookingInfo(allBookings, hotel, customer);
     },
@@ -76,11 +76,17 @@ let domUpdates = {
       }
     },
 
-    
+    displayTotalSpent(customer) {
+      let customerAccountInfo = document.getElementById('customerAccount');
+      customerAccountInfo.classList.toggle('hidden');
+      customerAccountInfo.innerHTML += `
+      <p>Total Spent: $${customer.returnTotalSpent().toFixed(2)}</p>
+      `;
+
+    },
 
     displayUpcomingBookings(upcomingBookings, hotel) {
       let customerAccountInfo = document.getElementById('customerAccount');
-      customerAccountInfo.classList.remove('hidden');
 
       customerAccountInfo.innerHTML += `<h4>Your Upcoming Bookings</h4>`;
       if (!upcomingBookings.length) {
@@ -100,7 +106,6 @@ let domUpdates = {
 
     displayCurrentBookings(currentBookings, hotel) {
       let customerAccountInfo = document.getElementById('customerAccount');
-      customerAccountInfo.classList.remove('hidden');
 
       customerAccountInfo.innerHTML += `<h4>Your Current Bookings</h4>`;
       currentBookings.forEach(booking => {
@@ -116,7 +121,6 @@ let domUpdates = {
 
     displayCompletedBookings(completedBookings, hotel) {
       let customerAccountInfo = document.getElementById('customerAccount');
-      customerAccountInfo.classList.remove('hidden');
 
       customerAccountInfo.innerHTML += `<h4>Your Completed Bookings</h4>`;
       completedBookings.forEach(booking => {
@@ -144,6 +148,8 @@ let domUpdates = {
       this.greetCustomer(customerName);
       document.getElementById('resortCard').classList.toggle('hidden');
       document.getElementById('allRoomCards').classList.toggle('hidden');
+      document.getElementById('customerAccount').classList.toggle('hidden');
+
     },
 
     displayTreehouseDetails() {
