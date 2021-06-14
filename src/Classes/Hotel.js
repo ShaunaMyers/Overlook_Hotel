@@ -33,7 +33,7 @@ class Hotel {
 
     checkIfRoomsAreAvailable(customerSearch) {
 
-        let { date, roomType, numBeds, bedSize, costPerNight } = customerSearch;
+        let { date, roomType } = customerSearch;
 
         let availableRoomNumbers = this.allReservations.filter(reservation => reservation.date !== date).map(room => room.roomNumber);
 
@@ -43,8 +43,8 @@ class Hotel {
             }
         })
 
-        if (roomType || numBeds || bedSize || costPerNight) {
-            this.checkAvailabilityWithAllOptions(roomType, numBeds, bedSize, costPerNight);
+        if (roomType) {
+            this.filterByRoomType(roomType);
         }
 
 
@@ -55,44 +55,9 @@ class Hotel {
         }
     }
 
-    checkAvailabilityWithAllOptions(roomType, numBeds, bedSize, costPerNight) {
-        if (roomType) {
-            this.filterByRoomType(roomType);
-        }
-        if (numBeds) {
-            this.filterByNumberOfBeds(numBeds);
-        }
-        if (bedSize) {
-            this.filterByBedSize(bedSize);
-        }
-        if (costPerNight) {
-            this.filterByCostPerNight(costPerNight)
-        }
-    }
-
-
     filterByRoomType(roomType) {
         let availableRooms = this.roomsAvailable.filter(room => room.roomType === roomType);
         this.roomsAvailable = availableRooms;
-        this.roomsAvailable = availableRooms;
-    }
-
-    filterByNumberOfBeds(numBeds) {
-        let availableRooms = this.roomsAvailable = this.roomsAvailable.filter(room => room.numBeds === numBeds);
-        this.roomsAvailable = availableRooms;
-        this.roomsAvailable = availableRooms;
-    }
-
-    filterByBedSize(bedSize) {
-        let availableRooms = this.roomsAvailable = this.roomsAvailable.filter(room => room.bedSize === bedSize);
-        this.roomsAvailable = availableRooms;
-        this.roomsAvailable = availableRooms;
-    }
-
-    filterByCostPerNight(costPerNight) {
-        let availableRooms = this.roomsAvailable = this.roomsAvailable.filter(room => room.costPerNight <= costPerNight)
-        this.roomsAvailable = availableRooms;
-        // if (availableRooms.length) {
         this.roomsAvailable = availableRooms;
     }
 

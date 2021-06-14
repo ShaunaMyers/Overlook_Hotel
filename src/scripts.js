@@ -82,14 +82,15 @@ function evaluateDateChosen(value) {
 
 function findRoomDetails() {
   let roomsAvailable;
-  if (console.log('1', customerSearch.date)) {
+  if (customerSearch.date) {
+    console.log('im somthin');
     roomsAvailable = hotel.checkIfRoomsAreAvailable(customerSearch.date);
   } else if (customerSearch.roomType){
     roomsAvailable = hotel.checkIfRoomsAreAvailable(customerSearch.roomType);
   } else {
     roomsAvailable = hotel.allRooms;
   }
-  
+
   roomsAvailable.forEach(room => {
     let roomImage = findRoomImage(room.roomType);
     let roomName = findRoomName(room.number);
