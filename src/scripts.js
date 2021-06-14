@@ -49,7 +49,9 @@ searchByDateField.addEventListener('change', function () {
 });
 
 resortCard.addEventListener('change', function(event) {
-  evaluateBoxChecked(event);
+    console.log('event');
+    evaluateBoxChecked(event);
+
 })
 
 window.onload = onStartUp()
@@ -61,6 +63,7 @@ function onStartUp() {
             hotel = new Hotel(promise[2].rooms, promise[1].bookings, promise[0].customers);
             findRoomDetails();
             domUpdates.greetCustomer(customer.name);
+            console.log('before', hotel.roomsAvailable);
         })
 };
 
@@ -106,16 +109,18 @@ function findRoomImage(roomType) {
 }
 
 function findRoomName(roomNumber) {
-  if ( [1, 6, 12, 21].includes(roomNumber)) {
+  if ( [1, 12, 21].includes(roomNumber)) {
     return "Treetop Dream Den"
-  } else if ( [2, 7, 13, 22].includes(roomNumber)) {
+  } else if ( [2, 7, 22].includes(roomNumber)) {
     return "Wind Kissed Nest"
-  } else if ( [3, 8, 14, 23].includes(roomNumber)) {
+  } else if ( [3, 8, 23].includes(roomNumber)) {
     return "Lover's Rainforest Cabana"
-  } else if ( [4, 9, 15, 24].includes(roomNumber)) {
+  } else if ( [4, 15, 24].includes(roomNumber)) {
     return "Tropical Tree Lair"
-  } else {
+  } else if ( [6, 11, 18].includes(roomNumber)){
     return "Magical Tree Fort"
+  } else  {
+    return "Heavenly Hideaway"
   }
 }
 
@@ -129,6 +134,7 @@ function getRoomDetails(event) {
 }
 
 function evaluateBoxChecked(event) {
+  console.log('after', hotel.roomsAvailable)
   if (event.target.closest('input').id === 'residentialSuite') {
     console.log('RES');
   } else if (event.target.closest('input').id === 'juniorSuite') {
