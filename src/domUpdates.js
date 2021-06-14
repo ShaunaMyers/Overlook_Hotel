@@ -1,6 +1,10 @@
 
 let allRoomCards = document.querySelector('#allRoomCards');
 let greetingName = document.querySelector('#greetingName');
+// let greetingContainer = document.querySelector('#greetingContainer');
+// let userAccountContainer = document.querySelector('#userAccountContainer');
+let headerGreeting = document.querySelector('#headerGreeting');
+let resortCard = document.querySelector('.resort-card');
 
 let domUpdates = {
 
@@ -25,6 +29,26 @@ let domUpdates = {
 
     displayTreehouseDetails() {
       console.log("HI");
+    },
+
+    displayUserAccount(customer, bookings) {
+      // let resortCard = document.getElementById('resortCard');
+      resortCard.style.display = 'none';
+      allRoomCards.style.display = 'none';
+      headerGreeting.innerHTML = `
+      <section class="header-greeting">
+        <div id="greetingContainer">
+          <h2 id="greetingName">Your Account</h2>
+        </div>
+        <nav>
+          <button class="return-home" id="returnHome" type="button" name="button">
+            Return Home
+          </button>
+        </nav>
+      </section>
+      `
+      let allBookings = customer.returnAllBookings(bookings);
+
     },
     // createCards(cookbook) {
     //     let recipeCollection;

@@ -69,10 +69,6 @@ img {
 
 .search-all-availability {
     @include display(flex, column, center, space-around);
-    // align-items: center;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: space-around;
     height: 80px;
 }
 
@@ -129,7 +125,7 @@ img {
 }
 
 // This all could be a mixin
-.treehouse-details, .book-treehouse-btn {
+.treehouse-details, .book-treehouse-btn, .return-home {
     background-color: $primary-accent-color;
     border-radius: 15px;
     font-size: 20px;
@@ -142,14 +138,7 @@ img {
     }
 }
 
-.bed-details {
-  @include display(flex, row, center, center);
-  justify-content: space-around;
-}
-
-#bedImg {
-  width: 20%;
-}
+/*~~~~~~~~~~~~ Room Details Card ~~~~~~~~~~~*/
 
 .room-selections {
   @include display(flex, column, center, space-around);
@@ -157,6 +146,15 @@ img {
   form {
     margin-bottom: 6%;
   }
+}
+
+.bed-details {
+  @include display(flex, row, center, center);
+  justify-content: space-around;
+}
+
+#bedImg {
+  width: 20%;
 }
 
 .room-type {
@@ -196,4 +194,14 @@ input {
 .book-treehouse-btn {
   margin-top: 15%;
   padding: 3.5%;
+}
+
+/*~~~~~~~~~~~~ Customer Account Card ~~~~~~~~~~~*/
+
+.return-home {
+  font-size: 15px;
+}
+
+.hidden {
+  display: none;
 }
