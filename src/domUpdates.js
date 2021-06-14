@@ -58,12 +58,27 @@ let domUpdates = {
       document.querySelector(".header-greeting").innerHTML = userAccountHeader;
 
       let allBookings = customer.returnAllBookings(bookings);
-
+      console.log('Cust Bookings', allBookings);
+      this.displayCustomerBookingInfo(allBookings);
     },
 
+    displayCustomerBookingInfo(allBookings) {
+      let customerAccountInfo = document.getElementById('customerAccount');
+      customerAccountInfo.classList.remove('hidden');
+      customerAccountInfo.innerHTML = `
+        
+      `
+      // completedBookings: Array(18)
+            // 0:
+            // date: "2020/01/23"
+            // id: "5fwrgu4i7k55hl6tp"
+            // roomNumber: 22
+            // roomServiceCharges: []
+            // userID: 48
+
+    }
+
     returnToHomeView(customerName) {
-      // document.querySelector(".banner-image").insertAdjacentHTML("afterbegin",
-            // welcomeMsg);
       this.greetCustomer(customerName);
       document.getElementById('resortCard').classList.toggle('hidden');
       document.getElementById('allRoomCards').classList.toggle('hidden');

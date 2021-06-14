@@ -80,7 +80,7 @@ img {
   grid-column-gap: 10px;
 }
 
-.room-card, .room-card-details {
+.room-card, .room-card-details, .customer-account {
     @include display(flex, column, center, space-around);
     background-color: $primary-card-background-color;
     border-radius: $primary-border-radius;
@@ -199,8 +199,12 @@ input {
 /*~~~~~~~~~~~~ Customer Account Card ~~~~~~~~~~~*/
 
 .return-home {
-  font-size: 15px;
+  font-size: 15px
 }
+
+
+
+/*~~~~~~~~~~~~ Hidden Styling ~~~~~~~~~~~*/
 
 .hidden {
   display: none;
