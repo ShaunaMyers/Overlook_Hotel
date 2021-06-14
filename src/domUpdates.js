@@ -1,10 +1,8 @@
 
-let allRoomCards = document.querySelector('#allRoomCards');
-let greetingName = document.querySelector('#greetingName');
+let greetingContainer = document.querySelector('#greetingContainer');
 // let greetingContainer = document.querySelector('#greetingContainer');
 // let userAccountContainer = document.querySelector('#userAccountContainer');
-let headerGreeting = document.querySelector('#headerGreeting');
-let resortCard = document.querySelector('.resort-card');
+// let headerGreeting = document.querySelector('#headerGreeting');
 
 let domUpdates = {
 
@@ -24,7 +22,18 @@ let domUpdates = {
     },
 
     greetCustomer(customerName) {
-      greetingName.innerText = `Hey ${customerName},`;
+      headerGreeting.innerHTML = `
+      <div id="greetingContainer">
+        <h2 id="greetingName">Hey ${customerName},</h2>
+        <h2>We think you're ready to select your dream stay among the trees!</h2>
+      </div>
+      <nav>
+        <button class="user-img-btn" id="userImgBtn" type="button" name="button">
+          <img class="user-img" src="./images/user-account.svg" alt="image of the outline of human's head and shoulders">
+          <p class="my-account">My Account</p>
+        </button>
+      </nav>
+      `
     },
 
     displayTreehouseDetails() {
@@ -32,10 +41,9 @@ let domUpdates = {
     },
 
     displayUserAccount(customer, bookings) {
-      // let resortCard = document.getElementById('resortCard');
-      resortCard.style.display = 'none';
-      allRoomCards.style.display = 'none';
-      headerGreeting.innerHTML = `
+      document.getElementById('resortCard').classList.toggle('hidden');
+      document.getElementById('allRoomCards').classList.toggle('hidden');
+      let userAccountHeader = `
       <section class="header-greeting">
         <div id="greetingContainer">
           <h2 id="greetingName">Your Account</h2>
@@ -47,45 +55,19 @@ let domUpdates = {
         </nav>
       </section>
       `
+      document.querySelector(".header-greeting").innerHTML = userAccountHeader;
+
       let allBookings = customer.returnAllBookings(bookings);
 
     },
-    // createCards(cookbook) {
-    //     let recipeCollection;
-    //     if (cookbook.recipes) {
-    //         recipeCollection = cookbook.recipes
-    //     } else {
-    //         recipeCollection = cookbook;
-    //         main.innerHTML = " ";
-    //     }
-    //     recipeCollection.forEach(recipe => {
-    //         let recipes = [];
-    //         let recipeInfo = new Recipe(recipe);
-    //         let shortRecipeName = recipeInfo.name;
-    //         recipes.push(recipeInfo);
-    //         if (recipeInfo.name.length > 40) {
-    //             shortRecipeName = recipeInfo.name.substring(0, 40) + "...";
-    //         }
-    //         this.addCardsToDom(recipeInfo, shortRecipeName)
-    //     });
-    // },
-    //
-    // addCardsToDom(recipeInfo, shortRecipeName) {
-    //     let cardHtml = `
-    //       <div class="recipe-card" id=${recipeInfo.id}>
-    //         <h3 maxlength="40">${shortRecipeName}</h3>
-    //         <div class="card-photo-container">
-    //           <img src=${recipeInfo.image} class="card-photo-preview" alt="${recipeInfo.name} recipe" title="${recipeInfo.name} recipe">
-    //           <div class="text">
-    //             <div>Click for Instructions</div>
-    //           </div>
-    //         </div>
-    //         <h4>${recipeInfo.tags[0]}</h4>
-    //         <img src="../images/apple-logo-outline.png" alt="unfilled apple icon" class="card-apple-icon">
-    //       </div>`
-    //     main.insertAdjacentHTML("beforeend", cardHtml);
-    // },
 
+    returnToHomeView(customerName) {
+      // document.querySelector(".banner-image").insertAdjacentHTML("afterbegin",
+            // welcomeMsg);
+      this.greetCustomer(customerName);
+      document.getElementById('resortCard').classList.toggle('hidden');
+      document.getElementById('allRoomCards').classList.toggle('hidden');
+    },
 
     displayTreehouseDetails() {
       console.log("HI");
