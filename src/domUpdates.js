@@ -1,6 +1,9 @@
 
 let allRoomCards = document.querySelector('#allRoomCards');
 let greetingName = document.querySelector('#greetingName');
+// let greetingContainer = document.querySelector('#greetingContainer');
+// let userAccountContainer = document.querySelector('#userAccountContainer');
+let headerGreeting = document.querySelector('#headerGreeting');
 
 let domUpdates = {
 
@@ -28,11 +31,20 @@ let domUpdates = {
     },
 
     displayUserAccount(customer, bookings) {
-      // customer.addToCurrentBookings();
-      // customer.addToCompletedBookings();
-      // customer.addToUpcomingBookings();
+      headerGreeting.innerHTML = `
+      <section class="header-greeting">
+        <div id="greetingContainer">
+          <h2 id="greetingName">Your Account</h2>
+        </div>
+        <nav>
+          <button class="user-img-btn" id="userImgBtn" type="button" name="button">
+            <img class="user-img" src="./images/user-account.svg" alt="image of the outline of human's head and shoulders">
+            <p class="my-account">My Account</p>
+          </button>
+        </nav>
+      </section>
+      `
       let allBookings = customer.returnAllBookings(bookings);
-      
 
     },
     // createCards(cookbook) {
