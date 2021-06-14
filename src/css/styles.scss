@@ -70,10 +70,18 @@ img {
 .search-all-availability {
     @include display(flex, column, center, space-around);
     padding: 8% 0;
+    label {
+      font-size: 25px;
+    }
 }
 
 .filter-rooms-choices {
   @include display(flex, column, center, space-around);
+  font-size: 20px;
+}
+
+.room-type-heading {
+  font-size: 25px;
 }
 
 /*~~~~~~~~~~~~ Room Cards ~~~~~~~~~~~*/
