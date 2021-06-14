@@ -32,25 +32,18 @@ class Customer {
 
     returnAllBookings(bookings) {
       let customerBookings = bookings.filter(booking => booking.userID === this.id);
-      // let now = dayjs();
-      // let today = now.format('YYYY/MM/DD')
-
+      let today = dayjs();
+      
       customerBookings.forEach(booking => {
         let bookingDate = dayjs(booking.date);
-        let today = dayjs();
         if(bookingDate.isBefore(today, 'day')) {
+          this.completedBookings.push(booking);
         } else if (bookingDate.isAfter(today, 'day')){
-          console.log("After Today");
+          this.upcomingBookings.push(booking);
         } else if (bookingDate.isSame(today, 'day')) {
-          console.log('Same Day');
+          this.currentBookings.push(booking);
         }
       })
-
-
-
-      // console.log('filter bookings', customerBookings);
-      //   console.log('bookings', bookings);
-      //   console.log('today', today);
         return { completedBookings: this.completedBookings, currentBookings: this.currentBookings, upcomingBookings: this.upcomingBookings };
     }
 

@@ -32,7 +32,7 @@ let domUpdates = {
       // customer.addToCompletedBookings();
       // customer.addToUpcomingBookings();
       let allBookings = customer.returnAllBookings(bookings);
-      // console.log('all bookings', allBookings);
+      
 
     },
     // createCards(cookbook) {
