@@ -99,6 +99,11 @@ class Hotel {
     offerApologyMessage() {
         return 'We are very sorry...it looks like we have no rooms available that fit your search selections. We would love to host you, though, so please try your search using different selections.'
     }
+
+    returnPriceOfRoom(roomNumber) {
+      let foundRoom = this.allRooms.find(room => room.number === roomNumber);
+      return foundRoom.costPerNight;
+    }
 }
 
 export default Hotel;

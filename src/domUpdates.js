@@ -40,7 +40,7 @@ let domUpdates = {
       console.log("HI");
     },
 
-    displayUserAccount(customer, bookings) {
+    displayUserAccount(customer, hotel) {
       document.getElementById('resortCard').classList.toggle('hidden');
       document.getElementById('allRoomCards').classList.toggle('hidden');
       let userAccountHeader = `
@@ -57,17 +57,25 @@ let domUpdates = {
       `
       document.querySelector(".header-greeting").innerHTML = userAccountHeader;
 
-      let allBookings = customer.returnAllBookings(bookings);
-      console.log('Cust Bookings', allBookings);
-      this.displayCustomerBookingInfo(allBookings);
+      let allBookings = customer.returnAllBookings(hotel.allReservations);
+        console.log('all bookings', allBookings);
+      this.displayCustomerBookingInfo(allBookings, hotel);
     },
 
-    displayCustomerBookingInfo(allBookings) {
+    displayCustomerBookingInfo(allBookings, hotel) {
       let customerAccountInfo = document.getElementById('customerAccount');
       customerAccountInfo.classList.remove('hidden');
-      customerAccountInfo.innerHTML = `
-        
-      `
+      this.displayUpcomingBookings
+      allBookings.forEach(booking => {
+        customerAccountInfo.innerHTML = `<h4>Your Upcoming Bookings</h4>`
+        customerAccountInfo.innerHTML += `
+        <ol>
+          <li>${booking.date}</li>
+          <li>${booking.roomNumber}</li>
+          <li>${hotel.returnPriceOfRoom(booking.roomNumber)}</li>
+        </ol>
+        `
+      })
       // completedBookings: Array(18)
             // 0:
             // date: "2020/01/23"
@@ -76,7 +84,7 @@ let domUpdates = {
             // roomServiceCharges: []
             // userID: 48
 
-    }
+    },
 
     returnToHomeView(customerName) {
       this.greetCustomer(customerName);
@@ -88,11 +96,11 @@ let domUpdates = {
       console.log("HI");
     },
 
-    changeHiddenViews() {
-      for (var i = 0; i < arguments.length; i++) {
-        arguments[i].classList.toggle('hidden');
-      }
-    }
+    // changeHiddenViews() {
+    //   for (var i = 0; i < arguments.length; i++) {
+    //     arguments[i].classList.toggle('hidden');
+    //   }
+    // }
 
 }
 

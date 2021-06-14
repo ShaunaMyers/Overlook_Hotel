@@ -62,7 +62,7 @@ function onStartUp() {
 
 function evaluationHeaderButton(event) {
   if (event.target.closest('button').id === 'userImgBtn') {
-    domUpdates.displayUserAccount(customer, hotel.allReservations)
+    domUpdates.displayUserAccount(customer, hotel)
   } else if (event.target.closest('button').id === 'returnHome'){
     domUpdates.returnToHomeView(customer.name);
   }
