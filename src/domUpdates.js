@@ -134,16 +134,6 @@ let domUpdates = {
       });
     },
 
-
-      // completedBookings: Array(18)
-            // 0:
-            // date: "2020/01/23"
-            // id: "5fwrgu4i7k55hl6tp"
-            // roomNumber: 22
-            // roomServiceCharges: []
-            // userID: 48
-
-
     returnToHomeView(customerName) {
       this.greetCustomer(customerName);
       document.getElementById('resortCard').classList.toggle('hidden');
@@ -151,6 +141,18 @@ let domUpdates = {
       document.getElementById('customerAccount').classList.toggle('hidden');
 
     },
+    // 
+    // displayFilterSelections() {
+    //   let formElement = document.getElementById('searchAllAvailability');
+    //   formElement.innerHTML += `
+    //   <label for="searchByRoomType">Room Type</label>
+    //   <input id="searchByRoomType" type="checkbox">
+    //   <label for="searchByNumBeds">Number of Beds</label>
+    //   <input id="searchByNumBeds" type="checkbox">
+    //   <label for="searchByRoomType">Search Available Accomodations By Date</label>
+    //   <input id="searchByRoomType" type="checkbox">
+    //   `
+    // },
 
     displayTreehouseDetails() {
       console.log("HI");

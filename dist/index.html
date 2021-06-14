@@ -30,10 +30,25 @@
       <section class="resort-description">
         <h1 class="resort-name" id="resortName">Mouldy Mango Treetop Resort</h1>
         <p>444 Rainforest Way, Manzanillo, Limón, Costa Rica</p>
-        <form class="search-all-availability">
+        <form class="search-all-availability" id="searchAllAvailability">
           <label for="searchByDate">Search Available Accomodations By Date</label>
           <input class="search-by-date" id="searchByDate" type="date" placeholder="MM/DD/YY" required>
         </form>
+      </section>
+      <p>Room Type</p>
+      <section class="filter-rooms-choices" id="filterRoomsChoices">
+          <div class="">
+            <input type="checkbox" id="residentialSuite" name="roomType">
+            <label for="residentialSuite">Residential Suite</label>
+            <input type="checkbox" id="juniorSuite" name="roomType">
+            <label for="juniorSuite">Junior Suite</label>
+          </div>
+          <div class="">
+            <input type="checkbox" id="suite" name="roomType">
+            <label for="suite">Suite</label>
+            <input type="checkbox" id="singleRoom" name="roomType">
+            <label for="singleRoom">Single Room</label>
+          </div>
       </section>
     </article>
 

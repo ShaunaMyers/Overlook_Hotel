@@ -69,7 +69,11 @@ img {
 
 .search-all-availability {
     @include display(flex, column, center, space-around);
-    height: 80px;
+    padding: 8% 0;
+}
+
+.filter-rooms-choices {
+  @include display(flex, column, center, space-around);
 }
 
 /*~~~~~~~~~~~~ Room Cards ~~~~~~~~~~~*/

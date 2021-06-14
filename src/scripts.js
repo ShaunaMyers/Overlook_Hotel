@@ -45,6 +45,7 @@ allRoomCards.addEventListener('click', function(event) {
 searchByDateField.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         evaluateDateChosen(searchByDate.value);
+        // domUpdates.displayFilterSelections();
     }
 })
 
