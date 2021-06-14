@@ -82,14 +82,15 @@ img {
 
 .room-type-heading {
   font-size: 25px;
+  // width: 500px;
 }
 
 /*~~~~~~~~~~~~ Room Cards ~~~~~~~~~~~*/
 
 .all-room-cards {
   display: grid;
-  grid-template-columns: repeat(4, 25%);
-  grid-column-gap: 10px;
+  grid-template-columns: repeat(3, 33%);
+  grid-column-gap: 20px;
 }
 
 .room-card, .room-card-details, .customer-account {
@@ -117,23 +118,15 @@ img {
         img {
             width: 100%;
         }
-        .right-arrow-btn {
-            // bottom: 10%;
-            left: 85%;
-            top: 1%;
-        }
     }
 }
 
-.right-arrow-btn {
-    border-radius: 0 20px 0 0;
-    position: absolute;
-    opacity: .7;
-    width: 5em;
-    &:hover {
-        background-color: darkgray;
-        cursor: pointer;
-    }
+.room-card {
+  font-size: 20px;
+  height: 540px;
+  img {
+    height: 50%;
+  }
 }
 
 // This all could be a mixin

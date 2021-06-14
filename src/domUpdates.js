@@ -12,10 +12,6 @@ let domUpdates = {
         <img src="${roomImage}"
           alt="gorgeous airy well lit treehouse room with a rainforest view">
         <h2 class="treehouse-name" id="treehouseName">${roomName}</h2>
-        <button class="right-arrow-btn" id="treehouseDetails">
-          <img src="./images/right-arrow.svg"
-            alt=" right arrow image implying that you will navigate to the next screen">
-        </button>
         <button class="treehouse-details" id="treehouseDetails">Treehouse Details</button>
       </section>
       `)
@@ -144,8 +140,7 @@ let domUpdates = {
 
     displayFilterSelections() {
       let resortCard = document.getElementById('resortCard');
-      resortCard.innerHTML += `
-      <p class="room-type-heading">Room Type</p>
+      resortCard.innerHTML += `<p class="room-type-heading">Filter Results By Room Type</p>
       <section class="filter-rooms-choices" id="filterRoomsChoices">
           <div class="checkboxes">
             <input type="checkbox" id="residentialSuite" name="roomType">

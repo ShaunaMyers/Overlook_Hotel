@@ -114,6 +114,7 @@ function findRoomName(roomNumber) {
   }
 }
 
+// Move a lot of this to the dom
 function getRoomDetails(event) {
   if (event.target.closest('button'). id === 'treehouseDetails') {
     allRoomCards.classList.add('hidden');
