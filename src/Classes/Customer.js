@@ -33,7 +33,7 @@ class Customer {
     returnAllBookings(bookings) {
       let customerBookings = bookings.filter(booking => booking.userID === this.id);
       let today = dayjs();
-      
+
       customerBookings.forEach(booking => {
         let bookingDate = dayjs(booking.date);
         if(bookingDate.isBefore(today, 'day')) {
@@ -59,6 +59,10 @@ class Customer {
 
     addToTotalSpent(room) {
         this.totalSpent += room.costPerNight;
+    }
+
+    returnTotalSpent() {
+      return this.totalSpent;
     }
 
 }

@@ -59,23 +59,78 @@ let domUpdates = {
 
       let allBookings = customer.returnAllBookings(hotel.allReservations);
         console.log('all bookings', allBookings);
-      this.displayCustomerBookingInfo(allBookings, hotel);
+      this.displayCustomerBookingInfo(allBookings, hotel, customer);
     },
 
-    displayCustomerBookingInfo(allBookings, hotel) {
+    displayCustomerBookingInfo(allBookings, hotel, customer) {
+      this.displayTotalSpent(customer);
+
+      this.displayUpcomingBookings(allBookings.upcomingBookings, hotel);
+
+      if (allBookings.currentBookings.length) {
+        this.displayCurrentBookings(allBookings.currentBookings, hotel);
+      }
+
+      if (allBookings.completedBookings.length) {
+        this.displayCompletedBookings(allBookings.completedBookings, hotel);
+      }
+    },
+
+    
+
+    displayUpcomingBookings(upcomingBookings, hotel) {
       let customerAccountInfo = document.getElementById('customerAccount');
       customerAccountInfo.classList.remove('hidden');
-      this.displayUpcomingBookings
-      allBookings.forEach(booking => {
-        customerAccountInfo.innerHTML = `<h4>Your Upcoming Bookings</h4>`
-        customerAccountInfo.innerHTML += `
-        <ol>
+
+      customerAccountInfo.innerHTML += `<h4>Your Upcoming Bookings</h4>`;
+      if (!upcomingBookings.length) {
+         customerAccountInfo.innerHTML += `<h5>You have no upcoming bookings. Time to make a reservation!</h5>`;
+      } else {
+        upcomingBookings.forEach(booking => {
+          customerAccountInfo.innerHTML += `
+          <ul>
           <li>${booking.date}</li>
           <li>${booking.roomNumber}</li>
           <li>${hotel.returnPriceOfRoom(booking.roomNumber)}</li>
-        </ol>
+          </ul>
+          `
+        });
+      }
+    },
+
+    displayCurrentBookings(currentBookings, hotel) {
+      let customerAccountInfo = document.getElementById('customerAccount');
+      customerAccountInfo.classList.remove('hidden');
+
+      customerAccountInfo.innerHTML += `<h4>Your Current Bookings</h4>`;
+      currentBookings.forEach(booking => {
+        customerAccountInfo.innerHTML += `
+        <ul>
+        <li>${booking.date}</li>
+        <li>${booking.roomNumber}</li>
+        <li>${hotel.returnPriceOfRoom(booking.roomNumber)}</li>
+        </ul>
         `
-      })
+      });
+    },
+
+    displayCompletedBookings(completedBookings, hotel) {
+      let customerAccountInfo = document.getElementById('customerAccount');
+      customerAccountInfo.classList.remove('hidden');
+
+      customerAccountInfo.innerHTML += `<h4>Your Completed Bookings</h4>`;
+      completedBookings.forEach(booking => {
+        customerAccountInfo.innerHTML += `
+        <ul>
+        <li>Date: ${booking.date}</li>
+        <li>Room Number: ${booking.roomNumber}</li>
+        <li>Cost Per Night: ${hotel.returnPriceOfRoom(booking.roomNumber)}</li>
+        </ul>
+        `
+      });
+    },
+
+
       // completedBookings: Array(18)
             // 0:
             // date: "2020/01/23"
@@ -84,7 +139,6 @@ let domUpdates = {
             // roomServiceCharges: []
             // userID: 48
 
-    },
 
     returnToHomeView(customerName) {
       this.greetCustomer(customerName);
