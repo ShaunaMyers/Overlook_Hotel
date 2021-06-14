@@ -4,6 +4,7 @@ let greetingName = document.querySelector('#greetingName');
 // let greetingContainer = document.querySelector('#greetingContainer');
 // let userAccountContainer = document.querySelector('#userAccountContainer');
 let headerGreeting = document.querySelector('#headerGreeting');
+let resortCard = document.querySelector('.resort-card');
 
 let domUpdates = {
 
@@ -31,15 +32,17 @@ let domUpdates = {
     },
 
     displayUserAccount(customer, bookings) {
+      // let resortCard = document.getElementById('resortCard');
+      resortCard.style.display = 'none';
+      allRoomCards.style.display = 'none';
       headerGreeting.innerHTML = `
       <section class="header-greeting">
         <div id="greetingContainer">
           <h2 id="greetingName">Your Account</h2>
         </div>
         <nav>
-          <button class="user-img-btn" id="userImgBtn" type="button" name="button">
-            <img class="user-img" src="./images/user-account.svg" alt="image of the outline of human's head and shoulders">
-            <p class="my-account">My Account</p>
+          <button class="return-home" id="returnHome" type="button" name="button">
+            Return Home
           </button>
         </nav>
       </section>
