@@ -62,7 +62,7 @@ function onStartUp() {
             hotel = new Hotel(promise[2].rooms, promise[1].bookings, promise[0].customers);
             findRoomDetails();
             domUpdates.greetCustomer(customer.name);
-            console.log('before', hotel.roomsAvailable);
+            // console.log('before', hotel.roomsAvailable);
         })
 };
 
@@ -83,12 +83,16 @@ function evaluateDateChosen(value) {
 function findRoomDetails() {
   let roomsAvailable;
   if (customerSearch.date) {
-    console.log('im somthin');
-    roomsAvailable = hotel.checkIfRoomsAreAvailable(customerSearch.date);
+    console.log("SOMTHIN");
+    console.log('customer search date', customerSearch.date);
+    roomsAvailable = hotel.checkIfRoomsAreAvailable(customerSearch);
+    console.log('rooms available', roomsAvailable);
   } else if (customerSearch.roomType){
-    roomsAvailable = hotel.checkIfRoomsAreAvailable(customerSearch.roomType);
+    roomsAvailable = hotel.checkIfRoomsAreAvailable(customerSearch);
+    console.log('rooms available', roomsAvailable);
   } else {
     roomsAvailable = hotel.allRooms;
+    console.log('rooms available', roomsAvailable);
   }
 
   roomsAvailable.forEach(room => {
@@ -96,7 +100,7 @@ function findRoomDetails() {
     let roomName = findRoomName(room.number);
     let roomNumber = room.number;
     domUpdates.displayAvailableRooms(roomImage, roomName, roomNumber);
-    console.log('after', hotel.roomsAvailable);
+    // console.log('after', hotel.roomsAvailable);
   })
 }
 

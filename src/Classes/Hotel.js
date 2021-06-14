@@ -35,13 +35,17 @@ class Hotel {
 
         let { date, roomType } = customerSearch;
 
-        let availableRoomNumbers = this.allReservations.filter(reservation => reservation.date !== date).map(room => room.roomNumber);
+        console.log('date in customer', date);
+        console.log('roomType in customer', roomType);
+        if (date) {
+          let availableRoomNumbers = this.allReservations.filter(reservation => reservation.date !== date).map(room => room.roomNumber);
 
-        this.allRooms.forEach(room => {
+          this.allRooms.forEach(room => {
             if (availableRoomNumbers.includes(room.number)) {
-                this.roomsAvailable.push(room);
+              this.roomsAvailable.push(room);
             }
-        })
+          })
+        }
 
         if (roomType) {
             this.filterByRoomType(roomType);
@@ -57,7 +61,6 @@ class Hotel {
 
     filterByRoomType(roomType) {
         let availableRooms = this.roomsAvailable.filter(room => room.roomType === roomType);
-        this.roomsAvailable = availableRooms;
         this.roomsAvailable = availableRooms;
     }
 
