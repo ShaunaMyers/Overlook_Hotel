@@ -193,7 +193,7 @@ let domUpdates = {
     },
 
     clearErrorMessage() {
-      // This isn't working... WHYYYYYY?????
+      // This isn't working... WHYYYYYY
       console.log('SAY WHAT');
       document.getElementById('errorMessage2').classList.remove('hidden');
     }

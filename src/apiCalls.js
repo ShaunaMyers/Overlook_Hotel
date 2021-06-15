@@ -2,7 +2,7 @@
 const retrieveData = (path) => {
     return fetch(path)
         .then(response => response.json())
-        .catch(err => console.log(`User API Error: ${err.message}`));
+        .catch(err => console.log(`Retrieve Data Error: ${err.message}`));
 }
 
 const updateData = (path, data) => {
@@ -12,7 +12,8 @@ const updateData = (path, data) => {
         body: JSON.stringify(data)
     })
         .then(response => checkForError(response))
-        .catch(err => console.log(`User API Error: ${err.message}`));
+        .then(response => console.log(response))
+        .catch(err => console.log(`Update Data Error: ${err.message}`));
 }
 
 const checkForError = (response) => {

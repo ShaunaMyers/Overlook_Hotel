@@ -57,9 +57,9 @@ bookTreehouseBtn.addEventListener('click', function(event) {
   evaluateBookingDate(event);
 });
 
-bookTreehouseInput.addEventListener('change', function() {
-  domUpdates.clearErrorMessage();
-});
+// bookTreehouseInput.addEventListener('change', function() {
+//   domUpdates.clearErrorMessage();
+// });
 
 window.onload = onStartUp()
 
@@ -164,15 +164,16 @@ function getRoomDetails(event) {
   let bedSize = foundRoom.bedSize;
   let numBeds = foundRoom.numBeds;
   let roomCost = foundRoom.costPerNight;
-  domUpdates.displayTreehouseDetails({roomImage, roomName, bedSize, numBeds, roomType, roomCost});
+  let allDetails = { roomNumber, roomImage, roomName, bedSize, numBeds, roomType, roomCost }
+  domUpdates.displayTreehouseDetails(allDetails);
+  customer.updateCurrentRoomSearched(roomNumber);
 }
 
 // function saveInputDate () {
 //   console.log('input value', bookTreehouseInput.value);
 // }
 
-// Work on this function later
-// Event is bubbling up and return view to homepage
+
 function evaluateBookingDate(event) {
   if (event.target.closest('button').id === 'bookTreehouseBtn') {
     if (!bookTreehouseInput.value) {
@@ -181,8 +182,17 @@ function evaluateBookingDate(event) {
     } else {
       let dateUnedited = bookTreehouseInput.value;
       let bookingDate = [dateUnedited.slice(0, 4), dateUnedited.slice(5, 7), dateUnedited.slice(8)].join('/');
-      console.log('book treehouse date', bookingDate);
       domUpdates.displayBookingMessage(event);
+      sendBookingPostRequest(bookingDate);
     }
   }
+}
+
+function sendBookingPostRequest(bookingDate) {
+  // domUpdates.displayBookingMessage(event);
+  console.log('type of booking date', bookingDate);
+  console.log('and searched room', typeof customer.currentRoomSearched);
+  let roomNumber = parseInt(customer.currentRoomSearched);
+  apiCalls.fetchRequests.updateBookingsData({ "userID": customer.id, "date": bookingDate, "roomNumber": roomNumber })
+    // .catch(err => console.log(`Post Error: ${err.message}`));
 }
