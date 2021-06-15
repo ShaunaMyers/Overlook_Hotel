@@ -11,6 +11,31 @@ let roomSelections = document.getElementById('roomSelections');
 
 let domUpdates = {
 
+     displayMainPage() {
+       document.getElementById('loginPage').classList.add('hidden');
+       document.getElementById('headerGreeting').classList.remove('hidden');
+       document.getElementById('mainElement').classList.add('hide-background-image');
+       resortCard.classList.remove('hidden');
+       allRoomCards.classList.remove('hidden');
+
+
+     },
+
+     greetCustomer(customerName) {
+       headerGreeting.innerHTML = `
+       <div id="greetingContainer">
+       <h2 id="greetingName">Hey ${customerName},</h2>
+       <h2>We think you're ready to select your dream stay among the trees!</h2>
+       </div>
+       <nav>
+       <button class="user-img-btn" id="userImgBtn" type="button" name="button">
+       <img class="user-img" src="./images/user-account.svg" alt="image of the outline of human's head and shoulders">
+       <p class="my-account">My Account</p>
+       </button>
+       </nav>
+       `
+     },
+
     clearAllRoomCards() {
       allRoomCards.innerHTML = ' ';
     },
@@ -26,20 +51,6 @@ let domUpdates = {
       `)
     },
 
-    greetCustomer(customerName) {
-      headerGreeting.innerHTML = `
-      <div id="greetingContainer">
-        <h2 id="greetingName">Hey ${customerName},</h2>
-        <h2>We think you're ready to select your dream stay among the trees!</h2>
-      </div>
-      <nav>
-        <button class="user-img-btn" id="userImgBtn" type="button" name="button">
-          <img class="user-img" src="./images/user-account.svg" alt="image of the outline of human's head and shoulders">
-          <p class="my-account">My Account</p>
-        </button>
-      </nav>
-      `
-    },
 
     displayTreehouseDetails() {
       console.log("HI");
@@ -192,10 +203,17 @@ let domUpdates = {
       console.log('HEYOOOO');
     },
 
-    clearErrorMessage() {
-      // This isn't working... WHYYYYYY
-      console.log('SAY WHAT');
-      document.getElementById('errorMessage2').classList.remove('hidden');
+    // clearErrorMessage() {
+    //   // This isn't working... WHYYYYYY
+    //   console.log('SAY WHAT');
+    //   document.getElementById('errorMessage2').classList.remove('hidden');
+    // },
+
+    displayLoginErrorMessage() {
+      let loginErrorMessage = document.getElementById('loginErrorMessage')
+      loginErrorMessage.innerHTML =`
+        <p>Please enter the correct username and password.</p>
+      `;
     }
 }
 

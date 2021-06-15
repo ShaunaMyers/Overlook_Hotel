@@ -2,10 +2,14 @@
 $primary-background: #272d36;
 ;
 
+html, body {
+  min-height: 100vh;
+}
+
 body {
   background: $primary-background;
 }
 
-.hidden {
-  display: none;
-}
+// main {
+//   background-image: url('./images/mouldy-mango-login.jpg');
+// }

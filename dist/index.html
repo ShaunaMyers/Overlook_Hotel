@@ -9,8 +9,20 @@
 </head>
 
 <body>
-  <main>
-    <header class="header-greeting" id="headerGreeting">
+  <main id="mainElement">
+    <article class="login-page" id="loginPage">
+      <section class="login-container" id="loginContainer">
+        <h1>Welcome to Mouldy Mango Treetop Resort</h1>
+        <h2>Login To Your Account</h2>
+        <form class="login-form" action="index.html" method="post">
+          <input id="username" type="text" name="username" placeholder="Username" required>
+          <input id="password" type="text" name="password" placeholder="Password" required>
+          <button class="login-button" id="loginBtn" type="button" name="button">Login</button>
+        </form>
+        <p id="loginErrorMessage"></p>
+      </section>
+    </article>
+    <header class="header-greeting hidden" id="headerGreeting">
       <div id="greetingContainer">
         <h2 id="greetingName">Hey You Beautiful Person,</h2>
         <h2>We think you're ready to select your dream stay among the trees!</h2>
@@ -22,10 +34,7 @@
         </button>
       </nav>
     </header>
-
-
-
-    <article class="resort-card" id="resortCard">
+    <article class="resort-card hidden" id="resortCard">
       <img src="./images/mouldy-mango-resort.jpg" alt="beautiful tree house set in a rainforest and swampy setting">
       <section class="resort-description">
         <h1 class="resort-name" id="resortName">Mouldy Mango Treetop Resort</h1>
@@ -36,14 +45,8 @@
         </form>
       </section>
     </article>
-
-
-
-    <article class="all-room-cards" id="allRoomCards">
+    <article class="all-room-cards hidden " id="allRoomCards">
     </article>
-
-
-
     <article class="room-card-details hidden" id="roomCardDetails">
       <section id="innerRoomCardDetails">
         <button class="left-arrow-btn" id="leftArrowBtn">
