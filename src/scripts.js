@@ -15,7 +15,6 @@ import './images/single-room1.jpg';
 import './images/junior-suite1.jpg';
 import './images/bed.svg';
 import './images/user-account.svg';
-// import './images/mouldy-mango-login.jpg';
 
 // variables
 
@@ -68,7 +67,6 @@ function onStartUp() {
             // customer = new Customer(promise[0].customers[(Math.floor(Math.random() * promise[0].customers.length) + 1)]);
             hotel = new Hotel(promise[2].rooms, promise[1].bookings, promise[0].customers);
             findRoomAvailability();
-            // domUpdates.greetCustomer(customer.name);
         })
 };
 
@@ -108,12 +106,13 @@ function evaluateAgainstCorrectCredentials(customerID, splitCustomerID, password
     domUpdates.displayLoginErrorMessage(errorDetails);
   } else {
     findCorrectCustomer(customerID, foundGuest);
-    domUpdates.displayMainPage();
   }
 }
 
 function findCorrectCustomer(customerID, foundGuest) {
   customer = new Customer(foundGuest);
+  domUpdates.displayMainPage();
+  domUpdates.greetCustomer(customer.name);
 }
 
 function evaluateHeaderButton(event) {

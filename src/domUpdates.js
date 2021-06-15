@@ -21,6 +21,21 @@ let domUpdates = {
 
      },
 
+     greetCustomer(customerName) {
+       headerGreeting.innerHTML = `
+       <div id="greetingContainer">
+       <h2 id="greetingName">Hey ${customerName},</h2>
+       <h2>We think you're ready to select your dream stay among the trees!</h2>
+       </div>
+       <nav>
+       <button class="user-img-btn" id="userImgBtn" type="button" name="button">
+       <img class="user-img" src="./images/user-account.svg" alt="image of the outline of human's head and shoulders">
+       <p class="my-account">My Account</p>
+       </button>
+       </nav>
+       `
+     },
+
     clearAllRoomCards() {
       allRoomCards.innerHTML = ' ';
     },
@@ -36,20 +51,6 @@ let domUpdates = {
       `)
     },
 
-    greetCustomer(customerName) {
-      headerGreeting.innerHTML = `
-      <div id="greetingContainer">
-        <h2 id="greetingName">Hey ${customerName},</h2>
-        <h2>We think you're ready to select your dream stay among the trees!</h2>
-      </div>
-      <nav>
-        <button class="user-img-btn" id="userImgBtn" type="button" name="button">
-          <img class="user-img" src="./images/user-account.svg" alt="image of the outline of human's head and shoulders">
-          <p class="my-account">My Account</p>
-        </button>
-      </nav>
-      `
-    },
 
     displayTreehouseDetails() {
       console.log("HI");
