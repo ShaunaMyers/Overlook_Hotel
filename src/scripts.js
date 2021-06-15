@@ -1,7 +1,3 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/index.scss';
 import dayjs from 'dayjs';
 import apiCalls from './apiCalls';
@@ -9,8 +5,6 @@ import Customer from './Classes/Customer';
 import Hotel from './Classes/Hotel';
 import domUpdates from './domUpdates';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png';
 import './images/mouldy-mango-resort.jpg';
 import './images/queen-room2.jpg';
 import './images/right-arrow.svg';
@@ -23,6 +17,7 @@ import './images/bed.svg';
 import './images/user-account.svg';
 
 // variables
+
 let allRoomCards = document.querySelector('#allRoomCards');
 let searchByDateField = document.querySelector('#searchByDate');
 let roomCardDetails = document.querySelector('#roomCardDetails');
@@ -33,6 +28,7 @@ let bookTreehouseInput = document.getElementById('chosenDate');
 
 let customer, hotel;
 let customerSearch = {};
+
 // event listeners
 
 header.addEventListener('click', function() {
@@ -57,9 +53,7 @@ bookTreehouseBtn.addEventListener('click', function(event) {
   evaluateBookingDate(event);
 });
 
-// bookTreehouseInput.addEventListener('change', function() {
-//   domUpdates.clearErrorMessage();
-// });
+// Functions
 
 window.onload = onStartUp()
 
@@ -169,10 +163,6 @@ function getRoomDetails(event) {
   customer.updateCurrentRoomSearched(roomNumber);
 }
 
-// function saveInputDate () {
-//   console.log('input value', bookTreehouseInput.value);
-// }
-
 
 function evaluateBookingDate(event) {
   if (event.target.closest('button').id === 'bookTreehouseBtn') {
@@ -189,10 +179,6 @@ function evaluateBookingDate(event) {
 }
 
 function sendBookingPostRequest(bookingDate) {
-  // domUpdates.displayBookingMessage(event);
-  console.log('type of booking date', bookingDate);
-  console.log('and searched room', typeof customer.currentRoomSearched);
   let roomNumber = parseInt(customer.currentRoomSearched);
   apiCalls.fetchRequests.updateBookingsData({ "userID": customer.id, "date": bookingDate, "roomNumber": roomNumber })
-    // .catch(err => console.log(`Post Error: ${err.message}`));
 }
