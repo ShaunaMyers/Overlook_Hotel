@@ -83,10 +83,10 @@ function evaluateLoginInputValues() {
 function parseLoginInput(usernameEntered, passwordEntered) {
   let customerID;
   if (usernameEntered.length === 10) {
-    console.log("GET HERE");
     customerID = parseInt(usernameEntered.slice(-2));
+  } else if (usernameEntered.length === 9) {
+    customerID = parseInt(usernameEntered.slice(-1));
   } else {
-    errorDetails = 'wrong credentials'
     domUpdates.displayLoginErrorMessage();
     return;
   }

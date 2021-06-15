@@ -1,37 +1,37 @@
 /*~~~~~~~~~~~~ Login Page ~~~~~~~~~~~*/
 
-main {
-  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://thepointsguy.com/wp-content/uploads/2017/06/Upper-Pond-Exterior-e1498727801692.jpg');
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
-}
+// main {
+//   background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://thepointsguy.com/wp-content/uploads/2017/06/Upper-Pond-Exterior-e1498727801692.jpg');
+//   background-position: center;
+//   background-size: cover;
+//   height: 100vh;
+// }
 
-.hide-background-image {
-  background: transparent;
-}
-
-.login-container {
-  color: $primary-text-color;
-  font-size: 25px;
-  margin: auto;
-  padding: 10% 0 0;
-  text-align: center;
-  width: 360px;
-}
-
-.login-form {
-  @include display(flex, column, center, space-around);
-}
-
-.login-button {
-  background-color: $primary-accent-color;
-  border-radius: 7px;
-  font-size: 20px;
-  margin-top: 5%;
-  padding: 1%;
-  width: 215px;
-}
+// .hide-background-image {
+//   background: transparent;
+// }
+//
+// .login-container {
+//   color: $primary-text-color;
+//   font-size: 25px;
+//   margin: auto;
+//   padding: 10% 0 0;
+//   text-align: center;
+//   width: 360px;
+// }
+//
+// .login-form {
+//   @include display(flex, column, center, space-around);
+// }
+//
+// .login-button {
+//   background-color: $primary-accent-color;
+//   border-radius: 7px;
+//   font-size: 20px;
+//   margin-top: 5%;
+//   padding: 1%;
+//   width: 215px;
+// }
 
 
 /*~~~~~~~~~~~~ Header ~~~~~~~~~~~*/
@@ -79,7 +79,7 @@ main {
     margin-bottom: 7%;
     padding-top: 0;
     padding-bottom: 5%;
-    @media screen and (min-width: 812px) {
+    @media screen and (max-width: 812px) {
         img {
             width: 75%;
         }
@@ -127,6 +127,9 @@ img {
   display: grid;
   grid-template-columns: repeat(3, 33%);
   grid-column-gap: 20px;
+  @media screen and (max-width: 1370px) {
+    grid-template-columns: repeat(2, 50%);
+  }
 }
 
 .room-card, .room-card-details, .customer-account {
