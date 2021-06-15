@@ -48,6 +48,4 @@ function getData() {
     return Promise.all([fetchRequests.getCustomerData(), fetchRequests.getBookingsData(), fetchRequests.getRoomsData()])
 }
 
-// Does checkForError need to be exported?
-
 export default { retrieveData, updateData, checkForError, fetchRequests, getData };

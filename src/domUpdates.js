@@ -13,8 +13,12 @@ let domUpdates = {
 
      displayMainPage() {
        document.getElementById('loginPage').classList.add('hidden');
+       document.getElementById('headerGreeting').classList.remove('hidden');
+       document.getElementById('mainElement').classList.add('hide-background-image');
        resortCard.classList.remove('hidden');
        allRoomCards.classList.remove('hidden');
+
+
      },
 
     clearAllRoomCards() {
@@ -205,7 +209,11 @@ let domUpdates = {
     // },
 
     displayLoginErrorMessage(errorDetails) {
-      console.log("Login Error");
+      if (errorDetails === 'wrong credentials') {
+      console.log("Login Error 92");
+      } else if (errorDetails === 'Incorrect username or password') {
+      console.log('Login Error 107');
+      }
     }
 }
 

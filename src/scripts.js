@@ -65,10 +65,10 @@ window.onload = onStartUp()
 function onStartUp() {
     apiCalls.getData()
         .then((promise) => {
-            customer = new Customer(promise[0].customers[(Math.floor(Math.random() * promise[0].customers.length) + 1)]);
+            // customer = new Customer(promise[0].customers[(Math.floor(Math.random() * promise[0].customers.length) + 1)]);
             hotel = new Hotel(promise[2].rooms, promise[1].bookings, promise[0].customers);
             findRoomAvailability();
-            domUpdates.greetCustomer(customer.name);
+            // domUpdates.greetCustomer(customer.name);
         })
 };
 
@@ -86,8 +86,10 @@ function evaluateLoginInputValues() {
 }
 
 function parseLoginInput(usernameEntered, passwordEntered) {
-  if (passwordEntered.length === 10) {
-    let customerID = parseInt(usernameEntered.slice(-2));
+  let customerID;
+  if (usernameEntered.length === 10) {
+    console.log("GET HERE");
+    customerID = parseInt(usernameEntered.slice(-2));
   } else {
     let errorDetails = 'wrong credentials';
     domUpdates.displayLoginErrorMessage(errorDetails);
@@ -100,12 +102,18 @@ function parseLoginInput(usernameEntered, passwordEntered) {
 function evaluateAgainstCorrectCredentials(customerID, splitCustomerID, passwordEntered) {
   let correctUsername = `customer${customerID}` ;
   let correctPassword = 'overlook2021';
-  let foundGuestID = hotel.allGuests.find(guest => guest.id === customerID).id;
-  if (passwordEntered !== correctPassword || !foundGuestID || splitCustomerID[0] !== 'customer') {
+  let foundGuest = hotel.allGuests.find(guest => guest.id === customerID);
+  if (passwordEntered !== correctPassword || !foundGuest || splitCustomerID[0] !== 'customer') {
+    let errorDetails = 'Incorrect username or password'
     domUpdates.displayLoginErrorMessage(errorDetails);
   } else {
+    findCorrectCustomer(customerID, foundGuest);
     domUpdates.displayMainPage();
   }
+}
+
+function findCorrectCustomer(customerID, foundGuest) {
+  customer = new Customer(foundGuest);
 }
 
 function evaluateHeaderButton(event) {
