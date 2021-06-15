@@ -54,6 +54,7 @@
   background-color: $primary-background;
   border: none;
   border-radius: 50%;
+  color: $primary-text-color;
   display: inline;
   height: 90%;
   padding: 7%;
@@ -82,7 +83,7 @@
     border-radius: $primary-border-radius;
     color: $primary-text-color;
     margin-bottom: 7%;
-    padding-top: 0;
+    padding-top: 10%;
     padding-bottom: 5%;
     @media screen and (max-width: 812px) {
         img {
@@ -190,7 +191,7 @@ img {
 }
 
 // This all could be a mixin
-.treehouse-details, .book-treehouse-btn, .return-home {
+.treehouse-details-btn, .book-treehouse-btn, .return-home {
     background-color: $primary-accent-color;
     border-radius: 15px;
     font-size: 20px;

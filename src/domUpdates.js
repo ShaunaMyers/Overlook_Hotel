@@ -46,7 +46,7 @@ let domUpdates = {
         <img src="${roomImage}"
           alt="gorgeous airy well lit treehouse room with a rainforest view">
         <h2 class="treehouse-name" id="treehouseName">${roomName}</h2>
-        <button class="treehouse-details" id="treehouseDetails">Treehouse Details</button>
+        <button class="treehouse-details-btn">Treehouse Details</button>
       </section>
       `)
     },
