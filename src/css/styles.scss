@@ -1,8 +1,32 @@
+/*~~~~~~~~~~~~ Login Page ~~~~~~~~~~~*/
+
 main {
   background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://thepointsguy.com/wp-content/uploads/2017/06/Upper-Pond-Exterior-e1498727801692.jpg');
-  height: 100vh;
-  background-size: cover;
   background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.login-container {
+  color: $primary-text-color;
+  font-size: 25px;
+  margin: auto;
+  padding: 10% 0 0;
+  text-align: center;
+  width: 500px;
+}
+
+.login-form {
+  @include display(flex, column, center, space-around);
+}
+
+.login-button {
+  background-color: $primary-accent-color;
+  border-radius: 7px;
+  font-size: 20px;
+  margin-top: 5%;
+  padding: 1%;
+  width: 215px;
 }
 
 
