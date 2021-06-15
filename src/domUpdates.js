@@ -6,6 +6,7 @@ let cardBedSize = document.getElementById('bedSize');
 let numberBeds = document.getElementById('numberBeds');
 let cardRoomType = document.getElementById('roomType');
 let roomPrice = document.getElementById('roomPrice');
+let roomSelections = document.getElementById('roomSelections');
 
 
 let domUpdates = {
@@ -181,7 +182,9 @@ let domUpdates = {
     },
 
     displayErrorMessage(message) {
-      // insert message into innerHTML
+      if (message === 'Please enter a date so you can claim a dream tree as your own.') {
+        roomSelections.insertAdjacentHTML(`afterend`, `${message}`);
+      }
       console.log('HEYOOOO');
     }
 

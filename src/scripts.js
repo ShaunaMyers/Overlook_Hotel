@@ -169,8 +169,8 @@ function getRoomDetails(event) {
 function evaluateBookingDate(event) {
   if (event.target.closest('button').id === 'bookTreehouseBtn') {
     if (!bookTreehouseInput.value) {
-      let message = 'Please enter a date so you can claim a dream tree as your own.'
-      domUpdates.displayErrorMessage(message);
+      let dateMessage = 'Please enter a date so you can claim a dream tree as your own.'
+      domUpdates.displayErrorMessage(dateMessage);
     } else {
       let bookingDate = bookTreeHouseInput.value;
       console.log('book treehouse date', bookingDate);
