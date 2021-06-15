@@ -24,23 +24,22 @@ let bookTreehouseBtn = document.getElementById('bookTreehouseBtn');
 let bookTreehouseInput = document.getElementById('chosenDate');
 let header = document.getElementById('headerGreeting');
 let loginBtn = document.getElementById('loginBtn');
+let passwordInput = document.getElementById('password');
 let resortCard = document.getElementById('resortCard');
 let roomCardDetails = document.getElementById('roomCardDetails');
 let searchByDateField = document.getElementById('searchByDate');
 let usernameInput = document.getElementById('username');
-let passwordInput = document.getElementById('password');
 
 let customer, hotel;
 let customerSearch = {};
 
 // event listeners
 
-loginBtn.addEventListener('click', evaluateLoginCredentials);
+loginBtn.addEventListener('click', evaluateLoginInputValues);
 
 header.addEventListener('click', function() {
   evaluateHeaderButton(event);
 });
-
 
 allRoomCards.addEventListener('click', function(event) {
   getRoomDetails(event);
@@ -73,19 +72,42 @@ function onStartUp() {
         })
 };
 
+function evaluateLoginInputValues() {
+  let usernameEntered = usernameInput.value;
+  let passwordEntered = passwordInput.value;
+  if (!usernameEntered || !passwordEntered) {
+    // This is to evaluate in domUpdates
+    let errorDetails = 'empty fields';
+    domUpdates.displayLoginErrorMessage(errorDetails);
+  } else {
+    evaluateLoginCredentials(usernameEntered, passwordEntered);
+  }
+}
+
+function evaluateLoginCredentials(usernameEntered, passwordEntered) {
+  let customerID = usernameEntered.slice(-2);
+  let splitCustomerID = usernameEntered.split(customerID)
+  console.log('split customer ID', splitCustomerID);
+  let correctUsername = `customer${customerID}` ;
+  let correctPassword = 'overlook2021';
+  if (passwordEntered !== correctPassword ) {
+    console.log("WRONG!");
+  }
+}
+
 function evaluateHeaderButton(event) {
   if (event.target.closest('button').id === 'userImgBtn') {
     domUpdates.displayUserAccount(customer, hotel)
   } else if (event.target.closest('button').id === 'returnHome'){
     domUpdates.returnToHomeView(customer.name);
   }
-}
+};
 
 function evaluateDateforAllRooms(value) {
     let searchedDate = [value.slice(0, 4), value.slice(5, 7), value.slice(8)].join('/');
     customerSearch = { date: searchedDate }
     findRoomAvailability();
-}
+};
 
 function findRoomAvailability() {
   let roomsAvailable;
@@ -98,7 +120,7 @@ function findRoomAvailability() {
   }
 
   typeof roomsAvailable === 'string' ? domUpdates.displayErrorMessage(roomsAvailable) : assignRoomDetails(roomsAvailable);
-}
+};
 
 function assignRoomDetails(roomsAvailable) {
   domUpdates.clearAllRoomCards();
@@ -108,7 +130,7 @@ function assignRoomDetails(roomsAvailable) {
     let roomNumber = room.number;
     domUpdates.displayAvailableRooms(roomImage, roomName, roomNumber);
   })
-}
+};
 
 function findRoomImage(roomType) {
    if (roomType === 'single room') {
@@ -120,7 +142,7 @@ function findRoomImage(roomType) {
    } else {
      return './images/junior-suite1.jpg'
    }
-}
+};
 
 function findRoomName(roomNumber) {
   if ( [1, 12, 21].includes(roomNumber)) {
@@ -136,7 +158,7 @@ function findRoomName(roomNumber) {
   } else  {
     return "Heavenly Hideaway"
   }
-}
+};
 
 
 function evaluateBoxChecked(event) {
@@ -153,7 +175,7 @@ function evaluateBoxChecked(event) {
     customerSearch.roomType = 'single room';
     findRoomAvailability();
   }
-}
+};
 
 function getRoomDetails(event) {
   let roomNumber = parseInt(event.target.closest('section').id);
@@ -167,8 +189,7 @@ function getRoomDetails(event) {
   let allDetails = { roomNumber, roomImage, roomName, bedSize, numBeds, roomType, roomCost }
   domUpdates.displayTreehouseDetails(allDetails);
   customer.updateCurrentRoomSearched(roomNumber);
-}
-
+};
 
 function evaluateBookingDate(event) {
   if (event.target.closest('button').id === 'bookTreehouseBtn') {
@@ -182,9 +203,9 @@ function evaluateBookingDate(event) {
       sendBookingPostRequest(bookingDate);
     }
   }
-}
+};
 
 function sendBookingPostRequest(bookingDate) {
   let roomNumber = parseInt(customer.currentRoomSearched);
   apiCalls.fetchRequests.updateBookingsData({ "userID": customer.id, "date": bookingDate, "roomNumber": roomNumber })
-}
+};
