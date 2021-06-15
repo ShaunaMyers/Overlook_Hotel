@@ -86,16 +86,25 @@ function evaluateLoginInputValues() {
 }
 
 function parseLoginInput(usernameEntered, passwordEntered) {
-  let customerID = parseInt(usernameEntered.slice(-2));
+  if (passwordEntered.length === 10) {
+    let customerID = parseInt(usernameEntered.slice(-2));
+  } else {
+    let errorDetails = 'wrong credentials';
+    domUpdates.displayLoginErrorMessage(errorDetails);
+    return;
+  }
   let splitCustomerID = usernameEntered.split(customerID)
   evaluateAgainstCorrectCredentials(customerID, splitCustomerID, passwordEntered)
 }
 
 function evaluateAgainstCorrectCredentials(customerID, splitCustomerID, passwordEntered) {
   let correctUsername = `customer${customerID}` ;
-  let correctPassword = 'overlook2021'
-  if (passwordEntered !== correctPassword) {
+  let correctPassword = 'overlook2021';
+  let foundGuestID = hotel.allGuests.find(guest => guest.id === customerID).id;
+  if (passwordEntered !== correctPassword || !foundGuestID || splitCustomerID[0] !== 'customer') {
     domUpdates.displayLoginErrorMessage(errorDetails);
+  } else {
+    console.log("You Exist!");
   }
 }
 

@@ -192,10 +192,14 @@ let domUpdates = {
       console.log('HEYOOOO');
     },
 
-    clearErrorMessage() {
-      // This isn't working... WHYYYYYY
-      console.log('SAY WHAT');
-      document.getElementById('errorMessage2').classList.remove('hidden');
+    // clearErrorMessage() {
+    //   // This isn't working... WHYYYYYY
+    //   console.log('SAY WHAT');
+    //   document.getElementById('errorMessage2').classList.remove('hidden');
+    // },
+
+    displayLoginErrorMessage(errorDetails) {
+      console.log("Login Error");
     }
 }
 
