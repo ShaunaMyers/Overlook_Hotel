@@ -11,6 +11,12 @@ let roomSelections = document.getElementById('roomSelections');
 
 let domUpdates = {
 
+     displayMainPage() {
+       document.getElementById('loginPage').classList.add('hidden');
+       resortCard.classList.remove('hidden');
+       allRoomCards.classList.remove('hidden');
+     },
+
     clearAllRoomCards() {
       allRoomCards.innerHTML = ' ';
     },

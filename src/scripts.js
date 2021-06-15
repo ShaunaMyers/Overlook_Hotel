@@ -104,7 +104,7 @@ function evaluateAgainstCorrectCredentials(customerID, splitCustomerID, password
   if (passwordEntered !== correctPassword || !foundGuestID || splitCustomerID[0] !== 'customer') {
     domUpdates.displayLoginErrorMessage(errorDetails);
   } else {
-    console.log("You Exist!");
+    domUpdates.displayMainPage();
   }
 }
 
