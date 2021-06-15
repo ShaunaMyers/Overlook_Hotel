@@ -178,22 +178,25 @@ let domUpdates = {
     },
 
     displayBookingMessage(event) {
-
+      console.log("WHYYYYYY");
+      // formBtnSection.innerHTML = `
+      // <p>Congratulations, you have booked this
+      // treehouse. We look forward to your stay!</p>
+      // `;
     },
 
     displayErrorMessage(message) {
       if (message === 'Please enter a date so you can claim a dream tree as your own.') {
-        roomSelections.insertAdjacentHTML(`afterend`, `${message}`);
+        document.getElementById('errorMessage2').classList.remove('hidden');
       }
       console.log('HEYOOOO');
+    },
+
+    clearErrorMessage() {
+      // This isn't working... WHYYYYYY?????
+      console.log('SAY WHAT');
+      document.getElementById('errorMessage2').classList.remove('hidden');
     }
-
-    // changeHiddenViews() {
-    //   for (var i = 0; i < arguments.length; i++) {
-    //     arguments[i].classList.toggle('hidden');
-    //   }
-    // }
-
 }
 
 export default domUpdates;

@@ -55,8 +55,11 @@ resortCard.addEventListener('change', function(event) {
 
 bookTreehouseBtn.addEventListener('click', function(event) {
   evaluateBookingDate(event);
-  // sendBookingPostRequest(event);
-})
+});
+
+bookTreehouseInput.addEventListener('change', function() {
+  domUpdates.clearErrorMessage();
+});
 
 window.onload = onStartUp()
 
@@ -164,6 +167,10 @@ function getRoomDetails(event) {
   domUpdates.displayTreehouseDetails({roomImage, roomName, bedSize, numBeds, roomType, roomCost});
 }
 
+// function saveInputDate () {
+//   console.log('input value', bookTreehouseInput.value);
+// }
+
 // Work on this function later
 // Event is bubbling up and return view to homepage
 function evaluateBookingDate(event) {
@@ -172,7 +179,8 @@ function evaluateBookingDate(event) {
       let dateMessage = 'Please enter a date so you can claim a dream tree as your own.'
       domUpdates.displayErrorMessage(dateMessage);
     } else {
-      let bookingDate = bookTreeHouseInput.value;
+      let dateUnedited = bookTreehouseInput.value;
+      let bookingDate = [dateUnedited.slice(0, 4), dateUnedited.slice(5, 7), dateUnedited.slice(8)].join('/');
       console.log('book treehouse date', bookingDate);
       domUpdates.displayBookingMessage(event);
     }
