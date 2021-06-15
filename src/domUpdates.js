@@ -176,7 +176,12 @@ let domUpdates = {
 
     },
 
-    displayErrorMessage() {
+    displayBookingMessage(event) {
+
+    },
+
+    displayErrorMessage(message) {
+      // insert message into innerHTML
       console.log('HEYOOOO');
     }
 

@@ -27,7 +27,9 @@ let allRoomCards = document.querySelector('#allRoomCards');
 let searchByDateField = document.querySelector('#searchByDate');
 let roomCardDetails = document.querySelector('#roomCardDetails');
 let header = document.getElementById('headerGreeting');
-let resortCard = document.getElementById('resortCard')
+let resortCard = document.getElementById('resortCard');
+let bookTreehouseBtn = document.getElementById('bookTreehouseBtn');
+let bookTreehouseInput = document.getElementById('chosenDate');
 
 let customer, hotel;
 let customerSearch = {};
@@ -43,12 +45,17 @@ allRoomCards.addEventListener('click', function(event) {
 });
 
 searchByDateField.addEventListener('change', function () {
-        evaluateDateChosen(searchByDate.value);
+        evaluateDateforAllRooms(searchByDate.value);
         domUpdates.displayFilterSelections();
 });
 
 resortCard.addEventListener('change', function(event) {
     evaluateBoxChecked(event);
+});
+
+bookTreehouseBtn.addEventListener('click', function(event) {
+  evaluateBookingDate(event);
+  // sendBookingPostRequest(event);
 })
 
 window.onload = onStartUp()
@@ -72,7 +79,7 @@ function evaluateHeaderButton(event) {
   }
 }
 
-function evaluateDateChosen(value) {
+function evaluateDateforAllRooms(value) {
     let searchedDate = [value.slice(0, 4), value.slice(5, 7), value.slice(8)].join('/');
     customerSearch = { date: searchedDate }
     findRoomAvailability();
@@ -88,7 +95,7 @@ function findRoomAvailability() {
     roomsAvailable = hotel.allRooms;
   }
 
-  typeof roomsAvailable === 'string' ? domUpdates.displayErrorMessage() : assignRoomDetails(roomsAvailable);
+  typeof roomsAvailable === 'string' ? domUpdates.displayErrorMessage(roomsAvailable) : assignRoomDetails(roomsAvailable);
 }
 
 function assignRoomDetails(roomsAvailable) {
@@ -157,4 +164,11 @@ function getRoomDetails(event) {
   let numBeds = foundRoom.numBeds;
   let roomCost = foundRoom.costPerNight;
   domUpdates.displayTreehouseDetails({roomImage, roomName, bedSize, numBeds, roomType, roomCost});
+}
+
+function evaluateBookingDate() {
+  if (!bookTreehouseInput.value) {
+    let message = 'Please enter a date so you can claim a dream tree as your own.'
+    domUpdates.displayErrorMessage(message);
+  }
 }
