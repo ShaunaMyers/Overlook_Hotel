@@ -91,6 +91,12 @@ describe('Customer Class', () => {
       customer1.returnAllBookings(hotel);
 
       expect(customer1.totalSpent).to.equal(491.14)
+    });
+
+    it.only('Should be able to keep track of the current room the customer is looking at booking', () => {
+      customer2.updateCurrentRoomSearched(24);
+
+      expect(customer2.currentRoomSearched).to.equal(24);
     })
 
 })
