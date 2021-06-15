@@ -1,7 +1,3 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/index.scss';
 import dayjs from 'dayjs';
 import apiCalls from './apiCalls';
@@ -9,8 +5,6 @@ import Customer from './Classes/Customer';
 import Hotel from './Classes/Hotel';
 import domUpdates from './domUpdates';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png';
 import './images/mouldy-mango-resort.jpg';
 import './images/queen-room2.jpg';
 import './images/right-arrow.svg';
@@ -23,14 +17,18 @@ import './images/bed.svg';
 import './images/user-account.svg';
 
 // variables
+
 let allRoomCards = document.querySelector('#allRoomCards');
 let searchByDateField = document.querySelector('#searchByDate');
 let roomCardDetails = document.querySelector('#roomCardDetails');
 let header = document.getElementById('headerGreeting');
-let resortCard = document.getElementById('resortCard')
+let resortCard = document.getElementById('resortCard');
+let bookTreehouseBtn = document.getElementById('bookTreehouseBtn');
+let bookTreehouseInput = document.getElementById('chosenDate');
 
 let customer, hotel;
 let customerSearch = {};
+
 // event listeners
 
 header.addEventListener('click', function() {
@@ -43,13 +41,19 @@ allRoomCards.addEventListener('click', function(event) {
 });
 
 searchByDateField.addEventListener('change', function () {
-        evaluateDateChosen(searchByDate.value);
+        evaluateDateforAllRooms(searchByDate.value);
         domUpdates.displayFilterSelections();
 });
 
 resortCard.addEventListener('change', function(event) {
     evaluateBoxChecked(event);
-})
+});
+
+bookTreehouseBtn.addEventListener('click', function(event) {
+  evaluateBookingDate(event);
+});
+
+// Functions
 
 window.onload = onStartUp()
 
@@ -60,7 +64,6 @@ function onStartUp() {
             hotel = new Hotel(promise[2].rooms, promise[1].bookings, promise[0].customers);
             findRoomAvailability();
             domUpdates.greetCustomer(customer.name);
-            // console.log('before', hotel.roomsAvailable);
         })
 };
 
@@ -72,7 +75,7 @@ function evaluateHeaderButton(event) {
   }
 }
 
-function evaluateDateChosen(value) {
+function evaluateDateforAllRooms(value) {
     let searchedDate = [value.slice(0, 4), value.slice(5, 7), value.slice(8)].join('/');
     customerSearch = { date: searchedDate }
     findRoomAvailability();
@@ -88,12 +91,10 @@ function findRoomAvailability() {
     roomsAvailable = hotel.allRooms;
   }
 
-  typeof roomsAvailable === 'string' ? domUpdates.displayErrorMessage() : assignRoomDetails(roomsAvailable);
-  console.log('what rooms are available', hotel.roomsAvailable);
+  typeof roomsAvailable === 'string' ? domUpdates.displayErrorMessage(roomsAvailable) : assignRoomDetails(roomsAvailable);
 }
 
 function assignRoomDetails(roomsAvailable) {
-  console.log('Do we get here?');
   domUpdates.clearAllRoomCards();
   roomsAvailable.forEach(room => {
     let roomImage = findRoomImage(room.roomType);
@@ -147,12 +148,37 @@ function evaluateBoxChecked(event) {
     findRoomAvailability();
   }
 }
-// Move a lot of this to the dom
+
 function getRoomDetails(event) {
-  // domUpdates.displaySelectedRoomCard();
-  if (event.target.closest('button'). id === 'treehouseDetails') {
-    allRoomCards.classList.add('hidden');
-    roomCardDetails.classList.remove('hidden');
-    domUpdates.displayTreehouseDetails();
+  let roomNumber = parseInt(event.target.closest('section').id);
+  let foundRoom = hotel.allRooms.find(room => room.number === roomNumber);
+  let roomType = foundRoom.roomType;
+  let roomImage = findRoomImage(roomType);
+  let roomName = findRoomName(roomNumber);
+  let bedSize = foundRoom.bedSize;
+  let numBeds = foundRoom.numBeds;
+  let roomCost = foundRoom.costPerNight;
+  let allDetails = { roomNumber, roomImage, roomName, bedSize, numBeds, roomType, roomCost }
+  domUpdates.displayTreehouseDetails(allDetails);
+  customer.updateCurrentRoomSearched(roomNumber);
+}
+
+
+function evaluateBookingDate(event) {
+  if (event.target.closest('button').id === 'bookTreehouseBtn') {
+    if (!bookTreehouseInput.value) {
+      let dateMessage = 'Please enter a date so you can claim a dream tree as your own.'
+      domUpdates.displayErrorMessage(dateMessage);
+    } else {
+      let dateUnedited = bookTreehouseInput.value;
+      let bookingDate = [dateUnedited.slice(0, 4), dateUnedited.slice(5, 7), dateUnedited.slice(8)].join('/');
+      domUpdates.displayBookingMessage(event);
+      sendBookingPostRequest(bookingDate);
+    }
   }
+}
+
+function sendBookingPostRequest(bookingDate) {
+  let roomNumber = parseInt(customer.currentRoomSearched);
+  apiCalls.fetchRequests.updateBookingsData({ "userID": customer.id, "date": bookingDate, "roomNumber": roomNumber })
 }

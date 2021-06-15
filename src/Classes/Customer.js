@@ -8,6 +8,7 @@ class Customer {
         this.completedBookings = [];
         this.currentBookings = [];
         this.upcomingBookings = [];
+        this.currentRoomSearched = null;
     }
 
     // addToCurrentBookings(booking) {
@@ -58,6 +59,9 @@ class Customer {
     //     let currentBookingIndex = this.upcomingBookings.indexOf(booking);
     //     this.upcomingBookings.splice(currentBookingIndex, 1);
     // }
+    updateCurrentRoomSearched(roomNumber) {
+      this.currentRoomSearched = roomNumber;
+    }
 
     addToTotalSpent(hotel) {
       let totalCost = 0

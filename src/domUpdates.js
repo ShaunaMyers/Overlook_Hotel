@@ -1,8 +1,13 @@
 
-let greetingContainer = document.querySelector('#greetingContainer');
-// let greetingContainer = document.querySelector('#greetingContainer');
-// let userAccountContainer = document.querySelector('#userAccountContainer');
-// let headerGreeting = document.querySelector('#headerGreeting');
+let customerAccountInfo = document.getElementById('customerAccount');
+let greetingContainer = document.getElementById('greetingContainer');
+let treeHouseName = document.getElementById('treeHouseName');
+let cardBedSize = document.getElementById('bedSize');
+let numberBeds = document.getElementById('numberBeds');
+let cardRoomType = document.getElementById('roomType');
+let roomPrice = document.getElementById('roomPrice');
+let roomSelections = document.getElementById('roomSelections');
+
 
 let domUpdates = {
 
@@ -77,7 +82,6 @@ let domUpdates = {
     },
 
     displayTotalSpent(customer) {
-      let customerAccountInfo = document.getElementById('customerAccount');
       customerAccountInfo.classList.toggle('hidden');
       customerAccountInfo.innerHTML += `
       <p>Total Spent: $${customer.returnTotalSpent().toFixed(2)}</p>
@@ -86,8 +90,6 @@ let domUpdates = {
     },
 
     displayUpcomingBookings(upcomingBookings, hotel) {
-      let customerAccountInfo = document.getElementById('customerAccount');
-
       customerAccountInfo.innerHTML += `<h4>Your Upcoming Bookings</h4>`;
       if (!upcomingBookings.length) {
          customerAccountInfo.innerHTML += `<h5>You have no upcoming bookings. Time to make a reservation!</h5>`;
@@ -105,8 +107,6 @@ let domUpdates = {
     },
 
     displayCurrentBookings(currentBookings, hotel) {
-      let customerAccountInfo = document.getElementById('customerAccount');
-
       customerAccountInfo.innerHTML += `<h4>Your Current Bookings</h4>`;
       currentBookings.forEach(booking => {
         customerAccountInfo.innerHTML += `
@@ -120,8 +120,6 @@ let domUpdates = {
     },
 
     displayCompletedBookings(completedBookings, hotel) {
-      let customerAccountInfo = document.getElementById('customerAccount');
-
       customerAccountInfo.innerHTML += `<h4>Your Completed Bookings</h4>`;
       completedBookings.forEach(booking => {
         customerAccountInfo.innerHTML += `
@@ -143,7 +141,6 @@ let domUpdates = {
     },
 
     displayFilterSelections() {
-      let resortCard = document.getElementById('resortCard');
       resortCard.innerHTML += `<p class="room-type-heading">Filter Results By Room Type</p>
       <section class="filter-rooms-choices" id="filterRoomsChoices">
           <div class="checkboxes">
@@ -162,20 +159,44 @@ let domUpdates = {
       `
     },
 
-    displayTreehouseDetails() {
-      console.log("HI");
+    displayTreehouseDetails(roomDetails) {
+      let { roomImage, roomName, bedSize, numBeds, roomType, roomCost } = roomDetails
+      allRoomCards.classList.add('hidden');
+      roomCardDetails.classList.remove('hidden');
+      document.getElementById('innerRoomCardDetails').insertAdjacentHTML(`afterbegin`,
+      `
+      <img src="${roomImage}"
+        alt="gorgeous airy well lit treehouse room with 2 queen beds and a view of the ocean">
+      `);
+      treeHouseName.innerText = roomName;
+      cardBedSize.innerText = bedSize;
+      numberBeds.innerText = numBeds;
+      cardRoomType.innerText = roomType;
+      roomPrice.innerText = roomCost;
+
+
     },
 
-    displayErrorMessage() {
+    displayBookingMessage(event) {
+      console.log("WHYYYYYY");
+      // formBtnSection.innerHTML = `
+      // <p>Congratulations, you have booked this
+      // treehouse. We look forward to your stay!</p>
+      // `;
+    },
+
+    displayErrorMessage(message) {
+      if (message === 'Please enter a date so you can claim a dream tree as your own.') {
+        document.getElementById('errorMessage2').classList.remove('hidden');
+      }
       console.log('HEYOOOO');
+    },
+
+    clearErrorMessage() {
+      // This isn't working... WHYYYYYY
+      console.log('SAY WHAT');
+      document.getElementById('errorMessage2').classList.remove('hidden');
     }
-
-    // changeHiddenViews() {
-    //   for (var i = 0; i < arguments.length; i++) {
-    //     arguments[i].classList.toggle('hidden');
-    //   }
-    // }
-
 }
 
 export default domUpdates;

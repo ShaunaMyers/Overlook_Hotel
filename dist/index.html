@@ -45,38 +45,33 @@
 
 
     <article class="room-card-details hidden" id="roomCardDetails">
-      <section>
-        <img src="./images/queen-room2.jpg"
-          alt="gorgeous airy well lit treehouse room with 2 queen beds and a view of the ocean">
+      <section id="innerRoomCardDetails">
         <button class="left-arrow-btn" id="leftArrowBtn">
           <img src="./images/left-arrow.svg"
             alt="left arrow image implying that you will navigate back to the screen you were previously on">
         </button>
       </section>
-      <h2 class="treehouse-name">Wind Kissed Nest</h2>
+      <h2 class="treehouse-name" id="treeHouseName">Wind Kissed Nest</h2>
         <div class="bed-details">
           <img id="bedImg" src="./images/bed.svg" alt="image of a bed">
           <p class="room-details bed-size" id="bedSize">Queen</p>
           <p class="room-details number-beds" id="numberBeds">2</p>
         </div>
         <p class="room-type" id="roomType">Residential Suite</p>
-      <section class="room-selections">
+      <section class="room-selections" id="roomSelections">
         <p class="cost-per-night" id="costPerNight"><span class="room-price" id="roomPrice">$362</span> per night</p>
-        <form>
-          <label for="bookTreehouseBtn">Please enter your desired check-in date</label><br>
-          <input type="date" id="chosenDate" placeholder="MM/DD/YY"><br>
-          <input class="book-treehouse-btn" id="bookTreehouseBtn" type="submit" value="Book This Treehouse">
-        </form>
+          <form>
+            <label for="bookTreehouseBtn">Please enter your desired check-in date</label><br>
+            <input type="date" id="chosenDate" placeholder="MM/DD/YY"><br>
+            <button class="book-treehouse-btn" id="bookTreehouseBtn" type="button" name="button">Book This Treehouse</button>
+          </form>
+        <div class="hidden" id="errorMessage2">
+          <p>Please enter a date so you can claim a dream tree as your own</p>
+        </div>
       </section>
     </article>
-
-
     <section class="customer-account hidden" id="customerAccount">
     </section>
-
-
-
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
 </body>
 
