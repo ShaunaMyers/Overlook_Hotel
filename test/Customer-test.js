@@ -53,67 +53,6 @@ describe('Customer Class', () => {
         expect(customer2.completedBookings).to.eql([]);
     });
 
-    it('Should contain a method that adds a booking to currentBookings', () => {
-        customer1.addToCurrentBookings(sampleBookingsData[0]);
-        customer2.addToCurrentBookings(sampleBookingsData[4]);
-        expect(customer1.currentBookings).to.eql([sampleBookingsData[0]]);
-        expect(customer2.currentBookings).to.eql([sampleBookingsData[4]])
-    });
-
-
-    it('Should not be able to add the same booking more than once', () => {
-        customer1.addToCurrentBookings(sampleBookingsData[0]);
-        customer1.addToCurrentBookings(sampleBookingsData[0]);
-        expect(customer1.currentBookings).to.eql([sampleBookingsData[0]])
-    });
-
-    it('Should contain a method that adds a booking to completed bookings', () => {
-        customer1.addToCompletedBookings(sampleBookingsData[0], sampleRoomsData[4]);
-        customer2.addToCompletedBookings(sampleBookingsData[4], sampleRoomsData[2]);
-        expect(customer1.completedBookings).to.eql([sampleBookingsData[0]]);
-        expect(customer2.completedBookings).to.eql([sampleBookingsData[4]]);
-    });
-
-    it('Should not be able to complete the same booking more than once', () => {
-        customer1.addToCompletedBookings(sampleBookingsData[0], sampleRoomsData[4]);
-        customer1.addToCompletedBookings(sampleBookingsData[0], sampleRoomsData[4]);
-        expect(customer1.completedBookings).to.eql([sampleBookingsData[0]]);
-    });
-
-    it('Should remove the booking from current bookings when it is added to completed bookings', () => {
-        customer1.addToCurrentBookings(sampleBookingsData[0]);
-        customer1.addToCurrentBookings(sampleBookingsData[4]);
-        customer1.addToCompletedBookings(sampleBookingsData[0], sampleRoomsData[4])
-        expect(customer1.currentBookings).to.eql([sampleBookingsData[4]]);
-    });
-
-    it('Should add the current booking\'s room cost per night to the customer\'s total spent property', () => {
-        customer1.addToCompletedBookings(sampleBookingsData[0], sampleRoomsData[4]);
-        customer2.addToCompletedBookings(sampleBookingsData[4], sampleRoomsData[2]);
-        expect(customer1.totalSpent).to.equal(340.17);
-        expect(customer2.totalSpent).to.equal(491.14);
-    });
-
-    it('Should contain a method that adds a booking to upcoming bookings', () => {
-        customer1.addToUpcomingBookings(sampleBookingsData[0]);
-        customer2.addToUpcomingBookings(sampleBookingsData[4]);
-        expect(customer1.upcomingBookings).to.eql([sampleBookingsData[0]]);
-        expect(customer2.upcomingBookings).to.eql([sampleBookingsData[4]])
-    });
-
-    it('Should not be able to add the same upcoming booking more than once', () => {
-        customer1.addToUpcomingBookings(sampleBookingsData[0]);
-        customer1.addToUpcomingBookings(sampleBookingsData[0]);
-        expect(customer1.upcomingBookings).to.eql([sampleBookingsData[0]])
-    });
-
-    it('Should remove the booking from upcoming bookings when it is added to current bookings', () => {
-        customer1.addToUpcomingBookings(sampleBookingsData[0]);
-        customer1.addToUpcomingBookings(sampleBookingsData[4]);
-        customer1.addToCurrentBookings(sampleBookingsData[0], sampleRoomsData[4])
-        expect(customer1.upcomingBookings).to.eql([sampleBookingsData[4]]);
-    });
-
     it('Should return all bookings from the past, present, and future', () => {
         customer1.addToCompletedBookings(sampleBookingsData[0], sampleRoomsData[4]);
         customer1.addToCurrentBookings(sampleBookingsData[2]);

@@ -11,25 +11,6 @@ class Customer {
         this.currentRoomSearched = null;
     }
 
-    // addToCurrentBookings(booking) {
-    //     !this.currentBookings.includes(booking) && this.currentBookings.push(booking);
-    //     if (this.upcomingBookings.includes(booking)) {
-    //         this.removeFromUpcomingBookings(booking);
-    //     }
-    // }
-
-    // addToCompletedBookings(booking, room) {
-    //     !this.completedBookings.includes(booking) && this.completedBookings.push(booking);
-    //     this.removeFromCurrentBookings(booking);
-    //     this.addToTotalSpent(room);
-    // }
-
-    // addToUpcomingBookings(booking) {
-    //     // console.log("BOOKING PASSED IN", booking);
-    //     !this.upcomingBookings.includes(booking) && this.upcomingBookings.push(booking);
-    //     // console.log("UPCOMING BOOKINGS", this.upcomingBookings);
-    // }
-
     returnAllBookings(hotel) {
       let customerBookings = hotel.allReservations.filter(booking => booking.userID === this.id);
       let today = dayjs();
