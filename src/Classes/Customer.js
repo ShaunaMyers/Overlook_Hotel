@@ -2,7 +2,6 @@ import dayjs from 'dayjs';
 
 class Customer {
     constructor(customerDetails) {
-        console.log("Customer Details", customerDetails);
         this.id = customerDetails.id;
         this.name = customerDetails.name;
         this.totalSpent = 0;
@@ -45,7 +44,7 @@ class Customer {
         }
       })
 
-      this.addToTotalSpent(hotel.allRooms);
+      this.addToTotalSpent(hotel);
 
       return { completedBookings: this.completedBookings, currentBookings: this.currentBookings, upcomingBookings: this.upcomingBookings };
     }
@@ -60,15 +59,11 @@ class Customer {
     //     this.upcomingBookings.splice(currentBookingIndex, 1);
     // }
 
-    addToTotalSpent(rooms) {
-      let totalCost = rooms.reduce((sum, room) => {
+    addToTotalSpent(hotel) {
+      let totalCost = 0
         this.completedBookings.forEach(booking => {
-          if (booking.roomNumber === room.number) {
-            sum += room.costPerNight;
-          }
+            totalCost += hotel.returnPriceOfRoom(booking.roomNumber);
         })
-        return sum;
-      }, 0);
 
       this.totalSpent = totalCost;
     }

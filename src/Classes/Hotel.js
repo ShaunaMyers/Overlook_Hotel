@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 class Hotel {
     constructor(rooms, bookings, guests) {
         this.allRooms = rooms;
@@ -10,41 +12,51 @@ class Hotel {
         this.totalRevenue = 0;
     }
 
+    //
+    // addToUpcomingReservations(booking) {
+    //     this.upcomingReservations.push(booking);
+    // }
+    //
+    // addToCurrentReservations(booking) {
+    //     this.currentReservations.push(booking);
+    //     if (this.upcomingReservations.includes(booking)) {
+    //         let bookingIndex = this.upcomingReservations.indexOf(booking);
+    //         this.upcomingReservations.splice(bookingIndex, 1);
+    //     }
+    // }
+    //
+    // addToCompletedReservations(booking) {
+    //     this.completedReservations.push(booking);
+    //     if (this.currentReservations.includes(booking)) {
+    //         let bookingIndex = this.currentReservations.indexOf(booking);
+    //         this.currentReservations.splice(bookingIndex, 1);
+    //     }
+    // }
 
-    addToUpcomingReservations(booking) {
-        this.upcomingReservations.push(booking);
-    }
+    filterAvailableRooms(customerSearch) {
 
-    addToCurrentReservations(booking) {
-        this.currentReservations.push(booking);
-        if (this.upcomingReservations.includes(booking)) {
-            let bookingIndex = this.upcomingReservations.indexOf(booking);
-            this.upcomingReservations.splice(bookingIndex, 1);
-        }
-    }
+        let { date, roomType } = customerSearch;
+        let today = dayjs();
+        let bookingDate = dayjs(date);
 
-    addToCompletedReservations(booking) {
-        this.completedReservations.push(booking);
-        if (this.currentReservations.includes(booking)) {
-            let bookingIndex = this.currentReservations.indexOf(booking);
-            this.currentReservations.splice(bookingIndex, 1);
-        }
-    }
+        if (date) {
+          console.log('here 1');
+          if (bookingDate.isBefore(today)) {
+            this.offerApologyMessage();
+          } else {
+            let availableRoomNumbers = this.allReservations.filter(reservation => reservation.date !== date).map(room => room.roomNumber);
 
-    checkIfRoomsAreAvailable(customerSearch) {
-
-        let { date, roomType, numBeds, bedSize, costPerNight } = customerSearch;
-
-        let availableRoomNumbers = this.allReservations.filter(reservation => reservation.date !== date).map(room => room.roomNumber);
-
-        this.allRooms.forEach(room => {
-            if (availableRoomNumbers.includes(room.number)) {
+            this.allRooms.forEach(room => {
+              if (availableRoomNumbers.includes(room.number)) {
                 this.roomsAvailable.push(room);
-            }
-        })
+              }
+            })
+          }
+        }
 
-        if (roomType || numBeds || bedSize || costPerNight) {
-            this.checkAvailabilityWithAllOptions(roomType, numBeds, bedSize, costPerNight);
+        if (roomType) {
+          console.log('here 2');
+            this.filterByRoomType(roomType);
         }
 
 
@@ -55,44 +67,9 @@ class Hotel {
         }
     }
 
-    checkAvailabilityWithAllOptions(roomType, numBeds, bedSize, costPerNight) {
-        if (roomType) {
-            this.filterByRoomType(roomType);
-        }
-        if (numBeds) {
-            this.filterByNumberOfBeds(numBeds);
-        }
-        if (bedSize) {
-            this.filterByBedSize(bedSize);
-        }
-        if (costPerNight) {
-            this.filterByCostPerNight(costPerNight)
-        }
-    }
-
-
     filterByRoomType(roomType) {
+      console.log('here 3');
         let availableRooms = this.roomsAvailable.filter(room => room.roomType === roomType);
-        this.roomsAvailable = availableRooms;
-        this.roomsAvailable = availableRooms;
-    }
-
-    filterByNumberOfBeds(numBeds) {
-        let availableRooms = this.roomsAvailable = this.roomsAvailable.filter(room => room.numBeds === numBeds);
-        this.roomsAvailable = availableRooms;
-        this.roomsAvailable = availableRooms;
-    }
-
-    filterByBedSize(bedSize) {
-        let availableRooms = this.roomsAvailable = this.roomsAvailable.filter(room => room.bedSize === bedSize);
-        this.roomsAvailable = availableRooms;
-        this.roomsAvailable = availableRooms;
-    }
-
-    filterByCostPerNight(costPerNight) {
-        let availableRooms = this.roomsAvailable = this.roomsAvailable.filter(room => room.costPerNight <= costPerNight)
-        this.roomsAvailable = availableRooms;
-        // if (availableRooms.length) {
         this.roomsAvailable = availableRooms;
     }
 

@@ -6,16 +6,16 @@ let greetingContainer = document.querySelector('#greetingContainer');
 
 let domUpdates = {
 
+    clearAllRoomCards() {
+      allRoomCards.innerHTML = ' ';
+    },
+
     displayAvailableRooms(roomImage, roomName, roomNumber) {
       allRoomCards.insertAdjacentHTML('beforeend', `
       <section class="room-card" id="${roomNumber}">
         <img src="${roomImage}"
           alt="gorgeous airy well lit treehouse room with a rainforest view">
         <h2 class="treehouse-name" id="treehouseName">${roomName}</h2>
-        <button class="right-arrow-btn" id="treehouseDetails">
-          <img src="./images/right-arrow.svg"
-            alt=" right arrow image implying that you will navigate to the next screen">
-        </button>
         <button class="treehouse-details" id="treehouseDetails">Treehouse Details</button>
       </section>
       `)
@@ -134,16 +134,6 @@ let domUpdates = {
       });
     },
 
-
-      // completedBookings: Array(18)
-            // 0:
-            // date: "2020/01/23"
-            // id: "5fwrgu4i7k55hl6tp"
-            // roomNumber: 22
-            // roomServiceCharges: []
-            // userID: 48
-
-
     returnToHomeView(customerName) {
       this.greetCustomer(customerName);
       document.getElementById('resortCard').classList.toggle('hidden');
@@ -152,9 +142,33 @@ let domUpdates = {
 
     },
 
+    displayFilterSelections() {
+      let resortCard = document.getElementById('resortCard');
+      resortCard.innerHTML += `<p class="room-type-heading">Filter Results By Room Type</p>
+      <section class="filter-rooms-choices" id="filterRoomsChoices">
+          <div class="checkboxes">
+            <input type="checkbox" id="residentialSuite" name="roomType">
+            <label for="residentialSuite">Residential Suite</label>
+            <input type="checkbox" id="juniorSuite" name="roomType">
+            <label for="juniorSuite">Junior Suite</label>
+          </div>
+          <div class="checkboxes">
+            <input type="checkbox" id="suite" name="roomType">
+            <label for="suite">Suite</label>
+            <input type="checkbox" id="singleRoom" name="roomType">
+            <label for="singleRoom">Single Room</label>
+          </div>
+      </section>
+      `
+    },
+
     displayTreehouseDetails() {
       console.log("HI");
     },
+
+    displayErrorMessage() {
+      console.log('HEYOOOO');
+    }
 
     // changeHiddenViews() {
     //   for (var i = 0; i < arguments.length; i++) {

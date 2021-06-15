@@ -27,25 +27,28 @@ let allRoomCards = document.querySelector('#allRoomCards');
 let searchByDateField = document.querySelector('#searchByDate');
 let roomCardDetails = document.querySelector('#roomCardDetails');
 let header = document.getElementById('headerGreeting');
-// let userAccountBtn = document.querySelector('#userImgBtn');
-// let treeHouseDetailsBtn = document.querySelector('#treehouseDetails');
+let resortCard = document.getElementById('resortCard')
 
 let customer, hotel;
+let customerSearch = {};
 // event listeners
 
 header.addEventListener('click', function() {
-  evaluationHeaderButton(event);
+  evaluateHeaderButton(event);
 });
 
 
 allRoomCards.addEventListener('click', function(event) {
   getRoomDetails(event);
-})
+});
 
-searchByDateField.addEventListener('keypress', function (event) {
-    if (event.key === 'Enter') {
+searchByDateField.addEventListener('change', function () {
         evaluateDateChosen(searchByDate.value);
-    }
+        domUpdates.displayFilterSelections();
+});
+
+resortCard.addEventListener('change', function(event) {
+    evaluateBoxChecked(event);
 })
 
 window.onload = onStartUp()
@@ -55,12 +58,13 @@ function onStartUp() {
         .then((promise) => {
             customer = new Customer(promise[0].customers[(Math.floor(Math.random() * promise[0].customers.length) + 1)]);
             hotel = new Hotel(promise[2].rooms, promise[1].bookings, promise[0].customers);
-            findRoomDetails();
+            findRoomAvailability();
             domUpdates.greetCustomer(customer.name);
+            // console.log('before', hotel.roomsAvailable);
         })
 };
 
-function evaluationHeaderButton(event) {
+function evaluateHeaderButton(event) {
   if (event.target.closest('button').id === 'userImgBtn') {
     domUpdates.displayUserAccount(customer, hotel)
   } else if (event.target.closest('button').id === 'returnHome'){
@@ -70,17 +74,27 @@ function evaluationHeaderButton(event) {
 
 function evaluateDateChosen(value) {
     let searchedDate = [value.slice(0, 4), value.slice(5, 7), value.slice(8)].join('/');
-    let customerSearch = { date: searchedDate }
-    findRoomDetails(customerSearch);
+    customerSearch = { date: searchedDate }
+    findRoomAvailability();
 }
 
-function findRoomDetails(date) {
+function findRoomAvailability() {
   let roomsAvailable;
-  if (date) {
-    roomsAvailable = hotel.checkIfRoomsAreAvailable(date);
+  if (customerSearch.date) {
+    roomsAvailable = hotel.filterAvailableRooms(customerSearch);
+  } else if (customerSearch.roomType){
+    roomsAvailable = hotel.filterAvailableRooms(customerSearch);
   } else {
     roomsAvailable = hotel.allRooms;
   }
+
+  typeof roomsAvailable === 'string' ? domUpdates.displayErrorMessage() : assignRoomDetails(roomsAvailable);
+  console.log('what rooms are available', hotel.roomsAvailable);
+}
+
+function assignRoomDetails(roomsAvailable) {
+  console.log('Do we get here?');
+  domUpdates.clearAllRoomCards();
   roomsAvailable.forEach(room => {
     let roomImage = findRoomImage(room.roomType);
     let roomName = findRoomName(room.number);
@@ -102,20 +116,40 @@ function findRoomImage(roomType) {
 }
 
 function findRoomName(roomNumber) {
-  if ( [1, 6, 12, 21].includes(roomNumber)) {
+  if ( [1, 12, 21].includes(roomNumber)) {
     return "Treetop Dream Den"
-  } else if ( [2, 7, 13, 22].includes(roomNumber)) {
+  } else if ( [2, 7, 22].includes(roomNumber)) {
     return "Wind Kissed Nest"
-  } else if ( [3, 8, 14, 23].includes(roomNumber)) {
+  } else if ( [3, 8, 23].includes(roomNumber)) {
     return "Lover's Rainforest Cabana"
-  } else if ( [4, 9, 15, 24].includes(roomNumber)) {
+  } else if ( [4, 15, 24].includes(roomNumber)) {
     return "Tropical Tree Lair"
-  } else {
+  } else if ( [6, 11, 18].includes(roomNumber)){
     return "Magical Tree Fort"
+  } else  {
+    return "Heavenly Hideaway"
   }
 }
 
+
+function evaluateBoxChecked(event) {
+  if (event.target.closest('input').id === 'residentialSuite') {
+    customerSearch.roomType = 'residential suite';
+    findRoomAvailability();
+  } else if (event.target.closest('input').id === 'juniorSuite') {
+    customerSearch.roomType = 'junior suite';
+    findRoomAvailability();
+  } else if (event.target.closest('input').id === 'suite') {
+    customerSearch.roomType = 'suite';
+    findRoomAvailability();
+  } else if (event.target.closest('input').id === 'singleRoom') {
+    customerSearch.roomType = 'single room';
+    findRoomAvailability();
+  }
+}
+// Move a lot of this to the dom
 function getRoomDetails(event) {
+  // domUpdates.displaySelectedRoomCard();
   if (event.target.closest('button'). id === 'treehouseDetails') {
     allRoomCards.classList.add('hidden');
     roomCardDetails.classList.remove('hidden');
