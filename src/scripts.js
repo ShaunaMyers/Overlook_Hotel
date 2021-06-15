@@ -67,7 +67,6 @@ function onStartUp() {
             hotel = new Hotel(promise[2].rooms, promise[1].bookings, promise[0].customers);
             findRoomAvailability();
             domUpdates.greetCustomer(customer.name);
-            // console.log('before', hotel.roomsAvailable);
         })
 };
 
@@ -99,7 +98,6 @@ function findRoomAvailability() {
 }
 
 function assignRoomDetails(roomsAvailable) {
-  console.log('Do we get here?');
   domUpdates.clearAllRoomCards();
   roomsAvailable.forEach(room => {
     let roomImage = findRoomImage(room.roomType);
@@ -166,9 +164,17 @@ function getRoomDetails(event) {
   domUpdates.displayTreehouseDetails({roomImage, roomName, bedSize, numBeds, roomType, roomCost});
 }
 
-function evaluateBookingDate() {
-  if (!bookTreehouseInput.value) {
-    let message = 'Please enter a date so you can claim a dream tree as your own.'
-    domUpdates.displayErrorMessage(message);
+// Work on this function later
+// Event is bubbling up and return view to homepage
+function evaluateBookingDate(event) {
+  if (event.target.closest('button').id === 'bookTreehouseBtn') {
+    if (!bookTreehouseInput.value) {
+      let message = 'Please enter a date so you can claim a dream tree as your own.'
+      domUpdates.displayErrorMessage(message);
+    } else {
+      let bookingDate = bookTreeHouseInput.value;
+      console.log('book treehouse date', bookingDate);
+      domUpdates.displayBookingMessage(event);
+    }
   }
 }
