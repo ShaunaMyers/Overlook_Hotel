@@ -20,17 +20,22 @@ import './images/user-account.svg';
 // variables
 
 let allRoomCards = document.querySelector('#allRoomCards');
-let searchByDateField = document.querySelector('#searchByDate');
-let roomCardDetails = document.querySelector('#roomCardDetails');
-let header = document.getElementById('headerGreeting');
-let resortCard = document.getElementById('resortCard');
 let bookTreehouseBtn = document.getElementById('bookTreehouseBtn');
 let bookTreehouseInput = document.getElementById('chosenDate');
+let header = document.getElementById('headerGreeting');
+let loginBtn = document.getElementById('loginBtn');
+let resortCard = document.getElementById('resortCard');
+let roomCardDetails = document.getElementById('roomCardDetails');
+let searchByDateField = document.getElementById('searchByDate');
+let usernameInput = document.getElementById('username');
+let passwordInput = document.getElementById('password');
 
 let customer, hotel;
 let customerSearch = {};
 
 // event listeners
+
+loginBtn.addEventListener('click', evaluateLoginCredentials);
 
 header.addEventListener('click', function() {
   evaluateHeaderButton(event);
