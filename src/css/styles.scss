@@ -1,5 +1,5 @@
 /*~~~~~~~~~~~~ Login Page ~~~~~~~~~~~*/
-
+//
 // main {
 //   background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://thepointsguy.com/wp-content/uploads/2017/06/Upper-Pond-Exterior-e1498727801692.jpg');
 //   background-position: center;
@@ -123,7 +123,6 @@ img {
 
 .room-type-heading {
   font-size: 25px;
-  // width: 500px;
 }
 
 /*~~~~~~~~~~~~ Room Cards ~~~~~~~~~~~*/
@@ -136,7 +135,8 @@ img {
     grid-template-columns: repeat(2, 50%);
   }
   @media screen and (max-width: 920px) {
-    grid-template-columns: repeat(1, 90%);
+    // grid-template-columns: repeat(1, 90%);
+    @include display(flex, column, center, space-around);
   }
 }
 
@@ -161,9 +161,9 @@ img {
             top: 1%;
         }
     }
-    @media screen and (max-width: 813px) {
+    @media screen and (max-width: 570px) {
         img {
-            width: 100%;
+            width: 80%;
         }
     }
 }
@@ -171,8 +171,21 @@ img {
 .room-card {
   font-size: 20px;
   height: 540px;
-  img {
-    height: 50%;
+  @media screen and (max-width: 320px) {
+    img {
+      height: 40%;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    img {
+      height: 80%;
+    }
+  }
+  @media screen and (max-width: 2000px) {
+    height: 700px;
+    img {
+      height: 60%;
+    }
   }
 }
 
