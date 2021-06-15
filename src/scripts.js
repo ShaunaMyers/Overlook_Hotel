@@ -131,14 +131,6 @@ function findRoomName(roomNumber) {
   }
 }
 
-// Move a lot of this to the dom
-function getRoomDetails(event) {
-  if (event.target.closest('button'). id === 'treehouseDetails') {
-    allRoomCards.classList.add('hidden');
-    roomCardDetails.classList.remove('hidden');
-    domUpdates.displayTreehouseDetails();
-  }
-}
 
 function evaluateBoxChecked(event) {
   if (event.target.closest('input').id === 'residentialSuite') {
@@ -153,5 +145,14 @@ function evaluateBoxChecked(event) {
   } else if (event.target.closest('input').id === 'singleRoom') {
     customerSearch.roomType = 'single room';
     findRoomAvailability();
+  }
+}
+// Move a lot of this to the dom
+function getRoomDetails(event) {
+  // domUpdates.displaySelectedRoomCard();
+  if (event.target.closest('button'). id === 'treehouseDetails') {
+    allRoomCards.classList.add('hidden');
+    roomCardDetails.classList.remove('hidden');
+    domUpdates.displayTreehouseDetails();
   }
 }
