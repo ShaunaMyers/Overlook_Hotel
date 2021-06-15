@@ -93,10 +93,17 @@ describe('Customer Class', () => {
       expect(customer1.totalSpent).to.equal(491.14)
     });
 
-    it.only('Should be able to keep track of the current room the customer is looking at booking', () => {
+    it('Should contain a method that keeps track of the current room the customer is looking at booking', () => {
       customer2.updateCurrentRoomSearched(24);
 
       expect(customer2.currentRoomSearched).to.equal(24);
-    })
+    });
+
+    it('Should contain a method that returns the total a customer has spent', () => {
+      customer1.returnAllBookings(hotel);
+      const totalSpentAtHotel = customer1.returnTotalSpent();
+
+      expect(totalSpentAtHotel).to.equal(491.14);
+    });
 
 })
