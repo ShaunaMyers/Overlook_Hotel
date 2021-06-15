@@ -80,18 +80,22 @@ function evaluateLoginInputValues() {
     let errorDetails = 'empty fields';
     domUpdates.displayLoginErrorMessage(errorDetails);
   } else {
-    evaluateLoginCredentials(usernameEntered, passwordEntered);
+    parseLoginInput(usernameEntered, passwordEntered);
+    console.log('username entered', usernameEntered);
   }
 }
 
-function evaluateLoginCredentials(usernameEntered, passwordEntered) {
-  let customerID = usernameEntered.slice(-2);
+function parseLoginInput(usernameEntered, passwordEntered) {
+  let customerID = parseInt(usernameEntered.slice(-2));
   let splitCustomerID = usernameEntered.split(customerID)
-  console.log('split customer ID', splitCustomerID);
+  evaluateAgainstCorrectCredentials(customerID, splitCustomerID, passwordEntered)
+}
+
+function evaluateAgainstCorrectCredentials(customerID, splitCustomerID, passwordEntered) {
   let correctUsername = `customer${customerID}` ;
-  let correctPassword = 'overlook2021';
-  if (passwordEntered !== correctPassword ) {
-    console.log("WRONG!");
+  let correctPassword = 'overlook2021'
+  if (passwordEntered !== correctPassword) {
+    domUpdates.displayLoginErrorMessage(errorDetails);
   }
 }
 
