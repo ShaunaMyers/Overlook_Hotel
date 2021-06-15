@@ -6,6 +6,10 @@ let greetingContainer = document.querySelector('#greetingContainer');
 
 let domUpdates = {
 
+    clearAllRoomCards() {
+      allRoomCards.innerHTML = ' ';
+    },
+
     displayAvailableRooms(roomImage, roomName, roomNumber) {
       allRoomCards.insertAdjacentHTML('beforeend', `
       <section class="room-card" id="${roomNumber}">

@@ -12,34 +12,35 @@ class Hotel {
         this.totalRevenue = 0;
     }
 
+    //
+    // addToUpcomingReservations(booking) {
+    //     this.upcomingReservations.push(booking);
+    // }
+    //
+    // addToCurrentReservations(booking) {
+    //     this.currentReservations.push(booking);
+    //     if (this.upcomingReservations.includes(booking)) {
+    //         let bookingIndex = this.upcomingReservations.indexOf(booking);
+    //         this.upcomingReservations.splice(bookingIndex, 1);
+    //     }
+    // }
+    //
+    // addToCompletedReservations(booking) {
+    //     this.completedReservations.push(booking);
+    //     if (this.currentReservations.includes(booking)) {
+    //         let bookingIndex = this.currentReservations.indexOf(booking);
+    //         this.currentReservations.splice(bookingIndex, 1);
+    //     }
+    // }
 
-    addToUpcomingReservations(booking) {
-        this.upcomingReservations.push(booking);
-    }
-
-    addToCurrentReservations(booking) {
-        this.currentReservations.push(booking);
-        if (this.upcomingReservations.includes(booking)) {
-            let bookingIndex = this.upcomingReservations.indexOf(booking);
-            this.upcomingReservations.splice(bookingIndex, 1);
-        }
-    }
-
-    addToCompletedReservations(booking) {
-        this.completedReservations.push(booking);
-        if (this.currentReservations.includes(booking)) {
-            let bookingIndex = this.currentReservations.indexOf(booking);
-            this.currentReservations.splice(bookingIndex, 1);
-        }
-    }
-
-    checkIfRoomsAreAvailable(customerSearch) {
+    filterAvailableRooms(customerSearch) {
 
         let { date, roomType } = customerSearch;
         let today = dayjs();
         let bookingDate = dayjs(date);
 
         if (date) {
+          console.log('here 1');
           if (bookingDate.isBefore(today)) {
             this.offerApologyMessage();
           } else {
@@ -54,6 +55,7 @@ class Hotel {
         }
 
         if (roomType) {
+          console.log('here 2');
             this.filterByRoomType(roomType);
         }
 
@@ -66,6 +68,7 @@ class Hotel {
     }
 
     filterByRoomType(roomType) {
+      console.log('here 3');
         let availableRooms = this.roomsAvailable.filter(room => room.roomType === roomType);
         this.roomsAvailable = availableRooms;
     }
