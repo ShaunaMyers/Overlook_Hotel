@@ -89,7 +89,6 @@ function findRoomAvailability() {
   }
 
   typeof roomsAvailable === 'string' ? domUpdates.displayErrorMessage() : assignRoomDetails(roomsAvailable);
-  console.log('what rooms are available', hotel.roomsAvailable);
 }
 
 function assignRoomDetails(roomsAvailable) {
@@ -149,10 +148,12 @@ function evaluateBoxChecked(event) {
 }
 // Move a lot of this to the dom
 function getRoomDetails(event) {
-  // domUpdates.displaySelectedRoomCard();
-  if (event.target.closest('button'). id === 'treehouseDetails') {
-    allRoomCards.classList.add('hidden');
-    roomCardDetails.classList.remove('hidden');
-    domUpdates.displayTreehouseDetails();
-  }
+  let roomNumber = parseInt(event.target.closest('section').id);
+  let foundRoom = hotel.allRooms.find(room => room.number === roomNumber);
+  let roomName = findRoomName(roomNumber);
+  let roomType = foundRoom.roomType;
+  let roomCost = foundRoom.costPerNight;
+  let numBeds = foundRoom.numBeds;
+  let roomImage = findRoomImage(roomType);
+  domUpdates.displayTreehouseDetails({roomImage, roomName, roomType, roomCost, numBeds});
 }
