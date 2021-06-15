@@ -1,6 +1,11 @@
 
 let customerAccountInfo = document.getElementById('customerAccount');
 let greetingContainer = document.getElementById('greetingContainer');
+let treeHouseName = document.getElementById('treeHouseName');
+let cardBedSize = document.getElementById('bedSize');
+let numberBeds = document.getElementById('numberBeds');
+let cardRoomType = document.getElementById('roomType');
+let roomPrice = document.getElementById('roomPrice');
 
 
 let domUpdates = {
@@ -153,10 +158,20 @@ let domUpdates = {
       `
     },
 
-    displayTreehouseDetails() {
-      console.log("HI");
+    displayTreehouseDetails(roomDetails) {
+      let { roomImage, roomName, bedSize, numBeds, roomType, roomCost } = roomDetails
       allRoomCards.classList.add('hidden');
       roomCardDetails.classList.remove('hidden');
+      document.getElementById('innerRoomCardDetails').insertAdjacentHTML(`afterbegin`,
+      `
+      <img src="${roomImage}"
+        alt="gorgeous airy well lit treehouse room with 2 queen beds and a view of the ocean">
+      `);
+      treeHouseName.innerText = roomName;
+      cardBedSize.innerText = bedSize;
+      numberBeds.innerText = numBeds;
+      cardRoomType.innerText = roomType;
+      roomPrice.innerText = roomCost;
 
 
     },

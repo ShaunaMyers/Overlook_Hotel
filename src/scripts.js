@@ -146,14 +146,15 @@ function evaluateBoxChecked(event) {
     findRoomAvailability();
   }
 }
-// Move a lot of this to the dom
+
 function getRoomDetails(event) {
   let roomNumber = parseInt(event.target.closest('section').id);
   let foundRoom = hotel.allRooms.find(room => room.number === roomNumber);
-  let roomName = findRoomName(roomNumber);
   let roomType = foundRoom.roomType;
-  let roomCost = foundRoom.costPerNight;
-  let numBeds = foundRoom.numBeds;
   let roomImage = findRoomImage(roomType);
-  domUpdates.displayTreehouseDetails({roomImage, roomName, roomType, roomCost, numBeds});
+  let roomName = findRoomName(roomNumber);
+  let bedSize = foundRoom.bedSize;
+  let numBeds = foundRoom.numBeds;
+  let roomCost = foundRoom.costPerNight;
+  domUpdates.displayTreehouseDetails({roomImage, roomName, bedSize, numBeds, roomType, roomCost});
 }
