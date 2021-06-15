@@ -64,7 +64,6 @@ window.onload = onStartUp()
 function onStartUp() {
     apiCalls.getData()
         .then((promise) => {
-            // customer = new Customer(promise[0].customers[(Math.floor(Math.random() * promise[0].customers.length) + 1)]);
             hotel = new Hotel(promise[2].rooms, promise[1].bookings, promise[0].customers);
             findRoomAvailability();
         })
@@ -74,9 +73,7 @@ function evaluateLoginInputValues() {
   let usernameEntered = usernameInput.value;
   let passwordEntered = passwordInput.value;
   if (!usernameEntered || !passwordEntered) {
-    // This is to evaluate in domUpdates
-    let errorDetails = 'empty fields';
-    domUpdates.displayLoginErrorMessage(errorDetails);
+    domUpdates.displayLoginErrorMessage();
   } else {
     parseLoginInput(usernameEntered, passwordEntered);
     console.log('username entered', usernameEntered);
@@ -89,8 +86,8 @@ function parseLoginInput(usernameEntered, passwordEntered) {
     console.log("GET HERE");
     customerID = parseInt(usernameEntered.slice(-2));
   } else {
-    let errorDetails = 'wrong credentials';
-    domUpdates.displayLoginErrorMessage(errorDetails);
+    errorDetails = 'wrong credentials'
+    domUpdates.displayLoginErrorMessage();
     return;
   }
   let splitCustomerID = usernameEntered.split(customerID)
@@ -102,8 +99,8 @@ function evaluateAgainstCorrectCredentials(customerID, splitCustomerID, password
   let correctPassword = 'overlook2021';
   let foundGuest = hotel.allGuests.find(guest => guest.id === customerID);
   if (passwordEntered !== correctPassword || !foundGuest || splitCustomerID[0] !== 'customer') {
-    let errorDetails = 'Incorrect username or password'
-    domUpdates.displayLoginErrorMessage(errorDetails);
+    let errorDetails = 'wrong credentials'
+    domUpdates.displayLoginErrorMessage();
   } else {
     findCorrectCustomer(customerID, foundGuest);
   }

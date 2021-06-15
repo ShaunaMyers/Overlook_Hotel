@@ -209,12 +209,11 @@ let domUpdates = {
     //   document.getElementById('errorMessage2').classList.remove('hidden');
     // },
 
-    displayLoginErrorMessage(errorDetails) {
-      if (errorDetails === 'wrong credentials') {
-      console.log("Login Error 92");
-      } else if (errorDetails === 'Incorrect username or password') {
-      console.log('Login Error 107');
-      }
+    displayLoginErrorMessage() {
+      let loginErrorMessage = document.getElementById('loginErrorMessage')
+      loginErrorMessage.innerHTML =`
+        <p>Please enter the correct username and password.</p>
+      `;
     }
 }
 
