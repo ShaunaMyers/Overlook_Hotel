@@ -31,15 +31,6 @@ class Customer {
       return { completedBookings: this.completedBookings, currentBookings: this.currentBookings, upcomingBookings: this.upcomingBookings };
     }
 
-    // removeFromCurrentBookings(booking) {
-    //     let currentBookingIndex = this.currentBookings.indexOf(booking);
-    //     this.currentBookings.splice(currentBookingIndex, 1);
-    // }
-
-    // removeFromUpcomingBookings(booking) {
-    //     let currentBookingIndex = this.upcomingBookings.indexOf(booking);
-    //     this.upcomingBookings.splice(currentBookingIndex, 1);
-    // }
     updateCurrentRoomSearched(roomNumber) {
       this.currentRoomSearched = roomNumber;
     }

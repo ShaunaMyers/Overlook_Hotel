@@ -55,7 +55,7 @@ describe('Customer Class', () => {
         expect(customer2.completedBookings).to.eql([]);
     });
 
-    it.only('Should return all bookings from the past, present, and future', () => {
+    it('Should contain a method that returns all bookings from the past, present, and future', () => {
         const allBookings = customer1.returnAllBookings(hotel);
 
         expect(allBookings).to.eql({
@@ -82,12 +82,15 @@ describe('Customer Class', () => {
     });
 
     it('Should return an empty array when the Customer has no bookings in that specific property', () => {
-        customer1.addToCurrentBookings(sampleBookingsData[2]);
-        customer1.addToUpcomingBookings(sampleBookingsData[3]);
+        const allBookings = customer1.returnAllBookings(hotel);
 
-        const allBookings = customer1.returnAllBookings();
+        expect(customer1.currentBookings).to.eql([])
+    });
 
-        expect(allBookings).to.eql({ completedBookings: [], currentBookings: [sampleBookingsData[2]], upcomingBookings: [sampleBookingsData[3]] })
+    it('Should contain a method that updates total spent when customer completes bookings', () => {
+      customer1.returnAllBookings(hotel);
+
+      expect(customer1.totalSpent).to.equal(491.14)
     })
 
 })
