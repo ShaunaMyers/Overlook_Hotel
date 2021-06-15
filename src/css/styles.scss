@@ -88,7 +88,7 @@
 
 img {
     border-radius: $primary-border-radius;
-    width: 100%;
+    width: 60%;
 }
 
 .resort-description {
@@ -129,6 +129,9 @@ img {
   grid-column-gap: 20px;
   @media screen and (max-width: 1370px) {
     grid-template-columns: repeat(2, 50%);
+  }
+  @media screen and (max-width: 920px) {
+    grid-template-columns: repeat(1, 90%);
   }
 }
 
