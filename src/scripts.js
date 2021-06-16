@@ -21,7 +21,7 @@ import './images/user-account.svg';
 let allRoomCards = document.querySelector('#allRoomCards');
 let bookTreehouseBtn = document.getElementById('bookTreehouseBtn');
 let bookTreehouseInput = document.getElementById('chosenDate');
-let bookingForm = document.getElementById('bookingForm');
+let leftArrowBtn = document.getElementById('leftArrowBtn');
 let header = document.getElementById('headerGreeting');
 let loginBtn = document.getElementById('loginBtn');
 let passwordInput = document.getElementById('password');
@@ -62,7 +62,7 @@ bookTreehouseInput.addEventListener('change', function() {
   domUpdates.clearBookingErrorMessage()
 });
 
-bookingForm.addEventListener('click', function(event) {
+leftArrowBtn.addEventListener('click', function(event) {
   returnToHomeAfterBooking(event);
 });
 
@@ -236,8 +236,6 @@ function sendBookingPostRequest(bookingDate) {
 };
 
 function returnToHomeAfterBooking(event) {
-  if (event.target.closest('button').id === 'exploreMoreTreehouses') {
     domUpdates.returnToHomeView();
     onStartUp();
-  }
 }

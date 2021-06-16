@@ -254,6 +254,13 @@ input {
     background-color: darkgray;
     cursor: pointer;
   }
+  @media screen and (min-width: 2029px) {
+    right: 80%;
+    width: 10em;
+  }
+  @media screen and (max-width: 812px) {
+    right: 65%;
+  }
 }
 
 .book-treehouse-btn {

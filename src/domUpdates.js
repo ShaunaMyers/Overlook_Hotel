@@ -142,6 +142,7 @@ let domUpdates = {
       document.getElementById('resortCard').classList.toggle('hidden');
       document.getElementById('allRoomCards').classList.toggle('hidden');
       document.getElementById('customerAccount').classList.add('hidden');
+      document.getElementById('roomCardDetails').classList.add('hidden');
 
     },
 
