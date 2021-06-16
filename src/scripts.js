@@ -221,9 +221,9 @@ function evaluateBookingDate(event) {
       let dateUnedited = bookTreehouseInput.value;
       let bookingDate = [dateUnedited.slice(0, 4), dateUnedited.slice(5, 7), dateUnedited.slice(8)].join('/');
       domUpdates.displayBookingMessage(event);
+      hotel.addToBookings()
       sendBookingPostRequest(bookingDate);
     }
-  }
 };
 
 function sendBookingPostRequest(bookingDate) {

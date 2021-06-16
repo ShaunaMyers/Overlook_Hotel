@@ -127,7 +127,7 @@ img {
 }
 
 .booking-error-message {
-  font-size: 20px;
+  font-size: 30px;
   color: $primary-accent-color;
   text-align: center;
   width: 50%;
@@ -198,7 +198,7 @@ img {
 }
 
 // This all could be a mixin
-.treehouse-details, .book-treehouse-btn, .return-home {
+.treehouse-details, .book-treehouse-btn, .return-home, .explore-more {
     background-color: $primary-accent-color;
     border-radius: 15px;
     font-size: 20px;

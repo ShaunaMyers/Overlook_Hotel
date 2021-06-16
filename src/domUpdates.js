@@ -191,6 +191,7 @@ let domUpdates = {
     displayBookingMessage(event) {
       document.getElementById('bookingForm').innerHTML = `
         <p> Congratulations, you've booked this room. We look forward to hosting you!</p>
+        <button class="explore-more" id="exploreMoreTreehouses">Explore More Treehouses<button>
       `;
     },
 
