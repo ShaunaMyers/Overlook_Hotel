@@ -31,9 +31,9 @@ A Front-End Project by: [Shauna Myers](https://github.com/ShaunaMyers)
 
 
 
-### Search for recipes
+### Book A Room
 
-![Mouldy-mango-bookRoom-gif](https://media.giphy.com/media/c1kbzDsp43Wejah6G9/giphy.gif)
+![Mouldy-mango-bookRoom-gif](https://media.giphy.com/media/f6T50KBFvoCb50sGj2/giphy.gif)
 
 
   
