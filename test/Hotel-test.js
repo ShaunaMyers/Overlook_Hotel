@@ -4,7 +4,7 @@ import sampleCustomerData from '../src/data/sampleCustomerData';
 import sampleBookingsData from '../src/data/sampleBookingsData';
 import sampleRoomsData from '../src/data/sampleRoomsData';
 
-describe('Hotel Class', () => {
+describe.only('Hotel Class', () => {
 
     let hotel, customer;
 
@@ -33,74 +33,49 @@ describe('Hotel Class', () => {
         expect(hotel.roomsAvailable).to.eql([]);
     });
 
-    it('Should start with no past reservations', () => {
-        expect(hotel.completedReservations).to.eql([]);
-    });
-
-    it('Should start with no current reservations', () => {
-        expect(hotel.currentReservations).to.eql([]);
-    });
-
-    it('Should start with no upcoming reservations', () => {
-        expect(hotel.upcomingReservations).to.eql([]);
-    });
-
-    it('Should be able to reserve a room for a customer', () => {
-        hotel.addToUpcomingReservations({ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] });
-        expect(hotel.upcomingReservations).to.eql([{ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] }]);
-    });
-
-
-    it('Should be able to check a customer into the hotel', () => {
-        hotel.addToCurrentReservations({ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] });
-        expect(hotel.currentReservations).to.eql([{ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] }]);
-    });
-
-    it('Should remove a reservation from the upcoming reservations when a customer is checked in', () => {
-        hotel.addToCurrentReservations({ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] });
-        expect(hotel.upcomingReservations).to.eql([]);
-    })
-
-    it('Should be able to check a customer out of the hotel', () => {
-        hotel.addToCompletedReservations({ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] });
-        expect(hotel.completedReservations).to.eql([{ customerInfo: sampleCustomerData[5], bookingInfo: sampleBookingsData[1], roomInfo: sampleRoomsData[1] }]);
-    })
-
     it('Should return only the rooms available when a customer searches for a specific date', () => {
-        const availableRooms = hotel.checkIfRoomsAreAvailable({ date: "2020/01/24" });
+        const availableRooms = hotel.filterAvailableRooms({ date: "2022/01/24" });
         expect(availableRooms).to.eql([
-            {
-                number: 666,
-                roomType: 'residential suite',
-                bidet: true,
-                bedSize: 'queen',
-                numBeds: 1,
-                costPerNight: 358.4
-            },
-            {
-                number: 12,
-                roomType: 'single room',
-                bidet: false,
-                bedSize: 'king',
-                numBeds: 1,
-                costPerNight: 491.14
-            },
-            {
-                number: 7,
-                roomType: 'single room',
-                bidet: false,
-                bedSize: 'queen',
-                numBeds: 1,
-                costPerNight: 429.44
-            },
-            {
-                number: 15,
-                roomType: 'single room',
-                bidet: true,
-                bedSize: 'queen',
-                numBeds: 2,
-                costPerNight: 340.17
-            }
+          {
+              "number": 666,
+              "roomType": "residential suite",
+              "bidet": true,
+              "bedSize": "queen",
+              "numBeds": 1,
+              "costPerNight": 358.4
+          },
+          {
+              "number": 24,
+              "roomType": "suite",
+              "bidet": false,
+              "bedSize": "full",
+              "numBeds": 2,
+              "costPerNight": 477.38
+          },
+          {
+              "number": 12,
+              "roomType": "single room",
+              "bidet": false,
+              "bedSize": "king",
+              "numBeds": 1,
+              "costPerNight": 491.14
+          },
+          {
+              "number": 7,
+              "roomType": "single room",
+              "bidet": false,
+              "bedSize": "queen",
+              "numBeds": 1,
+              "costPerNight": 429.44
+          },
+          {
+              "number": 15,
+              "roomType": "single room",
+              "bidet": true,
+              "bedSize": "queen",
+              "numBeds": 2,
+              "costPerNight": 340.17
+          }
         ])
     });
 
@@ -115,56 +90,6 @@ describe('Hotel Class', () => {
                 numBeds: 1,
                 costPerNight: 358.4
             },
-        ])
-    });
-
-    it('Should return rooms available when a specific number of beds is selected on a specific date', () => {
-        const availableRooms = hotel.checkIfRoomsAreAvailable({ date: "2020/01/24", numBeds: 2 });
-        expect(availableRooms).to.eql([
-            {
-                number: 15,
-                roomType: 'single room',
-                bidet: true,
-                bedSize: 'queen',
-                numBeds: 2,
-                costPerNight: 340.17
-            },
-        ])
-    });
-
-    it('Should return rooms available when a specific bed size is selected on a specific date', () => {
-        const availableRooms = hotel.checkIfRoomsAreAvailable({ date: "2020/01/24", bedSize: 'king' });
-        expect(availableRooms).to.eql([
-            {
-                number: 12,
-                roomType: 'single room',
-                bidet: false,
-                bedSize: 'king',
-                numBeds: 1,
-                costPerNight: 491.14
-            },
-        ])
-    });
-
-    it('Should return rooms available when rooms have a lower cost per night than is selected, on a specific date', () => {
-        const availableRooms = hotel.checkIfRoomsAreAvailable({ date: "2020/01/24", costPerNight: 400 });
-        expect(availableRooms).to.eql([
-            {
-                number: 666,
-                roomType: 'residential suite',
-                bidet: true,
-                bedSize: 'queen',
-                numBeds: 1,
-                costPerNight: 358.4
-            },
-            {
-                number: 15,
-                roomType: 'single room',
-                bidet: true,
-                bedSize: 'queen',
-                numBeds: 2,
-                costPerNight: 340.17
-            }
         ])
     });
 

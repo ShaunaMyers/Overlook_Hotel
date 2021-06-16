@@ -6,9 +6,6 @@ class Hotel {
         this.allReservations = bookings;
         this.allGuests = guests;
         this.roomsAvailable = [];
-        this.completedReservations = [];
-        this.currentReservations = [];
-        this.upcomingReservations = [];
     }
 
     filterAvailableRooms(customerSearch) {
@@ -32,7 +29,6 @@ class Hotel {
         }
 
         if (roomType) {
-          console.log('here 2');
             this.filterByRoomType(roomType);
         }
 
