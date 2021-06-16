@@ -147,6 +147,7 @@ let domUpdates = {
     },
 
     displayFilterSelections() {
+      document.getElementById('roomCardDetails').classList.add('hidden');
       resortCard.innerHTML += `<p class="room-type-heading">Filter Results By Room Type</p>
       <section class="filter-rooms-choices" id="filterRoomsChoices">
           <div class="checkboxes">
@@ -181,6 +182,10 @@ let domUpdates = {
       roomPrice.innerText = roomCost;
 
 
+    },
+
+    displaySearchErrorMessage(message) {
+      document.getElementById('resortDescription').insertAdjacentHTML(`beforeend`, `<p class="booking-error-message">${message}</p>`)
     },
 
     displayBookingMessage(event) {

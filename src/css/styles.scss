@@ -97,6 +97,7 @@ img {
 }
 
 .resort-description {
+    @include display(flex, column, center, space-around);
     color: $primary-text-color;
     text-align: center;
     h1 {
@@ -123,6 +124,13 @@ img {
 
 .room-type-heading {
   font-size: 25px;
+}
+
+.booking-error-message {
+  font-size: 20px;
+  color: $primary-accent-color;
+  text-align: center;
+  width: 50%;
 }
 
 /*~~~~~~~~~~~~ Room Cards ~~~~~~~~~~~*/

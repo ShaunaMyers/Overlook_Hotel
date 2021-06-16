@@ -140,7 +140,7 @@ function findRoomAvailability() {
     roomsAvailable = hotel.allRooms;
   }
 
-  typeof roomsAvailable === 'string' ? domUpdates.displayErrorMessage(roomsAvailable) : assignRoomDetails(roomsAvailable);
+  typeof roomsAvailable === 'string' ? domUpdates.displaySearchErrorMessage(roomsAvailable) : assignRoomDetails(roomsAvailable);
 };
 
 function assignRoomDetails(roomsAvailable) {
