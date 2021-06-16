@@ -191,7 +191,9 @@ let domUpdates = {
     displayBookingMessage(event) {
       document.getElementById('bookingForm').innerHTML = `
         <p> Congratulations, you've booked this room. We look forward to hosting you!</p>
-        <button class="explore-more" id="exploreMoreTreehouses" type="button" name="button">Explore More Treehouses</button>
+        <!-- Wanted this button to work for proper UX but couldn't get the logic
+        with the event bubbling right -->
+        <!-- <button class="explore-more" id="exploreMoreTreehouses" type="button" name="button">Explore More Treehouses</button> -->
       `;
     },
 
