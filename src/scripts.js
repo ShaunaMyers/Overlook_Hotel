@@ -85,7 +85,6 @@ function evaluateLoginInputValues() {
     domUpdates.displayLoginErrorMessage();
   } else {
     parseLoginInput(usernameEntered, passwordEntered);
-    console.log('username entered', usernameEntered);
   }
 }
 

@@ -1,12 +1,5 @@
 /*~~~~~~~~~~~~ Login Page ~~~~~~~~~~~*/
 
-// main {
-//   background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://thepointsguy.com/wp-content/uploads/2017/06/Upper-Pond-Exterior-e1498727801692.jpg');
-//   background-position: center;
-//   background-size: cover;
-//   height: 100vh;
-// }
-
 .hide-background-image {
   background: transparent;
 }
@@ -197,7 +190,6 @@ img {
   }
 }
 
-// This all could be a mixin
 .treehouse-details, .book-treehouse-btn, .return-home, .explore-more {
     background-color: $primary-accent-color;
     border-radius: 15px;
@@ -275,7 +267,13 @@ input {
   font-size: 15px
 }
 
+ul {
+  list-style: none;
+}
 
+.your-bookings-heading {
+  color: $primary-accent-color;
+}
 
 /*~~~~~~~~~~~~ Hidden Styling ~~~~~~~~~~~*/
 
