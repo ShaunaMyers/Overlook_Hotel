@@ -80,7 +80,7 @@ describe.only('Hotel Class', () => {
     });
 
     it('Should return rooms available when a specific room type is selected on a specific date', () => {
-        const availableRooms = hotel.checkIfRoomsAreAvailable({ date: "2020/01/24", roomType: 'residential suite' });
+        const availableRooms = hotel.filterAvailableRooms({ date: "2022/01/24", roomType: 'residential suite' });
         expect(availableRooms).to.eql([
             {
                 number: 666,
