@@ -24,24 +24,23 @@ A Front-End Project by: [Shauna Myers](https://github.com/ShaunaMyers)
 
 
    
-### View the user Pantry
+### View User Account
 
-![Whats-Cookin-Refactor-Tractor-gif](https://media.giphy.com/media/M8p11iwT0jT6al49Yz/giphy.gif)
+![Mouldy-mango-userAccount-gif](https://media.giphy.com/media/uwlZfV7ICfiom06zIG/giphy.gif)
 
 
 
 
 ### Search for recipes
 
-![Whats-Cookin-Refactor-Tractor-gif](https://media.giphy.com/media/MYmXvmLqrjpuT2nC1l/giphy.gif)
+![Mouldy-mango-bookRoom-gif](https://media.giphy.com/media/c1kbzDsp43Wejah6G9/giphy.gif)
 
 
   
   * Architecture 
-    * Five class files - Ingredient, Recipe, User, Pantry, and Cookbook
-    * Five test files accompany each class using Mocha & Chai Should / Expect syntax
-    * ARIA roles and attributes for user accessibility 
-    * Network requests made using .fetch() to API endpoints
+    * Two class files - Hotel and Customer, with associated test files
+    * Network requests made using .fetch() to API endpoints 
+    * Network request to POST booking data to specific API endpoints
     * Sass imports utilizing variables, @mixins and @media queries
 
 
@@ -49,13 +48,13 @@ A Front-End Project by: [Shauna Myers](https://github.com/ShaunaMyers)
   1. HTML, CSS, and JavaScript
   2. Sass
   3. Webpack
-  4. Mocha, Chai
-  5. ESLint
-  6. GitHub
+  4. APIs
+  5. Mocha, Chai
+  6. ESLint
+  7. GitHub
 
 ## Contributors
-
-[Beth Meeker](https://github.com/Meekb)  
+  
 [Shauna Myers](https://github.com/ShaunaMyers)
 
 Project Manager: [Hannah Hudson](https://github.com/hannahhch)
@@ -64,5 +63,4 @@ Turing School of Software & Design https://github.com/turingschool-examples
 
 ## Resources
   1. [MDN Web Docs](https://developer.mozilla.org/en-US/)
-  2. [Turing Refactor-Tractor](https://frontend.turing.edu/projects/module-2/refactor-tractor-wc.html)  
-       * [What's Cookin / b](https://drive.google.com/file/d/1fcAh0wU73zZz8zujfrmpY9fBT3TM-deb/view)
+  2. [Turing-Overlook-Hotel](https://frontend.turing.edu/projects/overlook.html)
