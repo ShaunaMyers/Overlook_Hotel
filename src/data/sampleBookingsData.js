@@ -8,8 +8,8 @@ const sampleBookingsData = [
     },
     {
         "id": "5fwrgu4i7k55hl6t5",
-        "userID": 43,
-        "date": "2020/01/24",
+        "userID": 1,
+        "date": "2021/12/31",
         "roomNumber": 24,
         "roomServiceCharges": []
     },

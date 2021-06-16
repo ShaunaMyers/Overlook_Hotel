@@ -51,11 +51,6 @@ let domUpdates = {
       `)
     },
 
-
-    displayTreehouseDetails() {
-      console.log("HI");
-    },
-
     displayUserAccount(customer, hotel) {
       document.getElementById('resortCard').classList.toggle('hidden');
       document.getElementById('allRoomCards').classList.toggle('hidden');
@@ -147,11 +142,12 @@ let domUpdates = {
       this.greetCustomer(customerName);
       document.getElementById('resortCard').classList.toggle('hidden');
       document.getElementById('allRoomCards').classList.toggle('hidden');
-      document.getElementById('customerAccount').classList.toggle('hidden');
+      document.getElementById('customerAccount').classList.add('hidden');
 
     },
 
     displayFilterSelections() {
+      document.getElementById('roomCardDetails').classList.add('hidden');
       resortCard.innerHTML += `<p class="room-type-heading">Filter Results By Room Type</p>
       <section class="filter-rooms-choices" id="filterRoomsChoices">
           <div class="checkboxes">
@@ -188,26 +184,24 @@ let domUpdates = {
 
     },
 
+    displaySearchErrorMessage(message) {
+      document.getElementById('resortDescription').insertAdjacentHTML(`beforeend`, `<p class="booking-error-message">${message}</p>`)
+    },
+
     displayBookingMessage(event) {
-      console.log("WHYYYYYY");
-      // formBtnSection.innerHTML = `
-      // <p>Congratulations, you have booked this
-      // treehouse. We look forward to your stay!</p>
-      // `;
+      document.getElementById('bookingForm').innerHTML = `
+        <p> Congratulations, you've booked this room. We look forward to hosting you!</p>
+        <button class="explore-more" id="exploreMoreTreehouses" type="button" name="button">Explore More Treehouses</button>
+      `;
     },
 
-    displayErrorMessage(message) {
-      if (message === 'Please enter a date so you can claim a dream tree as your own.') {
-        document.getElementById('errorMessage2').classList.remove('hidden');
-      }
-      console.log('HEYOOOO');
+    displayBookingErrorMessage(message) {
+        document.getElementById('errorMessage2').innerHTML = `<p>Please enter a date so you can claim a dream tree as your own</p>`
     },
 
-    // clearErrorMessage() {
-    //   // This isn't working... WHYYYYYY
-    //   console.log('SAY WHAT');
-    //   document.getElementById('errorMessage2').classList.remove('hidden');
-    // },
+    clearBookingErrorMessage() {
+      document.getElementById('errorMessage2').innerHTML = ' ';
+    },
 
     displayLoginErrorMessage() {
       let loginErrorMessage = document.getElementById('loginErrorMessage')

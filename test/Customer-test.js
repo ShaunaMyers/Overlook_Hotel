@@ -1,17 +1,19 @@
 import { expect } from 'chai';
 import Customer from '../src/Classes/Customer';
+import Hotel from '../src/Classes/Hotel';
 import sampleCustomerData from '../src/data/sampleCustomerData';
 import sampleBookingsData from '../src/data/sampleBookingsData';
 import sampleRoomsData from '../src/data/sampleRoomsData';
 
-describe('Customer Class', () => {
+describe.only('Customer Class', () => {
 
-    let customer1, customer2;
+    let customer1, customer2, hotel;
 
     beforeEach(() => {
 
         customer1 = new Customer(sampleCustomerData[0]);
-        customer2 = new Customer(sampleCustomerData[2])
+        customer2 = new Customer(sampleCustomerData[2]);
+        hotel = new Hotel(sampleRoomsData, sampleBookingsData, sampleCustomerData);
 
     });
 
@@ -53,84 +55,62 @@ describe('Customer Class', () => {
         expect(customer2.completedBookings).to.eql([]);
     });
 
-    it('Should contain a method that adds a booking to currentBookings', () => {
-        customer1.addToCurrentBookings(sampleBookingsData[0]);
-        customer2.addToCurrentBookings(sampleBookingsData[4]);
-        expect(customer1.currentBookings).to.eql([sampleBookingsData[0]]);
-        expect(customer2.currentBookings).to.eql([sampleBookingsData[4]])
-    });
+    it('Should contain a method that returns all bookings from the past, present, and future', () => {
+        const allBookings = customer1.returnAllBookings(hotel);
 
-
-    it('Should not be able to add the same booking more than once', () => {
-        customer1.addToCurrentBookings(sampleBookingsData[0]);
-        customer1.addToCurrentBookings(sampleBookingsData[0]);
-        expect(customer1.currentBookings).to.eql([sampleBookingsData[0]])
-    });
-
-    it('Should contain a method that adds a booking to completed bookings', () => {
-        customer1.addToCompletedBookings(sampleBookingsData[0], sampleRoomsData[4]);
-        customer2.addToCompletedBookings(sampleBookingsData[4], sampleRoomsData[2]);
-        expect(customer1.completedBookings).to.eql([sampleBookingsData[0]]);
-        expect(customer2.completedBookings).to.eql([sampleBookingsData[4]]);
-    });
-
-    it('Should not be able to complete the same booking more than once', () => {
-        customer1.addToCompletedBookings(sampleBookingsData[0], sampleRoomsData[4]);
-        customer1.addToCompletedBookings(sampleBookingsData[0], sampleRoomsData[4]);
-        expect(customer1.completedBookings).to.eql([sampleBookingsData[0]]);
-    });
-
-    it('Should remove the booking from current bookings when it is added to completed bookings', () => {
-        customer1.addToCurrentBookings(sampleBookingsData[0]);
-        customer1.addToCurrentBookings(sampleBookingsData[4]);
-        customer1.addToCompletedBookings(sampleBookingsData[0], sampleRoomsData[4])
-        expect(customer1.currentBookings).to.eql([sampleBookingsData[4]]);
-    });
-
-    it('Should add the current booking\'s room cost per night to the customer\'s total spent property', () => {
-        customer1.addToCompletedBookings(sampleBookingsData[0], sampleRoomsData[4]);
-        customer2.addToCompletedBookings(sampleBookingsData[4], sampleRoomsData[2]);
-        expect(customer1.totalSpent).to.equal(340.17);
-        expect(customer2.totalSpent).to.equal(491.14);
-    });
-
-    it('Should contain a method that adds a booking to upcoming bookings', () => {
-        customer1.addToUpcomingBookings(sampleBookingsData[0]);
-        customer2.addToUpcomingBookings(sampleBookingsData[4]);
-        expect(customer1.upcomingBookings).to.eql([sampleBookingsData[0]]);
-        expect(customer2.upcomingBookings).to.eql([sampleBookingsData[4]])
-    });
-
-    it('Should not be able to add the same upcoming booking more than once', () => {
-        customer1.addToUpcomingBookings(sampleBookingsData[0]);
-        customer1.addToUpcomingBookings(sampleBookingsData[0]);
-        expect(customer1.upcomingBookings).to.eql([sampleBookingsData[0]])
-    });
-
-    it('Should remove the booking from upcoming bookings when it is added to current bookings', () => {
-        customer1.addToUpcomingBookings(sampleBookingsData[0]);
-        customer1.addToUpcomingBookings(sampleBookingsData[4]);
-        customer1.addToCurrentBookings(sampleBookingsData[0], sampleRoomsData[4])
-        expect(customer1.upcomingBookings).to.eql([sampleBookingsData[4]]);
-    });
-
-    it('Should return all bookings from the past, present, and future', () => {
-        customer1.addToCompletedBookings(sampleBookingsData[0], sampleRoomsData[4]);
-        customer1.addToCurrentBookings(sampleBookingsData[2]);
-        customer1.addToUpcomingBookings(sampleBookingsData[3]);
-
-        const allBookings = customer1.returnAllBookings();
-
-        expect(allBookings).to.eql({ completedBookings: [sampleBookingsData[0]], currentBookings: [sampleBookingsData[2]], upcomingBookings: [sampleBookingsData[3]] })
+        expect(allBookings).to.eql({
+  completedBookings: [
+    {
+      id: '5fwrgu4i7k55hl6t8',
+      userID: 1,
+      date: '2020/02/05',
+      roomNumber: 12,
+      roomServiceCharges: []
+    }
+  ],
+  currentBookings: [],
+  upcomingBookings: [
+    {
+      id: '5fwrgu4i7k55hl6t5',
+      userID: 1,
+      date: '2021/12/31',
+      roomNumber: 24,
+      roomServiceCharges: []
+    }
+  ]
+})
     });
 
     it('Should return an empty array when the Customer has no bookings in that specific property', () => {
-        customer1.addToCurrentBookings(sampleBookingsData[2]);
-        customer1.addToUpcomingBookings(sampleBookingsData[3]);
+        const allBookings = customer1.returnAllBookings(hotel);
 
-        const allBookings = customer1.returnAllBookings();
+        expect(customer1.currentBookings).to.eql([])
+    });
 
-        expect(allBookings).to.eql({ completedBookings: [], currentBookings: [sampleBookingsData[2]], upcomingBookings: [sampleBookingsData[3]] })
-    })
+    it('Should contain a method that updates total spent when customer completes bookings', () => {
+      customer1.returnAllBookings(hotel);
+
+      expect(customer1.totalSpent).to.equal(491.14)
+    });
+
+    it('Should contain a method that keeps track of the current room the customer is looking at booking', () => {
+      customer2.updateCurrentRoomSearched(24);
+
+      expect(customer2.currentRoomSearched).to.equal(24);
+    });
+
+    it('Should contain a method that returns the total a customer has spent', () => {
+      customer1.returnAllBookings(hotel);
+      const totalSpentAtHotel = customer1.returnTotalSpent();
+
+      expect(totalSpentAtHotel).to.equal(491.14);
+    });
+
+    it('Should return zero if nothing has been spent at the hotel', () => {
+      customer2.returnAllBookings(hotel);
+      const totalSpentAtHotel = customer2.returnTotalSpent();
+
+      expect(totalSpentAtHotel).to.equal(0);
+    });
 
 })
