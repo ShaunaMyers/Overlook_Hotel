@@ -6,7 +6,7 @@ A Front-End Project by: [Shauna Myers](https://github.com/ShaunaMyers)
   Overlook Hotel hotel is a final solo project in module two of the frontend software engineering at Turing School of Software Engineering and design. This project was completed with a 6 day period. The goal was to build a hotel management tool for hotel customers and staff to manage room bookings and calculate customer bills.- implementing best practices for accessibility, Sass, Webpack, while handling data from APIs. 
 
 ## Instructions
-  You can view our deployed page here: **Stay tuned! Link coming in the near future.
+  You can view the deployed page here: **Stay tuned! Link coming in the near future**
 
 ## Functionality
 
