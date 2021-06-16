@@ -29,8 +29,8 @@ describe('Hotel Class', () => {
         expect(hotel.allReservations).to.eql(sampleBookingsData);
     });
 
-    it.only('Should store a list of all guests the hotel has had or will have', () => {
-      expect(hotel.allGuests).to.eql(sampleCustomerData);
+    it('Should store a list of all guests the hotel has had or will have', () => {
+        expect(hotel.allGuests).to.eql(sampleCustomerData);
     });
 
     it('Should start with all of its rooms available', () => {
@@ -83,7 +83,7 @@ describe('Hotel Class', () => {
         ])
     });
 
-    it('Should return rooms available when a specific room type is selected on a specific date', () => {
+    it('Should contain a method that returns rooms available when a specific room type is selected on a specific date', () => {
         const availableRooms = hotel.filterAvailableRooms({ date: "2022/01/24", roomType: 'residential suite' });
         expect(availableRooms).to.eql([
             {
@@ -97,9 +97,14 @@ describe('Hotel Class', () => {
         ])
     });
 
-    it('Should offer a fierce apology message when no rooms are available', () => {
+    it('Should contain a method that offers a fierce apology message when no rooms are available', () => {
         const availableRooms = hotel.filterAvailableRooms({ date: "2020/01/24", roomType: 'residential suite', numBeds: 2, bedSize: 'king', costPerNight: 400 });
         expect(availableRooms).to.eql('We are very sorry...it looks like we have no rooms available that fit your search selections. We would love to host you, though, so please try your search using different selections.')
     });
 
+    it('Should contain a method that returns the cost of a room when a customer inquires', () => {
+        const roomCost = hotel.returnPriceOfRoom(24);
+
+        expect(roomCost).to.equal(477.38);
+    });
 });
