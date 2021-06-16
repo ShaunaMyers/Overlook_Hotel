@@ -5,7 +5,7 @@ import sampleCustomerData from '../src/data/sampleCustomerData';
 import sampleBookingsData from '../src/data/sampleBookingsData';
 import sampleRoomsData from '../src/data/sampleRoomsData';
 
-describe('Customer Class', () => {
+describe.only('Customer Class', () => {
 
     let customer1, customer2, hotel;
 
@@ -106,7 +106,7 @@ describe('Customer Class', () => {
       expect(totalSpentAtHotel).to.equal(491.14);
     });
 
-    it.only('Should return zero if nothing has been spent at the hotel', () => {
+    it('Should return zero if nothing has been spent at the hotel', () => {
       customer2.returnAllBookings(hotel);
       const totalSpentAtHotel = customer2.returnTotalSpent();
 

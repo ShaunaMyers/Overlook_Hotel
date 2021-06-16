@@ -57,6 +57,10 @@ bookTreehouseBtn.addEventListener('click', function(event) {
   evaluateBookingDate(event);
 });
 
+bookTreehouseInput.addEventListener('change', function() {
+  domUpdates.clearBookingErrorMessage()
+})
+
 // Functions
 
 window.onload = onStartUp()
@@ -212,7 +216,7 @@ function evaluateBookingDate(event) {
   if (event.target.closest('button').id === 'bookTreehouseBtn') {
     if (!bookTreehouseInput.value) {
       let dateMessage = 'Please enter a date so you can claim a dream tree as your own.'
-      domUpdates.displayErrorMessage(dateMessage);
+      domUpdates.displayBookingErrorMessage(dateMessage);
     } else {
       let dateUnedited = bookTreehouseInput.value;
       let bookingDate = [dateUnedited.slice(0, 4), dateUnedited.slice(5, 7), dateUnedited.slice(8)].join('/');

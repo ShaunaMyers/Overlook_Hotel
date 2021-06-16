@@ -10,6 +10,9 @@ body {
   background: $primary-background;
 }
 
-// main {
-//   background-image: url('./images/mouldy-mango-login.jpg');
-// }
+main {
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://thepointsguy.com/wp-content/uploads/2017/06/Upper-Pond-Exterior-e1498727801692.jpg');
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
