@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
   <title>Mouldy Mango Treetop Resort</title>
 </head>
 
@@ -12,7 +14,7 @@
   <main id="mainElement">
     <article class="login-page" id="loginPage">
       <section class="login-container" id="loginContainer">
-        <h1>Welcome to Mouldy Mango Treetop Resort</h1>
+        <h1 class="login-header">Welcome to Mouldy Mango Treetop Resort</h1>
         <h2>Login To Your Account</h2>
         <form class="login-form" action="index.html" method="post">
           <input id="username" type="text" name="username" placeholder="Username" required>
@@ -41,7 +43,7 @@
         <p>444 Rainforest Way, Manzanillo, Limón, Costa Rica</p>
         <form class="search-all-availability" id="searchAllAvailability">
           <label for="searchByDate">Search Available Accomodations By Date</label>
-          <input class="search-by-date" id="searchByDate" type="date" placeholder="MM/DD/YY" required>
+          <input class="search-by-date" id="searchByDate" type="date" min="2020-06-13" max="2022-06-13" placeholder="MM/DD/YY" required>
         </form>
       </section>
     </article>
@@ -65,7 +67,7 @@
         <p class="cost-per-night" id="costPerNight"><span class="room-price" id="roomPrice">$362</span> per night</p>
           <form id="bookingForm">
             <label for="bookTreehouseBtn">Please enter your desired check-in date</label><br>
-            <input type="date" id="chosenDate" placeholder="MM/DD/YY"><br>
+            <input type="date" id="chosenDate" min="2020-06-13" max="2022-06-13" placeholder="MM/DD/YY"><br>
             <button class="book-treehouse-btn" id="bookTreehouseBtn" type="button" name="button">Book This Treehouse</button>
           </form>
         <div id="errorMessage2">

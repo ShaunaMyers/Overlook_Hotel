@@ -1,23 +1,16 @@
 /*~~~~~~~~~~~~ Login Page ~~~~~~~~~~~*/
 
-// main {
-//   background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://thepointsguy.com/wp-content/uploads/2017/06/Upper-Pond-Exterior-e1498727801692.jpg');
-//   background-position: center;
-//   background-size: cover;
-//   height: 100vh;
-// }
-
 .hide-background-image {
   background: transparent;
 }
 
 .login-container {
   color: $primary-text-color;
-  font-size: 25px;
+  font-size: 20px;
   margin: auto;
   padding: 10% 0 0;
   text-align: center;
-  width: 360px;
+  width: 600px;
 }
 
 .login-form {
@@ -33,6 +26,11 @@
   width: 215px;
 }
 
+.login-header {
+  font-size: 50px;
+  text-align: center;
+  width: 600px;
+}
 
 /*~~~~~~~~~~~~ Header ~~~~~~~~~~~*/
 
@@ -71,6 +69,7 @@
 }
 
 .my-account {
+  color: $primary-text-color;
   font-size: 20px;
 }
 
@@ -197,7 +196,6 @@ img {
   }
 }
 
-// This all could be a mixin
 .treehouse-details, .book-treehouse-btn, .return-home, .explore-more {
     background-color: $primary-accent-color;
     border-radius: 15px;
@@ -262,6 +260,21 @@ input {
     background-color: darkgray;
     cursor: pointer;
   }
+  @media screen and (min-width: 2029px) {
+    right: 80%;
+    width: 10em;
+  }
+  @media screen and (min-width: 1200px) {
+    right: 65%;
+    width: 8em;
+  }
+  @media screen and (min-width: 895px) {
+    right: 75%;
+    width: 7em;
+  }
+  @media screen and (max-width: 812px) {
+    right: 65%;
+  }
 }
 
 .book-treehouse-btn {
@@ -275,7 +288,13 @@ input {
   font-size: 15px
 }
 
+ul {
+  list-style: none;
+}
 
+.your-bookings-heading {
+  color: $primary-accent-color;
+}
 
 /*~~~~~~~~~~~~ Hidden Styling ~~~~~~~~~~~*/
 

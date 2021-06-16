@@ -1,4 +1,4 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
+
 $primary-background: #272d36;
 ;
 
@@ -8,6 +8,7 @@ html, body {
 
 body {
   background: $primary-background;
+  font-family: 'Merriweather', serif;
 }
 
 main {

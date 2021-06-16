@@ -69,7 +69,6 @@ let domUpdates = {
       document.querySelector(".header-greeting").innerHTML = userAccountHeader;
 
       let allBookings = customer.returnAllBookings(hotel);
-        console.log('all bookings', allBookings);
       this.displayCustomerBookingInfo(allBookings, hotel, customer);
     },
 
@@ -96,7 +95,7 @@ let domUpdates = {
     },
 
     displayUpcomingBookings(upcomingBookings, hotel) {
-      customerAccountInfo.innerHTML += `<h4>Your Upcoming Bookings</h4>`;
+      customerAccountInfo.innerHTML += `<h4 class="your-bookings-heading">Your Upcoming Bookings</h4>`;
       if (!upcomingBookings.length) {
          customerAccountInfo.innerHTML += `<h5>You have no upcoming bookings. Time to make a reservation!</h5>`;
       } else {
@@ -113,7 +112,7 @@ let domUpdates = {
     },
 
     displayCurrentBookings(currentBookings, hotel) {
-      customerAccountInfo.innerHTML += `<h4>Your Current Bookings</h4>`;
+      customerAccountInfo.innerHTML += `<h4 class="your-bookings-heading>Your Current Bookings</h4>`;
       currentBookings.forEach(booking => {
         customerAccountInfo.innerHTML += `
         <ul>
@@ -126,7 +125,7 @@ let domUpdates = {
     },
 
     displayCompletedBookings(completedBookings, hotel) {
-      customerAccountInfo.innerHTML += `<h4>Your Completed Bookings</h4>`;
+      customerAccountInfo.innerHTML += `<h4 class="your-bookings-heading>Your Completed Bookings</h4>`;
       completedBookings.forEach(booking => {
         customerAccountInfo.innerHTML += `
         <ul>
@@ -143,6 +142,7 @@ let domUpdates = {
       document.getElementById('resortCard').classList.toggle('hidden');
       document.getElementById('allRoomCards').classList.toggle('hidden');
       document.getElementById('customerAccount').classList.add('hidden');
+      document.getElementById('roomCardDetails').classList.add('hidden');
 
     },
 
@@ -191,7 +191,9 @@ let domUpdates = {
     displayBookingMessage(event) {
       document.getElementById('bookingForm').innerHTML = `
         <p> Congratulations, you've booked this room. We look forward to hosting you!</p>
-        <button class="explore-more" id="exploreMoreTreehouses" type="button" name="button">Explore More Treehouses</button>
+        <!-- Wanted this button to work for proper UX but couldn't get the logic
+        with the event bubbling right -->
+        <!-- <button class="explore-more" id="exploreMoreTreehouses" type="button" name="button">Explore More Treehouses</button> -->
       `;
     },
 
