@@ -184,8 +184,9 @@ let domUpdates = {
     },
 
     displayBookingMessage(event) {
-      console.log("WHYYYYYY");
-
+      document.getElementById('bookingForm').innerHTML = `
+        <p> Congratulations, you've booked this room. We look forward to hosting you!</p>
+      `;
     },
 
     displayBookingErrorMessage(message) {
