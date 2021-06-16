@@ -21,6 +21,7 @@ import './images/user-account.svg';
 let allRoomCards = document.querySelector('#allRoomCards');
 let bookTreehouseBtn = document.getElementById('bookTreehouseBtn');
 let bookTreehouseInput = document.getElementById('chosenDate');
+let bookingForm = document.getElementById('bookingForm');
 let header = document.getElementById('headerGreeting');
 let loginBtn = document.getElementById('loginBtn');
 let passwordInput = document.getElementById('password');
@@ -59,7 +60,11 @@ bookTreehouseBtn.addEventListener('click', function(event) {
 
 bookTreehouseInput.addEventListener('change', function() {
   domUpdates.clearBookingErrorMessage()
-})
+});
+
+bookingForm.addEventListener('click', function(event) {
+  returnToHomeAfterBooking(event);
+});
 
 // Functions
 
@@ -221,12 +226,19 @@ function evaluateBookingDate(event) {
       let dateUnedited = bookTreehouseInput.value;
       let bookingDate = [dateUnedited.slice(0, 4), dateUnedited.slice(5, 7), dateUnedited.slice(8)].join('/');
       domUpdates.displayBookingMessage(event);
-      hotel.addToBookings()
       sendBookingPostRequest(bookingDate);
     }
+  }
 };
 
 function sendBookingPostRequest(bookingDate) {
   let roomNumber = parseInt(customer.currentRoomSearched);
   apiCalls.fetchRequests.updateBookingsData({ "userID": customer.id, "date": bookingDate, "roomNumber": roomNumber })
 };
+
+function returnToHomeAfterBooking(event) {
+  if (event.target.closest('button').id === 'exploreMoreTreehouses') {
+    domUpdates.returnToHomeView();
+    onStartUp();
+  }
+}

@@ -9,29 +9,7 @@ class Hotel {
         this.completedReservations = [];
         this.currentReservations = [];
         this.upcomingReservations = [];
-        this.totalRevenue = 0;
     }
-
-    //
-    // addToUpcomingReservations(booking) {
-    //     this.upcomingReservations.push(booking);
-    // }
-    //
-    // addToCurrentReservations(booking) {
-    //     this.currentReservations.push(booking);
-    //     if (this.upcomingReservations.includes(booking)) {
-    //         let bookingIndex = this.upcomingReservations.indexOf(booking);
-    //         this.upcomingReservations.splice(bookingIndex, 1);
-    //     }
-    // }
-    //
-    // addToCompletedReservations(booking) {
-    //     this.completedReservations.push(booking);
-    //     if (this.currentReservations.includes(booking)) {
-    //         let bookingIndex = this.currentReservations.indexOf(booking);
-    //         this.currentReservations.splice(bookingIndex, 1);
-    //     }
-    // }
 
     filterAvailableRooms(customerSearch) {
 
@@ -40,7 +18,6 @@ class Hotel {
         let bookingDate = dayjs(date);
 
         if (date) {
-          console.log('here 1');
           if (bookingDate.isBefore(today)) {
             this.offerApologyMessage();
           } else {
@@ -68,7 +45,6 @@ class Hotel {
     }
 
     filterByRoomType(roomType) {
-      console.log('here 3');
         let availableRooms = this.roomsAvailable.filter(room => room.roomType === roomType);
         this.roomsAvailable = availableRooms;
     }

@@ -142,7 +142,7 @@ let domUpdates = {
       this.greetCustomer(customerName);
       document.getElementById('resortCard').classList.toggle('hidden');
       document.getElementById('allRoomCards').classList.toggle('hidden');
-      document.getElementById('customerAccount').classList.toggle('hidden');
+      document.getElementById('customerAccount').classList.add('hidden');
 
     },
 
@@ -191,7 +191,7 @@ let domUpdates = {
     displayBookingMessage(event) {
       document.getElementById('bookingForm').innerHTML = `
         <p> Congratulations, you've booked this room. We look forward to hosting you!</p>
-        <button class="explore-more" id="exploreMoreTreehouses">Explore More Treehouses<button>
+        <button class="explore-more" id="exploreMoreTreehouses" type="button" name="button">Explore More Treehouses</button>
       `;
     },
 

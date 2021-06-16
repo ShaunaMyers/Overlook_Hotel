@@ -33,10 +33,6 @@ describe('Hotel Class', () => {
         expect(hotel.roomsAvailable).to.eql([]);
     });
 
-    it('Should start with a total revenue of zero', () => {
-        expect(hotel.totalRevenue).to.equal(0);
-    });
-
     it('Should start with no past reservations', () => {
         expect(hotel.completedReservations).to.eql([]);
     });
