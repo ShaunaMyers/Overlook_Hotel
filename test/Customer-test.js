@@ -5,7 +5,7 @@ import sampleCustomerData from '../src/data/sampleCustomerData';
 import sampleBookingsData from '../src/data/sampleBookingsData';
 import sampleRoomsData from '../src/data/sampleRoomsData';
 
-describe.only('Customer Class', () => {
+describe('Customer Class', () => {
 
     let customer1, customer2, hotel;
 
